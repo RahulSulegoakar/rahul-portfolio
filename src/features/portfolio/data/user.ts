@@ -1,73 +1,65 @@
 import type { User } from "@/features/portfolio/types/user";
 
 export const USER = {
-  firstName: "Chánh Đại",
-  lastName: "Nguyễn",
-  displayName: "Chánh Đại",
-  username: "ncdai",
+  firstName: "Rahul",
+  lastName: "Sulegaokar",
+  displayName: "Rahul Sulegaokar",
+  username: "rahulsulegaokar",
   gender: "male",
   pronouns: "he/him",
-  bio: "Creating with code. Small details matter.",
+  bio: "Been crafting seamless web experiences for almost a decade, always on a mission to make things look awesome, one pixel at a time.",
   flipSentences: [
-    "Creating with code. Small details matter.",
-    "Design Engineer",
-    "Open Source Contributor",
+    "Product Designer and Developer",
+    "Crafting seamless web experiences",
+    "Making things look awesome, one pixel at a time",
   ],
-  address: "Ho Chi Minh City, Viet Nam",
-  phoneNumber: "Kzg0Nzc3ODg4MTQ4", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  email: "ZGFpQGNoYW5oZGFpLmNvbQ==", // base64 encoded
-  website: "https://chanhdai.com",
-  jobTitle: "Design Engineer",
+  address: "Mumbai, India",
+  phoneNumber: "KzkxNzkwMDE1MTg4Mw", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
+  email: "cnN1bGVnYW9rYXJAZ21haWwuY29t", // base64 encoded
+  website: "https://rahulsulegaokar.com",
+  jobTitle: "Product Designer and Developer",
   jobs: [
     {
-      title: "Senior Frontend Developer & UI Design Lead",
-      company: "Simplamo",
-      website: "https://simplamo.com?ref=IN-926722",
+      title: "Frontend Developer",
+      company: "AGI, Inc",
+      website: "https://www.theagi.company",
     },
     {
       title: "Founder",
-      company: "Quaric",
-      website: "https://quaric.com",
+      company: "buildnboost",
+      website: "https://buildnboost.com",
     },
   ],
-  //   about: `
-  // Hello, World! I am Chánh Đại — a Design Engineer passionate about creating high-performance, user-centric software solutions with intuitive and engaging designs.
 
-  // With 5+ years of experience, I specialize in building high-quality web and mobile applications using Next.js, React, TypeScript, and modern front-end technologies. Beyond work, I love exploring new technologies and turning ideas into reality through personal projects.
-
-  // One of my key projects, [ZaDark](https://zadark.com), launched in 2022, enhances the Zalo experience on PC and Web, surpassing 80k+ downloads on [SourceForge](https://sourceforge.net/projects/zadark) and reaching 20k+ active users on the [Chrome Web Store](https://chromewebstore.google.com/detail/llfhpkkeljlgnjgkholeppfnepmjppob) (as of Sep 2025).
-
-  // I'm also the creator of [React Wheel Picker](https://react-wheel-picker.chanhdai.com) — iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support. It has earned 4k+ weekly downloads on [npm](https://www.npmjs.com/package/@ncdai/react-wheel-picker) and was selected for [▲Vercel OSS Program](https://vercel.com/blog/summer-2025-oss-program#react-wheel-picker) summer 2025 cohort.
-
-  // Let's connect and collaborate!
-  //   `,
   about: `
-- **Design Engineer** with **5+ years of experience**, known for pixel-perfect execution and strong attention to small details.
-- Skilled in **Next.js**, **React**, **TypeScript**, and modern front-end technologies; building high-quality, user-centric web and mobile applications.
-- Passionate about exploring new technologies and turning ideas into reality through polished, thoughtfully crafted personal projects.
-- Creator of [ZaDark](https://zadark.com) (2022): enhances the Zalo experience on PC & Web
-  - **80k+ downloads** on [SourceForge](https://sourceforge.net/projects/zadark)
-  - **30k+ active users** on the [Chrome Web Store](https://chromewebstore.google.com/detail/llfhpkkeljlgnjgkholeppfnepmjppob)
-- Creator of [React Wheel Picker](https://react-wheel-picker.chanhdai.com): iOS-like wheel picker with inertia scrolling & infinite loop
-  - **10k+ weekly downloads** on [npm](https://www.npmjs.com/package/@ncdai/react-wheel-picker)
-  - [▲Vercel OSS Program](https://vercel.com/blog/summer-2025-oss-program#react-wheel-picker) summer 2025 cohort
+Been crafting seamless web experiences for almost a decade, always on a mission to make things look awesome, one pixel at a time.
+
+Designing and developing websites, software interfaces, tailwind css, react, and next.js — that's my zone, dedicating my skills to perfecting these realms.
+
+I'm all about that constant level-up — learning, unlearning, and refining the craft. If it's digital, I'll make it dope.
+
+And, of course, nowadays, leveraging AI IDEs like Cursor and Windsurf makes my work faster and more efficient.
 `,
   avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
   ogImage:
     "https://assets.chanhdai.com/images/screenshot-og-image-light.png?t=1764345394",
   namePronunciationUrl: "/audio/chanhdai.mp3",
-  timeZone: "Asia/Ho_Chi_Minh",
+  timeZone: "Asia/Kolkata",
   keywords: [
-    "ncdai",
-    "nguyenchanhdai",
-    "nguyen chanh dai",
-    "chanhdai",
-    "chanh dai",
-    "iamncdai",
-    "quaric",
-    "zadark",
-    "nguyễn chánh đại",
-    "chánh đại",
+    "rahul sulegaokar",
+    "rahulsulegaokar",
+    "product designer",
+    "web developer",
+    "tailwind css",
+    "react developer",
+    "nextjs developer",
+    "ui designer",
+    "frontend developer",
+    "web design",
+    "software interface design",
+    "cursor ide",
+    "windsurf",
+    "ai development",
   ],
   dateCreated: "2023-10-20", // YYYY-MM-DD
 } satisfies User;

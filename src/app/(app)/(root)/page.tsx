@@ -40,6 +40,9 @@ export default function Page() {
         <SocialLinks />
         <Separator />
 
+        <Projects />
+        <Separator />
+
         <About />
         <Separator />
 
@@ -52,29 +55,26 @@ export default function Page() {
         <TeckStack />
         <Separator />
 
-        <Components />
+        {/* <Components /> */}
+        {/* <Separator /> */}
+
+        <Experiences />
         <Separator />
 
         <Blog />
         <Separator />
 
-        <Experiences />
-        <Separator />
+        {/* <Awards /> */}
+        {/* <Separator /> */}
 
-        <Projects />
-        <Separator />
+        {/* <Certifications /> */}
+        {/* <Separator /> */}
 
-        <Awards />
-        <Separator />
+        {/* <Bookmarks /> */}
+        {/* <Separator /> */}
 
-        <Certifications />
-        <Separator />
-
-        <Bookmarks />
-        <Separator />
-
-        <Brand />
-        <Separator />
+        {/* <Brand /> */}
+        {/* <Separator /> */}
       </div>
     </>
   );

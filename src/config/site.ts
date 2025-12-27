@@ -33,14 +33,15 @@ export const MAIN_NAV: NavItem[] = [
   // },
 ];
 
-export const GITHUB_USERNAME = "ncdai";
-export const SOURCE_CODE_GITHUB_REPO = "ncdai/chanhdai.com";
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/ncdai/chanhdai.com";
+export const GITHUB_USERNAME = "RahulSulegoakar";
+export const SOURCE_CODE_GITHUB_REPO = "RahulSulegoakar/rahul-portfolio";
+export const SOURCE_CODE_GITHUB_URL =
+  "https://github.com/RahulSulegoakar/rahul-portfolio";
 
-export const SPONSORSHIP_URL = "https://github.com/sponsors/ncdai";
+export const SPONSORSHIP_URL = "https://github.com/sponsors/rahulsulegaokar";
 
 export const UTM_PARAMS = {
-  utm_source: "chanhdai.com",
+  utm_source: "rahulsulegaokar.com",
   utm_medium: "referral",
   utm_campaign: "portfolio",
 };
