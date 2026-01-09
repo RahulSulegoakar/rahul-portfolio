@@ -2,6 +2,7 @@ import { RssIcon } from "lucide-react";
 import Link from "next/link";
 
 import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 import { Icons } from "./icons";
 
@@ -35,24 +36,77 @@ export function SiteFooter() {
           .
         </p>
 
+        <div className="screen-line-before flex justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
+          <Link className="font-medium" href="/sponsors">
+            Sponsors
+          </Link>
+
+          <span className="opacity-50">•</span>
+
+          <a
+            className="font-medium"
+            href={`${SITE_INFO.url}/llms.txt`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            llms.txt
+          </a>
+        </div>
+
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-edge bg-background px-4">
             <Link
-              className="flex font-mono text-xs font-medium text-muted-foreground"
+              className="flex font-mono text-xs font-medium text-muted-foreground max-sm:hidden"
               href="/sponsors"
             >
               Sponsors
             </Link>
 
-            <Separator />
+            <Separator className="max-sm:hidden" />
 
             <a
-              className="flex font-mono text-xs font-medium text-muted-foreground"
+              className="flex font-mono text-xs font-medium text-muted-foreground max-sm:hidden"
               href={`${SITE_INFO.url}/llms.txt`}
               target="_blank"
               rel="noopener noreferrer"
             >
               llms.txt
+            </a>
+
+            <Separator className="max-sm:hidden" />
+
+            <a
+              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+              href="https://x.com/iamncdai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icons.x className="size-4" />
+              <span className="sr-only">X</span>
+            </a>
+
+            <Separator />
+
+            <a
+              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+              href="https://github.com/ncdai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icons.github className="size-4" />
+              <span className="sr-only">GitHub</span>
+            </a>
+
+            <Separator />
+
+            <a
+              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+              href="https://www.linkedin.com/in/ncdai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icons.linkedin className="size-4" />
+              <span className="sr-only">LinkedIn</span>
             </a>
 
             <Separator />
@@ -78,7 +132,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icons.dmca className="h-5 w-auto" />
+              <Icons.dmca className="h-4.5 w-auto" />
               <span className="sr-only">DMCA.com Protection Status</span>
             </a>
           </div>
@@ -91,6 +145,6 @@ export function SiteFooter() {
   );
 }
 
-function Separator() {
-  return <div className="flex h-11 w-px bg-edge" />;
+function Separator({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("flex h-11 w-px bg-edge", className)} {...props} />;
 }

@@ -2,10 +2,10 @@
 
 A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Design Engineer.
 
-Check out the live site: [chanhdai.com](https://chanhdai.com)
+→ Check out the live site: [chanhdai.com](https://chanhdai.com)
 
-[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?v=4#gh-dark-mode-only)](https://github.com/ncdai/chanhdai.com#gh-dark-mode-only)
-[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?v=4#gh-light-mode-only)](https://github.com/ncdai/chanhdai.com#gh-light-mode-only)
+[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?v=4#gh-dark-mode-only)](https://chanhdai.com#gh-dark-mode-only)
+[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?v=4#gh-light-mode-only)](https://chanhdai.com#gh-light-mode-only)
 
 ## Overview
 
@@ -72,9 +72,60 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 
 ## Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=ncdai/chanhdai.com)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
+[![Contributors](https://chanhdai.com/svg/contributors?v=2)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
 
-> Made with [contrib.rocks](https://contrib.rocks)
+## Sponsors
+
+This project is proudly supported by:
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="https://shadcnstudio.com?utm_source=chanhdai&utm_medium=banner&utm_campaign=github#gh-light-mode-only">
+          <img src="https://assets.chanhdai.com/images/sponsors/shadcnstudio.svg?v=2#gh-light-mode-only" alt="shadcnstudio.com" />
+        </a>
+        <a href="https://shadcnstudio.com?utm_source=chanhdai&utm_medium=banner&utm_campaign=github#gh-dark-mode-only">
+          <img src="https://assets.chanhdai.com/images/sponsors/shadcnstudio-dark.svg?v=2#gh-dark-mode-only" alt="shadcnstudio.com" />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://shadcraft.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/shadcraft.svg?v=1#gh-light-mode-only"
+            alt="shadcraft.com"
+          />
+        </a>
+        <a href="https://shadcraft.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/shadcraft-dark.svg?v=1#gh-dark-mode-only"
+            alt="shadcraft.com"
+          />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://reactbits.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/reactbits.svg?v=1#gh-light-mode-only"
+            alt="reactbits.com"
+          />
+        </a>
+        <a href="https://reactbits.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/reactbits-dark.svg?v=1#gh-dark-mode-only"
+            alt="reactbits.com"
+          />
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+> Found this project useful? [Sponsor me](https://github.com/sponsors/ncdai) to help with support and maintenance.
 
 ## Stats
 

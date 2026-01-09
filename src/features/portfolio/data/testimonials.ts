@@ -1,5 +1,11 @@
 import type { Testimonial } from "../types/testimonials";
 
+/**
+ * TESTIMONIALS_1: Long quotes (more than 50 characters)
+ * TESTIMONIALS_2: Short quotes (50 characters or fewer)
+ */
+
+// Long quotes (more than 50 characters)
 export const TESTIMONIALS_1: Testimonial[] = [
   {
     authorAvatar:
@@ -80,8 +86,26 @@ export const TESTIMONIALS_1: Testimonial[] = [
     quote:
       "Perfect iOS-like wheel picker for the web 🙌 Natural touch physics, infinite looping, and unstyled components with shadcn CLI support.",
   },
+  {
+    authorAvatar:
+      "https://pbs.twimg.com/profile_images/1996462702110162944/jY4GKvoA_400x400.jpg",
+    authorName: "Francesco Ciulla",
+    authorTagline: "Developer Advocate @daily.dev",
+    url: "https://x.com/FrancescoCiull4/status/2006332479536529608",
+    quote:
+      "your portfolio is stunning. i created mine some weeks ago but this is another planet.",
+  },
+  {
+    authorAvatar:
+      "https://pbs.twimg.com/profile_images/1740764353408753664/uPGbBhm0_400x400.jpg",
+    authorName: "Duncan",
+    authorTagline: "Engineering @Documenso",
+    url: "https://x.com/EphraimDuncan_/status/2008254368806826312",
+    quote: "great work on your portfolio, you deserve it",
+  },
 ];
 
+// Short quotes (50 characters or fewer)
 export const TESTIMONIALS_2: Testimonial[] = [
   {
     authorAvatar:
