@@ -46,11 +46,11 @@ export default function Page() {
         <About />
         <Separator />
 
-        <TestimonialsMarquee />
-        <Separator />
+        {/* <TestimonialsMarquee /> */}
+        {/* <Separator /> */}
 
-        <GitHubContributions />
-        <Separator />
+        {/* <GitHubContributions /> */}
+        {/* <Separator /> */}
 
         <TeckStack />
         <Separator />
@@ -61,8 +61,8 @@ export default function Page() {
         <Experiences />
         <Separator />
 
-        <Blog />
-        <Separator />
+        {/* <Blog /> */}
+        {/* <Separator /> */}
 
         {/* <Awards /> */}
         {/* <Separator /> */}

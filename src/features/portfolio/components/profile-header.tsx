@@ -18,23 +18,43 @@ export function ProfileHeader() {
         </div>
 
         <a
-          href="https://vietnam.gov.vn/about-viet-nam"
+          href="https://en.wikipedia.org/wiki/Flag_of_India"
           target="_blank"
           rel="noreferrer"
           className="absolute top-0 -left-px"
         >
-          {/* Flag of Viet Nam */}
+          {/* Flag of India */}
           <svg
             className="h-8 sm:h-9"
             viewBox="0 0 30 20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title>Flag of Viet Nam</title>
-            <rect width="30" height="20" fill="#F00" />
-            <polygon
-              points="15,4 11.47,14.85 20.71,8.15 9.29,8.15 18.53,14.85"
-              fill="#FFEB00"
+            <title>Flag of India</title>
+            <rect width="30" height="6.67" y="0" fill="#FF9933" />
+            <rect width="30" height="6.67" y="6.67" fill="#FFFFFF" />
+            <rect width="30" height="6.66" y="13.34" fill="#138808" />
+            <circle
+              cx="15"
+              cy="10"
+              r="2.8"
+              fill="none"
+              stroke="#000080"
+              strokeWidth="0.4"
             />
+            {Array.from({ length: 24 }, (_, i) => {
+              const a = (i * 15 * Math.PI) / 180;
+              return (
+                <line
+                  key={i}
+                  x1="15"
+                  y1="10"
+                  x2={15 + 2.8 * Math.cos(a)}
+                  y2={10 - 2.8 * Math.sin(a)}
+                  stroke="#000080"
+                  strokeWidth="0.4"
+                />
+              );
+            })}
           </svg>
         </a>
       </div>

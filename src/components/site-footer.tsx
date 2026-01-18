@@ -37,9 +37,9 @@ export function SiteFooter() {
         </p>
 
         <div className="screen-line-before flex justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
-          <Link className="font-medium" href="/sponsors">
+          {/* <Link className="font-medium" href="/sponsors">
             Sponsors
-          </Link>
+          </Link> */}
 
           <span className="opacity-50">•</span>
 
