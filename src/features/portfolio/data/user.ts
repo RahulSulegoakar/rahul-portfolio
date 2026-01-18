@@ -29,6 +29,11 @@ export const USER = {
       company: "buildnboost",
       website: "https://buildnboost.com",
     },
+    {
+      title: "Design Engineer",
+      company: "Shadcraft",
+      website: "https://shadcraft.com",
+    },
   ],
 
   about: `
