@@ -28,6 +28,12 @@ export const PROJECTS: Project[] = [
 `,
     logo: "https://assets.chanhdai.com/images/project-logos/react-wheel-picker.svg",
     isExpanded: true,
+    images: [
+      "https://via.placeholder.com/800x450/0ea5e9/ffffff?text=Screenshot+1",
+      "https://via.placeholder.com/800x450/8b5cf6/ffffff?text=Screenshot+2",
+      "https://via.placeholder.com/800x450/ec4899/ffffff?text=Screenshot+3",
+      "https://via.placeholder.com/800x450/f59e0b/ffffff?text=Screenshot+4",
+    ],
   },
   {
     id: "chanhdaidotcom",
