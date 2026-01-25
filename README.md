@@ -4,8 +4,8 @@ A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase
 
 → Check out the live site: [chanhdai.com](https://chanhdai.com)
 
-[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?v=4#gh-dark-mode-only)](https://chanhdai.com#gh-dark-mode-only)
-[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?v=4#gh-light-mode-only)](https://chanhdai.com#gh-light-mode-only)
+[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?v=5#gh-dark-mode-only)](https://chanhdai.com#gh-dark-mode-only)
+[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?v=5#gh-light-mode-only)](https://chanhdai.com#gh-light-mode-only)
 
 ## Overview
 
@@ -24,7 +24,8 @@ A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase
 - AI-ready with [/llms.txt](https://llmstxt.org)
 - Spam-protected email
 - Installable as PWA
-- Analytics with [PostHog](https://posthog.com) & consent management via [c15t](https://c15t.com)
+- Analytics with [PostHog](https://posthog.com) and [OpenPanel](https://openpanel.dev)
+- Consent management via [c15t](https://c15t.com)
 
 ### Blog
 
@@ -46,12 +47,13 @@ Each entry is well-documented and includes:
 
 ### Analytics
 
-User behavior tracking with [PostHog](https://posthog.com) to understand how visitors interact with the site:
+User behavior tracking with [PostHog](https://posthog.com) and [OpenPanel](https://openpanel.dev) to understand how visitors interact with the site:
 
 - **Copy events** - Track code & command copies
 - **Engagement** - Monitor name pronunciation plays, command menu usage
 - **Search behavior** - Analyze search queries (debounced)
 - **User actions** - Navigation, theme changes, content interactions
+- **Screen views** - Automatic page view tracking (OpenPanel)
 
 Built with privacy in mind:
 
@@ -59,6 +61,7 @@ Built with privacy in mind:
 - Cookieless mode until consent
 - Production-only tracking
 - Type-safe event schema with Zod
+- Dual analytics setup for redundancy and comprehensive insights
 
 ## Development
 
@@ -72,7 +75,9 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 
 ## Contributors
 
-[![Contributors](https://chanhdai.com/svg/contributors?v=2)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=ncdai/chanhdai.com)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
+
+> Made with [contrib.rocks](https://contrib.rocks)
 
 ## Sponsors
 
@@ -95,29 +100,61 @@ This project is proudly supported by:
         <a href="https://shadcraft.com?utm_source=chanhdai.com#gh-light-mode-only">
           <img
             src="https://assets.chanhdai.com/images/sponsors/shadcraft.svg?v=1#gh-light-mode-only"
-            alt="shadcraft.com"
+            alt="Shadcraft"
           />
         </a>
         <a href="https://shadcraft.com?utm_source=chanhdai.com#gh-dark-mode-only">
           <img
             src="https://assets.chanhdai.com/images/sponsors/shadcraft-dark.svg?v=1#gh-dark-mode-only"
-            alt="shadcraft.com"
+            alt="Shadcraft"
           />
         </a>
       </td>
     </tr>
     <tr>
       <td>
-        <a href="https://reactbits.com?utm_source=chanhdai.com#gh-light-mode-only">
+        <a href="https://uirules.com?utm_source=chanhdai.com#gh-light-mode-only">
           <img
-            src="https://assets.chanhdai.com/images/sponsors/reactbits.svg?v=1#gh-light-mode-only"
-            alt="reactbits.com"
+            src="https://assets.chanhdai.com/images/sponsors/uirules.svg?v=1#gh-light-mode-only"
+            alt="UI Rules"
           />
         </a>
-        <a href="https://reactbits.com?utm_source=chanhdai.com#gh-dark-mode-only">
+        <a href="https://uirules.com?utm_source=chanhdai.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/uirules-dark.svg?v=1#gh-dark-mode-only"
+            alt="UI Rules"
+          />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://reactbits.dev?utm_source=chanhdai.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/reactbits.svg?v=1#gh-light-mode-only"
+            alt="React Bits"
+          />
+        </a>
+        <a href="https://reactbits.dev?utm_source=chanhdai.com#gh-dark-mode-only">
           <img
             src="https://assets.chanhdai.com/images/sponsors/reactbits-dark.svg?v=1#gh-dark-mode-only"
-            alt="reactbits.com"
+            alt="React Bits"
+          />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://openpanel.dev?utm_source=chanhdai.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/openpanel.svg?v=1#gh-light-mode-only"
+            alt="OpenPanel"
+          />
+        </a>
+        <a href="https://openpanel.dev?utm_source=chanhdai.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/openpanel-dark.svg?v=1#gh-dark-mode-only"
+            alt="OpenPanel"
           />
         </a>
       </td>
@@ -149,6 +186,7 @@ This project is proudly supported by:
 - [Lucide](https://lucide.dev)
 - [Fumadocs](https://fumadocs.dev)
 - [PostHog](https://posthog.com)
+- [OpenPanel](https://openpanel.dev)
 - [c15t](https://c15t.com)
 - And many other open-source libraries used in `package.json`
 

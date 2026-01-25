@@ -47,7 +47,7 @@ And, of course, nowadays, leveraging AI IDEs like Cursor and Windsurf makes my w
 `,
   avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
   ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-light.png?v=4",
+    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=5",
   namePronunciationUrl: "/audio/chanhdai.mp3",
   timeZone: "Asia/Kolkata",
   keywords: [
