@@ -74,11 +74,11 @@ export default function Page() {
         {/* <Bookmarks /> */}
         {/* <Separator /> */}
 
-        {/* <Brand /> */}
-        {/* <Separator /> */}
-
-        <Sponsors />
+        <Brand />
         <Separator />
+
+        {/* <Sponsors /> */}
+        {/* <Separator /> */}
       </div>
     </>
   );
