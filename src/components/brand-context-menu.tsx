@@ -7,8 +7,8 @@ import { toast } from "sonner";
 
 import { copyText } from "@/utils/copy";
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark";
 import { getWordmarkSVG } from "./chanhdai-wordmark";
+import { ChanhDaiMark, getMarkSVG } from "./rahul-mark";
 import {
   ContextMenu,
   ContextMenuContent,

@@ -43,9 +43,9 @@ import { useSound } from "@/hooks/use-sound";
 import { trackEvent } from "@/lib/events";
 import { copyText } from "@/utils/copy";
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark";
 import { getWordmarkSVG } from "./chanhdai-wordmark";
 import { ComponentIcon, Icons } from "./icons";
+import { ChanhDaiMark, getMarkSVG } from "./rahul-mark";
 import { Button } from "./ui/button";
 import { Kbd, KbdGroup } from "./ui/kbd";
 import { Separator } from "./ui/separator";

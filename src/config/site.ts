@@ -42,6 +42,4 @@ export const SPONSORSHIP_URL = "https://github.com/sponsors/rahulsulegaokar";
 
 export const UTM_PARAMS = {
   utm_source: "rahulsulegaokar.com",
-  utm_medium: "referral",
-  utm_campaign: "portfolio",
 };

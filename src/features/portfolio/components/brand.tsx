@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
-import { ChanhDaiMark } from "@/components/chanhdai-mark";
 import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
+import { ChanhDaiMark } from "@/components/rahul-mark";
 
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 

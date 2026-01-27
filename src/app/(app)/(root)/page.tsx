@@ -4,7 +4,6 @@ import { About } from "@/features/portfolio/components/about";
 import { Awards } from "@/features/portfolio/components/awards";
 import { Blog } from "@/features/portfolio/components/blog";
 import { Bookmarks } from "@/features/portfolio/components/bookmarks";
-import { Brand } from "@/features/portfolio/components/brand";
 import { Certifications } from "@/features/portfolio/components/certifications";
 import { Components } from "@/features/portfolio/components/components";
 import { Experiences } from "@/features/portfolio/components/experiences";
@@ -41,51 +40,41 @@ export default function Page() {
         <SocialLinks />
         <Separator />
 
-        <Projects />
-        <Separator />
-
         <About />
         <div className="flex h-4 w-full border-x border-edge" />
 
-        {/* <TestimonialsMarquee /> */}
-        {/* <Separator /> */}
+        <TestimonialsMarquee />
         <div className="flex h-4 w-full border-x border-edge" />
 
-        {/* <GitHubContributions /> */}
-        {/* <Separator /> */}
+        <GitHubContributions />
+        <Separator />
 
         <TechStack />
         <Separator />
 
-        {/* <Components /> */}
-        {/* <Separator /> */}
+        <Components />
+        <Separator />
+
+        <Blog />
+        <Separator />
 
         <Experiences />
         <Separator />
 
-        {/* <Blog /> */}
-        {/* <Separator /> */}
-
-        {/* <Awards /> */}
-        {/* <Separator /> */}
-
-        {/* <Certifications /> */}
-        {/* <Separator /> */}
-
-        {/* <Bookmarks /> */}
-        {/* <Separator /> */}
-
-        <Brand />
+        <Projects />
         <Separator />
 
-        {/* <Sponsors /> */}
-        {/* <Separator /> */}
+        {/* <Awards />
+        <Separator />
+
+        <Certifications />
+        <Separator />
 
         <Bookmarks />
         <Separator />
 
         <Sponsors />
-        <Separator />
+        <Separator /> */}
       </div>
     </>
   );
