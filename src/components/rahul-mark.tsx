@@ -1,4 +1,4 @@
-export function ChanhDaiMark(props: React.ComponentProps<"div">) {
+export function RahulMark(props: React.ComponentProps<"div">) {
   return (
     <div
       {...props}
