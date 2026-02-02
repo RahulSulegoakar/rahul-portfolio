@@ -103,6 +103,30 @@ export const TESTIMONIALS_1: Testimonial[] = [
     url: "https://x.com/EphraimDuncan_/status/2008254368806826312",
     quote: "great work on your portfolio, you deserve it",
   },
+  {
+    authorAvatar:
+      "https://pbs.twimg.com/profile_images/1907258802032017408/P_dJGcQ1_400x400.jpg",
+    authorName: "Megh",
+    authorTagline: "Creator of patterncraft.fun",
+    url: "https://x.com/meghtrix/status/2017658774530781471",
+    quote: "The best looking website I’ve ever seen? @iamncdai portfolio!",
+  },
+  {
+    authorAvatar:
+      "https://pbs.twimg.com/profile_images/1946867973655822336/G8Wg8aXf_400x400.jpg",
+    authorName: "Shadcraft",
+    authorTagline: "shadcn/ui kit for Figma and React",
+    url: "https://x.com/shadcraft_/status/2017091317244055988",
+    quote: "Love your work Dai! You're a great talent :-)",
+  },
+  {
+    authorAvatar:
+      "https://pbs.twimg.com/profile_images/2009239880006815748/Ifmg-K9S_400x400.jpg",
+    authorName: "Kartikey",
+    authorTagline: "Engineer",
+    url: "https://x.com/KartikeyStack/status/2016717957938974963",
+    quote: "best portfolio I've ever seen, minimal, clean and sick 🙌🏼",
+  },
 ];
 
 // Short quotes (50 characters or fewer)
@@ -137,7 +161,7 @@ export const TESTIMONIALS_2: Testimonial[] = [
     authorName: "jordwalke",
     authorTagline: "Creator of React",
     url: "https://x.com/jordwalke/status/1937165909778657589",
-    quote: "Looks great.\nAlso, cool wheel picker!",
+    quote: "Looks great. Also, cool wheel picker!",
   },
   {
     authorAvatar:
@@ -170,5 +194,13 @@ export const TESTIMONIALS_2: Testimonial[] = [
     authorTagline: "Creator of shadcnstudio.com",
     url: "https://x.com/ajaypatel_aj/status/1992946036558778494",
     quote: "This Portfolio is something else 😍",
+  },
+  {
+    authorAvatar:
+      "https://pbs.twimg.com/profile_images/1927474594102784000/Al0g-I6o_400x400.jpg",
+    authorName: "David Haz",
+    authorTagline: "Creator of reactbits.dev",
+    url: "https://x.com/davidhdev/status/2017868986969444511",
+    quote: "Simple and clean, love it! 🌟",
   },
 ];
