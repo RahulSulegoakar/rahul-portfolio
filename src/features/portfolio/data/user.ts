@@ -24,8 +24,17 @@ export const USER = {
       company: "Proton lab",
       website: "https://protonlab.ai",
     },
+    {
+      title: "Design Engineer",
+      company: "Shadcraft",
+      website: "https://shadcraft.com",
+    },
+    {
+      title: "Founder",
+      company: "Quaric",
+      website: "https://quaric.com",
+    },
   ],
-
   about: `
 Product Designer & Frontend Developer with 7+ years of experience, specializing in end-to-end product development from concept to launch.
 
@@ -44,6 +53,11 @@ Skilled in Next.js, React, TypeScript, Tailwind CSS, and modern frontend technol
     "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=5",
   namePronunciationUrl: "/audio/chanhdai.mp3",
   timeZone: "Asia/Kolkata",
+  affiliateBadge: {
+    name: "Shadcraft",
+    url: "https://shadcraft.com",
+    logo: "https://assets.chanhdai.com/images/companies/shadcraft.svg?v=2",
+  },
   keywords: [
     "rahul sulegaokar",
     "rahulsulegaokar",

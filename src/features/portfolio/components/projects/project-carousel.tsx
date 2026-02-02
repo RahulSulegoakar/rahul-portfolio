@@ -64,7 +64,7 @@ export function ProjectCarousel({
             className={cn(
               "flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors",
               canGoPrev
-                ? "text-foreground hover:bg-accent2"
+                ? "hover:bg-accent2 text-foreground"
                 : "cursor-not-allowed text-muted-foreground opacity-50"
             )}
             aria-label="Previous images"
@@ -85,7 +85,7 @@ export function ProjectCarousel({
             className={cn(
               "flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors",
               canGoNext
-                ? "text-foreground hover:bg-accent2"
+                ? "hover:bg-accent2 text-foreground"
                 : "cursor-not-allowed text-muted-foreground opacity-50"
             )}
             aria-label="Next images"
