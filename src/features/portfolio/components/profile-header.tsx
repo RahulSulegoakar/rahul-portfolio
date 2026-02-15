@@ -1,23 +1,23 @@
-import Image from "next/image";
+import Image from "next/image"
 
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip";
-import { UTM_PARAMS } from "@/config/site";
-import { USER } from "@/features/portfolio/data/user";
-import { FlipSentences } from "@/registry/flip-sentences";
-import { addQueryParams } from "@/utils/url";
+} from "@/components/base/ui/tooltip"
+import { UTM_PARAMS } from "@/config/site"
+import { USER } from "@/features/portfolio/data/user"
+import { FlipSentences } from "@/registry/components/flip-sentences"
+import { addQueryParams } from "@/utils/url"
 
-import { PronounceMyName } from "./pronounce-my-name";
-import { VerifiedIcon } from "./verified-icon";
+import { PronounceMyName } from "./pronounce-my-name"
+import { VerifiedIcon } from "./verified-icon"
 
 export function ProfileHeader() {
   return (
     <div className="screen-line-after flex border-x border-edge">
-      <div className="absolute top-[-3.5px] left-[-4.5px] size-2 rounded-xs border bg-popover" />
-      <div className="absolute top-[-3.5px] right-[-4.5px] size-2 rounded-xs border bg-popover" />
+      {/* <div className="absolute top-[-3.5px] left-[-4.5px] size-2 rounded-xs border bg-popover" /> */}
+      {/* <div className="absolute top-[-3.5px] right-[-4.5px] size-2 rounded-xs border bg-popover" /> */}
 
       <div className="shrink-0 border-r border-edge">
         <div className="mx-0.5 my-0.75">
@@ -54,7 +54,7 @@ export function ProfileHeader() {
               strokeWidth="0.4"
             />
             {Array.from({ length: 24 }, (_, i) => {
-              const a = (i * 15 * Math.PI) / 180;
+              const a = (i * 15 * Math.PI) / 180
               return (
                 <line
                   key={i}
@@ -65,7 +65,7 @@ export function ProfileHeader() {
                   stroke="#000080"
                   strokeWidth="0.4"
                 />
-              );
+              )
             })}
           </svg>
         </a>
@@ -83,7 +83,7 @@ export function ProfileHeader() {
 
         <div className="border-t border-edge">
           <div className="flex items-center gap-2 pl-4">
-            <h1 className="-translate-y-px text-3xl font-semibold">
+            <h1 className="-translate-y-px text-3xl font-semibold tracking-tight">
               {USER.displayName}
             </h1>
 
@@ -97,7 +97,7 @@ export function ProfileHeader() {
                 <TooltipTrigger
                   render={
                     <a
-                      className="relative flex after:absolute after:inset-0 after:ring after:ring-black/10 after:ring-inset dark:after:ring-white/15"
+                      className="relative flex after:absolute after:inset-0 after:rounded-sm after:ring after:ring-black/10 after:ring-inset dark:after:ring-white/15"
                       href={addQueryParams(USER.affiliateBadge.url, UTM_PARAMS)}
                       target="_blank"
                       rel="noopener"
@@ -105,6 +105,7 @@ export function ProfileHeader() {
                   }
                 >
                   <Image
+                    className="rounded-sm"
                     src={USER.affiliateBadge.logo}
                     alt={USER.affiliateBadge.name}
                     width={20}
@@ -139,7 +140,7 @@ export function ProfileHeader() {
 
           <div className="h-12.5 border-t border-edge py-1 pl-4 sm:h-9">
             <FlipSentences
-              className="font-mono text-sm text-balance text-muted-foreground"
+              className="font-pixel-square text-sm text-balance text-muted-foreground"
               variants={{
                 initial: { y: -10, opacity: 0 },
                 animate: { y: -1, opacity: 1 },
@@ -152,5 +153,5 @@ export function ProfileHeader() {
         </div>
       </div>
     </div>
-  );
+  )
 }

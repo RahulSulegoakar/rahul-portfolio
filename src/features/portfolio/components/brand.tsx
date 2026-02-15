@@ -1,13 +1,13 @@
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic"
 
-import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
-import { RahulMark } from "@/components/rahul-mark";
+import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark"
+import { RahulMark } from "@/components/rahul-mark"
 
-import { Panel, PanelHeader, PanelTitle } from "./panel";
+import { Panel, PanelHeader, PanelTitle } from "./panel"
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
-);
+)
 
 export function Brand() {
   return (
@@ -40,5 +40,5 @@ export function Brand() {
         </div>
       </BrandContextMenu>
     </Panel>
-  );
+  )
 }

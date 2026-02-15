@@ -1,15 +1,17 @@
-import "@/styles/globals.css";
+import "@/styles/globals.css"
 
-import type { Metadata, Viewport } from "next";
-import Script from "next/script";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
-import type { WebSite, WithContext } from "schema-dts";
+import type { Metadata, Viewport } from "next"
+import Script from "next/script"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
+import type { WebSite, WithContext } from "schema-dts"
 
-import { ConsentManager } from "@/components/consent-manager";
-import { Providers } from "@/components/providers";
-import { META_THEME_COLORS, SITE_INFO } from "@/config/site";
-import { USER } from "@/features/portfolio/data/user";
-import { fontMono, fontSans } from "@/lib/fonts";
+import { ConsentManager } from "@/components/consent-manager"
+import { DuckFollower } from "@/components/duck-follower"
+import { Providers } from "@/components/providers"
+import { META_THEME_COLORS, SITE_INFO } from "@/config/site"
+import { USER } from "@/features/portfolio/data/user"
+import { fontMono, fontPixelSquare, fontSans } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
@@ -18,7 +20,7 @@ function getWebSiteJsonLd(): WithContext<WebSite> {
     name: SITE_INFO.name,
     url: SITE_INFO.url,
     alternateName: [USER.username],
-  };
+  }
 }
 
 // Thanks @shadcn-ui, @tailwindcss
@@ -34,7 +36,7 @@ const darkModeScript = String.raw`
       document.documentElement.classList.add('os-macos')
     }
   } catch (_) {}
-`;
+`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
@@ -94,24 +96,28 @@ export const metadata: Metadata = {
       sizes: "180x180",
     },
   },
-};
+}
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
   themeColor: META_THEME_COLORS.light,
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} ${fontMono.variable}`}
+      className={cn(
+        fontSans.variable,
+        fontMono.variable,
+        fontPixelSquare.variable
+      )}
       suppressHydrationWarning
     >
       <head>
@@ -135,10 +141,13 @@ export default function RootLayout({
       <body>
         <Providers>
           <NuqsAdapter>
-            <ConsentManager>{children}</ConsentManager>
+            <ConsentManager>
+              {children}
+              <DuckFollower />
+            </ConsentManager>
           </NuqsAdapter>
         </Providers>
       </body>
     </html>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import { BrandContextMenu } from "@/components/brand-context-menu";
-import { cn } from "@/lib/utils";
+import { BrandContextMenu } from "@/components/brand-context-menu"
+import { cn } from "@/lib/utils"
 
-import { StickmanDodger } from "./stickman-dodger";
+import { StickmanDodger } from "./stickman-dodger"
 
 export function ProfileCover() {
   return (
@@ -17,5 +17,5 @@ export function ProfileCover() {
         <StickmanDodger />
       </div>
     </BrandContextMenu>
-  );
+  )
 }

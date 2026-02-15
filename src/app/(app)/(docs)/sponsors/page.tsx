@@ -1,20 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
-import { SponsorItem } from "@/features/sponsors/components/sponsor-item";
-import { SponsorItemPlus } from "@/features/sponsors/components/sponsor-item-plus";
-import { sponsors } from "@/features/sponsors/data";
+import { SponsorItem } from "@/features/sponsors/components/sponsor-item"
+import { SponsorItemPlus } from "@/features/sponsors/components/sponsor-item-plus"
+import { sponsors } from "@/features/sponsors/data"
 
 export const metadata: Metadata = {
   title: "Sponsors",
   description:
     "Grateful for the support that helps me grow and maintain high-quality projects.",
-};
+}
 
 export default function Page() {
   return (
     <div className="min-h-svh">
       <div className="screen-line-after px-4">
-        <h1 className="text-3xl font-semibold">Sponsors</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Sponsors</h1>
       </div>
 
       <div className="p-4">
@@ -40,5 +40,5 @@ export default function Page() {
 
       <div className="h-4" />
     </div>
-  );
+  )
 }

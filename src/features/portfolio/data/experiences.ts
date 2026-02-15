@@ -1,4 +1,4 @@
-import type { Experience } from "../types/experiences";
+import type { Experience } from "../types/experiences"
 
 export const EXPERIENCES: Experience[] = [
   {
@@ -16,7 +16,8 @@ export const EXPERIENCES: Experience[] = [
         },
         employmentType: "Part-time",
         icon: "code",
-        description: "Work on the registry and React component library.",
+        description:
+          "- Work on the registry and React component library.\n- Design and build Pro application components and blocks, from Figma to production-ready React.",
         skills: [
           "TypeScript",
           "Next.js",
@@ -81,9 +82,6 @@ In-house Project: [ZaDark](https://zadark.com)
         },
         employmentType: "Part-time",
         icon: "idea",
-        description: `- Lead and manage the company's strategy.
-- Oversee technical teams and product development.
-- Manage relationships with customers and partners.`,
         skills: ["Business Ownership", "Business Law", "Business Tax"],
       },
     ],
@@ -104,15 +102,15 @@ In-house Project: [ZaDark](https://zadark.com)
         },
         employmentType: "Full-time",
         icon: "code",
-        description: `- Build Tree & Gantt views features to improve goal organization, visibility, and progress tracking.
-- Develop [AI Chat](https://help.simplamo.com/features/simplamo-ai/ai-chat/guide_simplamo_ai_chat?ref=IN-926722) and [AI Assistant](https://help.simplamo.com/features/simplamo-ai/ai-expert/aiexpert-rockdiscribe?ref=IN-926722) features.
-- Develop [Whiteboards](https://help.simplamo.com/features/whiteboard/overview?ref=IN-926722) with real-time collaboration.
-- Build and maintain the [Zalo Mini App](https://zalo.me/s/1736112917405511258/) for Simplamo with seamless integration.
-- Develop interactive chart and analytics widgets for the [Dashboard](https://help.simplamo.com/features/dashboard/overview) to enhance data visualization.
-- Develop and maintain core features to enhance functionality and user experience.
-- Ensure UI/UX consistency and adherence to standards.
-- Implement robust frontend solutions for web and mobile platforms.
-- Analyze technical capabilities and provide optimal solutions.`,
+        description: `- Built Tree & Gantt views features to improve goal organization, visibility, and progress tracking.
+- Developed [AI Chat](https://help.simplamo.com/features/simplamo-ai/ai-chat/guide_simplamo_ai_chat?ref=IN-926722) and [AI Assistant](https://help.simplamo.com/features/simplamo-ai/ai-expert/aiexpert-rockdiscribe?ref=IN-926722) features.
+- Developed [Whiteboards](https://help.simplamo.com/features/whiteboard/overview?ref=IN-926722) with real-time collaboration.
+- Built and maintained the [Zalo Mini App](https://zalo.me/s/1736112917405511258/) for Simplamo with seamless integration.
+- Developed interactive chart and analytics widgets for the [Dashboard](https://help.simplamo.com/features/dashboard/overview) to enhance data visualization.
+- Developed and maintained core features to enhance functionality and user experience.
+- Ensured UI/UX consistency and adherence to standards.
+- Implemented robust frontend solutions for web and mobile platforms.
+- Analyzed technical capabilities and provided optimal solutions.`,
         skills: [
           "TypeScript",
           "Next.js",
@@ -137,9 +135,9 @@ In-house Project: [ZaDark](https://zadark.com)
         },
         employmentType: "Full-time",
         icon: "design",
-        description: `- Ensure UI/UX consistency and high-quality standards.
-- Design intuitive, user-focused interfaces aligned with business goals.
-- Define and establish a cohesive UI style for Simplamo.`,
+        description: `- Ensured UI/UX consistency and high-quality standards.
+- Designed intuitive, user-focused interfaces aligned with business goals.
+- Defined and established a cohesive UI style for Simplamo.`,
         skills: ["Creativity", "UI/UX Design", "Figma"],
       },
     ],
@@ -263,4 +261,4 @@ In-house Project: [ZaDark](https://zadark.com)
       },
     ],
   },
-];
+]

@@ -1,23 +1,23 @@
-"use client";
+"use client"
 
-import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { toast } from "sonner";
+import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react"
+import Link from "next/link"
+import { useTheme } from "next-themes"
+import { toast } from "sonner"
 
-import { copyText } from "@/utils/copy";
+import { copyText } from "@/utils/copy"
 
-import { getWordmarkSVG } from "./chanhdai-wordmark";
-import { getMarkSVG, RahulMark } from "./rahul-mark";
+import { getWordmarkSVG } from "./chanhdai-wordmark"
+import { getMarkSVG, RahulMark } from "./rahul-mark"
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "./ui/context-menu";
+} from "./ui/context-menu"
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
-  const { resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme()
 
   return (
     <ContextMenu>
@@ -26,9 +26,9 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
       <ContextMenuContent className="w-64">
         <ContextMenuItem
           onClick={() => {
-            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff");
-            copyText(svg);
-            toast.success("Copied Mark as SVG");
+            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff")
+            copyText(svg)
+            toast.success("Mark as SVG copied")
           }}
         >
           <RahulMark />
@@ -39,9 +39,9 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
           onClick={() => {
             const svg = getWordmarkSVG(
               resolvedTheme === "light" ? "#000" : "#fff"
-            );
-            copyText(svg);
-            toast.success("Copied Logotype as SVG");
+            )
+            copyText(svg)
+            toast.success("Logotype as SVG copied")
           }}
         >
           <TypeIcon />
@@ -63,5 +63,5 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
-  );
+  )
 }

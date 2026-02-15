@@ -1,17 +1,17 @@
-import Link from "next/link";
-import React from "react";
+import Link from "next/link"
+import React from "react"
 
-import { cn } from "@/lib/utils";
-import type { NavItem } from "@/types/nav";
+import { cn } from "@/lib/utils"
+import type { NavItem } from "@/types/nav"
 
 export function Nav({
   items,
   activeId,
   className,
 }: {
-  items: NavItem[];
-  activeId?: string;
-  className?: string;
+  items: NavItem[]
+  activeId?: string
+  className?: string
 }) {
   return (
     <nav
@@ -23,31 +23,31 @@ export function Nav({
           activeId === href ||
           (href === "/" // Home page
             ? ["/", "/index"].includes(activeId || "")
-            : activeId?.startsWith(href));
+            : activeId?.startsWith(href))
 
         return (
           <NavItem key={href} href={href} active={active}>
             {title}
           </NavItem>
-        );
+        )
       })}
     </nav>
-  );
+  )
 }
 
 export function NavItem({
   active,
   ...props
 }: React.ComponentProps<typeof Link> & {
-  active?: boolean;
+  active?: boolean
 }) {
   return (
     <Link
       className={cn(
-        "font-mono text-sm font-medium text-muted-foreground transition-[color] duration-300",
+        "font-mono text-sm font-medium text-muted-foreground transition-[color] hover:text-foreground",
         active && "text-foreground"
       )}
       {...props}
     />
-  );
+  )
 }

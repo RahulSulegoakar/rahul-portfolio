@@ -1,4 +1,4 @@
-import type { User } from "@/features/portfolio/types/user";
+import type { User } from "@/features/portfolio/types/user"
 
 export const USER = {
   firstName: "Rahul",
@@ -50,7 +50,7 @@ Skilled in Next.js, React, TypeScript, Tailwind CSS, and modern frontend technol
 `,
   avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
   ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=5",
+    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=6",
   namePronunciationUrl: "/audio/chanhdai.mp3",
   timeZone: "Asia/Kolkata",
   affiliateBadge: {
@@ -81,4 +81,4 @@ Skilled in Next.js, React, TypeScript, Tailwind CSS, and modern frontend technol
     "india web developer",
   ],
   dateCreated: "2023-10-20", // YYYY-MM-DD
-} satisfies User;
+} satisfies User

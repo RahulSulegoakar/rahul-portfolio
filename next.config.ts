@@ -1,5 +1,5 @@
-import type { NextConfig } from "next";
-import path from "path";
+import type { NextConfig } from "next"
+import path from "path"
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -32,22 +32,38 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source:
-          "/:section(blog|components)/writing-effect-inspired-by-apple:extension(.mdx)?",
-        destination: "/:section/apple-hello-effect:extension",
+        source: "/:section(blog|components)/writing-effect-inspired-by-apple",
+        destination: "/:section/apple-hello-effect",
         permanent: true,
       },
-    ];
+      {
+        source: "/:section(blog|components)/work-experience-component",
+        destination: "/:section/work-experience",
+        permanent: true,
+      },
+      {
+        source: "/:section(blog|components)/theme-switcher-component",
+        destination: "/:section/theme-switcher",
+        permanent: true,
+      },
+    ]
   },
   async rewrites() {
     return [
       {
-        source: "/blog/:slug.mdx",
+        source: "/:section(blog|components)/:slug.mdx",
         destination: "/blog.mdx/:slug",
       },
       {
-        source: "/components/:slug.mdx",
+        source: "/:section(blog|components)/:slug",
         destination: "/blog.mdx/:slug",
+        has: [
+          {
+            type: "header",
+            key: "accept",
+            value: "(?<accept>.*text/markdown.*)",
+          },
+        ],
       },
       {
         source: "/rss",
@@ -57,7 +73,7 @@ const nextConfig: NextConfig = {
         source: "/registry/rss",
         destination: "/components/rss",
       },
-    ];
+    ]
   },
   // async headers() {
   //   return [
@@ -83,6 +99,6 @@ const nextConfig: NextConfig = {
   //     },
   //   ];
   // },
-};
+}
 
-export default nextConfig;
+export default nextConfig

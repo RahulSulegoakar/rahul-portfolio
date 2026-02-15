@@ -1,12 +1,12 @@
-import { ArrowUpRightIcon } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRightIcon } from "lucide-react"
+import Image from "next/image"
 
-import { UTM_PARAMS } from "@/config/site";
-import type { SocialLink } from "@/features/portfolio/types/social-links";
-import { cn } from "@/lib/utils";
-import { addQueryParams } from "@/utils/url";
+import { UTM_PARAMS } from "@/config/site"
+import type { SocialLink } from "@/features/portfolio/types/social-links"
+import { cn } from "@/lib/utils"
+import { addQueryParams } from "@/utils/url"
 
-export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
+export function SocialLinkItem({ icon, title, subtitle, href }: SocialLink) {
   return (
     <a
       className={cn(
@@ -36,12 +36,12 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
           {title}
         </h3>
 
-        {description && (
-          <p className="text-sm text-muted-foreground">{description}</p>
+        {subtitle && (
+          <p className="text-sm text-muted-foreground">{subtitle}</p>
         )}
       </div>
 
       <ArrowUpRightIcon className="size-4 text-muted-foreground transition-[rotate] duration-300 group-hover:rotate-45" />
     </a>
-  );
+  )
 }

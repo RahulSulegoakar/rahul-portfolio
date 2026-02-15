@@ -5,7 +5,7 @@ image: https://assets.chanhdai.com/images/blog/react-wheel-picker.webp?t=1747747
 category: components
 icon: react-wheel-picker
 createdAt: 2025-05-16
-updatedAt: 2025-10-09
+updatedAt: 2026-02-08
 ---
 
 <ComponentPreview
@@ -81,7 +81,7 @@ import {
   WheelPicker,
   WheelPickerWrapper,
   type WheelPickerOption,
-} from "@/components/ncdai/wheel-picker";
+} from "@/components/ncdai/wheel-picker"
 ```
 
 ```tsx
@@ -97,21 +97,22 @@ const options: WheelPickerOption[] = [
   {
     label: "Angular",
     value: "angular",
+    disabled: true,
   },
   {
     label: "Svelte",
     value: "svelte",
   },
-];
+]
 
 export function WheelPickerDemo() {
-  const [value, setValue] = useState("react");
+  const [value, setValue] = useState("react")
 
   return (
     <WheelPickerWrapper>
       <WheelPicker options={options} value={value} onValueChange={setValue} />
     </WheelPickerWrapper>
-  );
+  )
 }
 ```
 
