@@ -4,26 +4,26 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     icon: "https://assets.chanhdai.com/images/link-icons/x.webp?t=1759581475",
     title: "X",
-    subtitle: "@iamncdai",
-    href: "https://x.com/iamncdai",
+    subtitle: "@rahulsulegaokar",
+    href: "https://x.com/rahulsulegaokar",
   },
   {
     icon: "https://assets.chanhdai.com/images/link-icons/github.webp?t=1759581475",
     title: "GitHub",
-    subtitle: "ncdai",
-    href: "https://github.com/ncdai",
+    subtitle: "RahulSulegoakar",
+    href: "https://github.com/RahulSulegoakar",
   },
   {
     icon: "https://assets.chanhdai.com/images/link-icons/linkedin.webp?t=1759581475",
     title: "LinkedIn",
-    subtitle: "ncdai",
-    href: "https://linkedin.com/in/ncdai",
+    subtitle: "rahulsulegaokar",
+    href: "https://linkedin.com/in/rahulsulegaokar",
   },
   {
     icon: "https://assets.chanhdai.com/images/link-icons/dailydotdev.webp?t=1759581475",
     title: "daily.dev",
-    subtitle: "@ncdai",
-    href: "https://app.daily.dev/ncdai",
+    subtitle: "@rahulsulegaokar",
+    href: "https://app.daily.dev/rahulsulegaokar",
   },
   {
     icon: "https://assets.chanhdai.com/images/link-icons/zalo.webp?t=1759581475",
@@ -34,7 +34,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     icon: "https://assets.chanhdai.com/images/link-icons/youtube.webp?t=1759581475",
     title: "YouTube",
-    subtitle: "@ncdai",
-    href: "https://www.youtube.com/@ncdai",
+    subtitle: "@rahulsulegaokar",
+    href: "https://www.youtube.com/@rahulsulegaokar",
   },
 ]
