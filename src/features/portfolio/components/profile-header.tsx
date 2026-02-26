@@ -1,15 +1,7 @@
-import Image from "next/image"
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/base/ui/tooltip"
-import { UTM_PARAMS } from "@/config/site"
 import { USER } from "@/features/portfolio/data/user"
-import { FlipSentences } from "@/registry/components/flip-sentences"
-import { addQueryParams } from "@/utils/url"
+import { TextFlip } from "@/registry/components/text-flip"
 
+import { AvatarElectricEffect } from "./avatar-electric-effect"
 import { PronounceMyName } from "./pronounce-my-name"
 import { VerifiedIcon } from "./verified-icon"
 
@@ -21,12 +13,14 @@ export function ProfileHeader() {
 
       <div className="shrink-0 border-r border-edge">
         <div className="mx-0.5 my-0.75">
-          <img
-            className="size-30 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
-            alt={`${USER.displayName}'s avatar`}
-            src={USER.avatar}
-            fetchPriority="high"
-          />
+          <AvatarElectricEffect>
+            <img
+              className="size-30 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
+              alt={`${USER.displayName}'s avatar`}
+              src={USER.avatar}
+              fetchPriority="high"
+            />
+          </AvatarElectricEffect>
         </div>
 
         <a
@@ -92,45 +86,6 @@ export function ProfileHeader() {
               aria-label="Verified"
             />
 
-            {USER.affiliateBadge && (
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <a
-                      className="relative flex after:absolute after:inset-0 after:rounded-sm after:ring after:ring-black/10 after:ring-inset dark:after:ring-white/15"
-                      href={addQueryParams(USER.affiliateBadge.url, UTM_PARAMS)}
-                      target="_blank"
-                      rel="noopener"
-                    />
-                  }
-                >
-                  <Image
-                    className="rounded-sm"
-                    src={USER.affiliateBadge.logo}
-                    alt={USER.affiliateBadge.name}
-                    width={20}
-                    height={20}
-                    quality={100}
-                    unoptimized
-                  />
-                </TooltipTrigger>
-
-                <TooltipContent>
-                  <p>
-                    An affiliate of{" "}
-                    <a
-                      className="font-medium underline-offset-4 hover:underline"
-                      href={addQueryParams(USER.affiliateBadge.url, UTM_PARAMS)}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      {USER.affiliateBadge.name}
-                    </a>
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            )}
-
             {USER.namePronunciationUrl && (
               <PronounceMyName
                 namePronunciationUrl={USER.namePronunciationUrl}
@@ -139,7 +94,7 @@ export function ProfileHeader() {
           </div>
 
           <div className="h-12.5 border-t border-edge py-1 pl-4 sm:h-9">
-            <FlipSentences
+            <TextFlip
               className="font-pixel-square text-sm text-balance text-muted-foreground"
               variants={{
                 initial: { y: -10, opacity: 0 },
@@ -148,7 +103,7 @@ export function ProfileHeader() {
               }}
             >
               {USER.flipSentences}
-            </FlipSentences>
+            </TextFlip>
           </div>
         </div>
       </div>

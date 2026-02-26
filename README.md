@@ -4,8 +4,8 @@ A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase
 
 → Check out the live site: [chanhdai.com](https://chanhdai.com)
 
-[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?v=6#gh-dark-mode-only)](https://chanhdai.com#gh-dark-mode-only)
-[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?v=6#gh-light-mode-only)](https://chanhdai.com#gh-light-mode-only)
+[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?v=7#gh-dark-mode-only)](https://chanhdai.com#gh-dark-mode-only)
+[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?v=7#gh-light-mode-only)](https://chanhdai.com#gh-light-mode-only)
 
 ## Overview
 
@@ -180,7 +180,8 @@ This project is proudly supported by:
 
 ## Star History
 
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&line=%23d37f2c)](https://starchart.cc/ncdai/chanhdai.com)
+[![RepoStars-dark](https://www.repostars.dev/api/embed?repo=ncdai%2Fchanhdai.com&theme=dark#gh-dark-mode-only)](https://www.repostars.dev/?repos=ncdai%2Fchanhdai.com&theme=dark#gh-dark-mode-only)
+[![RepoStars-light](https://www.repostars.dev/api/embed?repo=ncdai%2Fchanhdai.com&theme=light#gh-light-mode-only)](https://www.repostars.dev/?repos=ncdai%2Fchanhdai.com&theme=light#gh-light-mode-only)
 
 ## Acknowledgments
 
@@ -199,9 +200,3 @@ This project is proudly supported by:
 - [OpenPanel](https://openpanel.dev)
 - [c15t](https://c15t.com)
 - And many other open-source libraries used in `package.json`
-
-## GitAds Sponsored
-
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
-
-<!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->

@@ -7,18 +7,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@custom-variant supports-timeline-scroll {
-  @supports (animation-timeline: scroll()) {
-    @slot;
-  }
-}
-
-@custom-variant supports-corner-shape {
-  @supports (corner-shape: initial) {
-    @slot;
-  }
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -56,35 +44,6 @@
   --font-pixel-square: var(--font-geist-pixel-square);
 
   --shadow-popover: var(--shadow-popover);
-
-  --animate-fade-in: fade-in var(--tw-duration, 200ms) ease-out;
-  --animate-fade-out: fade-out var(--tw-duration, 200ms) ease-out;
-
-  --animate-collapsible-fade-down:
-    collapsible-down var(--tw-duration, 200ms) ease-out,
-    fade-in var(--tw-duration, 200ms) ease-out;
-
-  --animate-collapsible-fade-up:
-    collapsible-up var(--tw-duration, 200ms) ease-out,
-    fade-out var(--tw-duration, 200ms) ease-out;
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
 }
 
 @utility no-scrollbar {
@@ -260,8 +219,7 @@
 
   /* --edge: color-mix(in oklab, var(--border) 64%, var(--background)); */
 
-  /* zinc-800 */
-  --input: oklch(0.274 0.006 286.033);
+  --input: lab(100% 0 0 / 0.15);
 
   /* zinc-500 */
   --ring: oklch(0.552 0.016 285.938);
@@ -309,11 +267,6 @@
     @apply bg-selection text-selection-foreground;
   }
 
-  /* Temporarily disabled scroll-smooth (added/changed in Next.js 16) because it prevents the page from scrolling fully to the top during client-side navigation. Re-enable once the upstream behavior is fixed or when navigation/transition handling is adjusted. */
-  /* html {
-    @apply motion-safe:scroll-smooth;
-  } */
-
   body {
     @apply bg-background font-sans text-foreground antialiased;
     font-synthesis-weight: none;
@@ -340,57 +293,6 @@
     @apply scroll-mt-18;
   }
 
-  /* Thanks https://theme-toggle.rdsx.dev */
-  /* polygon */
-  /* ::view-transition-group(root) {
-    animation-duration: 0.8s;
-    animation-timing-function: linear(
-      0 0%,
-      0.1684 2.66%,
-      0.3165 5.49%,
-      0.446 8.52%,
-      0.5581 11.78%,
-      0.6535 15.29%,
-      0.7341 19.11%,
-      0.8011 23.3%,
-      0.8557 27.93%,
-      0.8962 32.68%,
-      0.9283 38.01%,
-      0.9529 44.08%,
-      0.9711 51.14%,
-      0.9833 59.06%,
-      0.9915 68.74%,
-      1 100%
-    );
-  }
-  ::view-transition-new(root) {
-    animation-name: reveal-light;
-  }
-  ::view-transition-old(root),
-  .dark::view-transition-old(root) {
-    animation: none;
-    z-index: -1;
-  }
-  .dark::view-transition-new(root) {
-    animation-name: reveal-dark;
-  }
-  @keyframes reveal-dark {
-    from {
-      clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
-    }
-    to {
-      clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
-    }
-  }
-  @keyframes reveal-light {
-    from {
-      clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
-    }
-    to {
-      clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
-    }
-  } */
-
   .duck-follower {
     position: fixed;
     top: 0;
@@ -416,12 +318,12 @@
     }
 
     code {
-      @apply font-mono text-sm;
+      @apply w-max pr-(--code-padding-right,0) font-mono text-sm;
     }
-  }
 
-  [data-line] {
-    @apply py-0.5 pe-4;
+    [data-line] {
+      @apply py-0.5;
+    }
   }
 
   [data-line] span {
@@ -448,5 +350,81 @@
 
   [data-highlighted-line] {
     @apply bg-code-highlight;
+  }
+
+  [data-fade-overlay] {
+    @apply pointer-events-none absolute top-1 right-0 z-1 h-10 rounded-r-xl;
+
+    width: var(--fade-width, 0px);
+    background: linear-gradient(
+      to right,
+      transparent 0px,
+      color-mix(in oklab, var(--fade-color, var(--background)) 20%, transparent)
+        8px,
+      color-mix(in oklab, var(--fade-color, var(--background)) 50%, transparent)
+        24px,
+      color-mix(in oklab, var(--fade-color, var(--background)) 80%, transparent)
+        32px,
+      var(--fade-color, var(--background)) 48px
+    );
+  }
+}
+
+@utility prose-ncdai {
+  @apply prose-headings:tracking-tight prose-headings:text-balance prose-h2:font-semibold;
+  @apply prose-a:font-medium prose-a:wrap-break-word prose-a:text-foreground prose-a:underline prose-a:underline-offset-4;
+  @apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none;
+  @apply prose-strong:font-medium;
+  @apply prose-hr:border-edge;
+}
+
+@utility code-inline {
+  @apply rounded-md border bg-muted/50 px-1.5 py-0.5 font-mono text-[0.8125rem] whitespace-pre-wrap in-data-table-nowrap:whitespace-nowrap;
+}
+
+@utility prose-no-margin {
+  & > :first-child {
+    @apply mt-0;
+  }
+
+  & > :last-child {
+    @apply mb-0;
+  }
+
+  :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+  :where([data-rehype-pretty-code-figure]) {
+    @apply mt-3 mb-3;
+  }
+}
+
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
+@custom-variant supports-timeline-scroll {
+  @supports (animation-timeline: scroll()) {
+    @slot;
+  }
+}
+
+@custom-variant supports-corner-shape {
+  @supports (corner-shape: initial) {
+    @slot;
+  }
+}
+
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-closed {
+  &:where([data-state="closed"]),
+  &:where([data-closed]:not([data-closed="false"])) {
+    @slot;
   }
 }

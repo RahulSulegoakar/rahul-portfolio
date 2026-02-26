@@ -7,7 +7,7 @@ import {
   GraduationCapIcon,
 } from "lucide-react"
 import Image from "next/image"
-import React from "react"
+import type { ComponentProps } from "react"
 import ReactMarkdown from "react-markdown"
 
 import {
@@ -57,19 +57,25 @@ export type ExperienceItemType = {
   companyName: string
   /** URL or path to the company's logo image */
   companyLogo?: string
-  /** List of positions held at the company */
+  /**
+   * List of positions held at the company
+   * @fumadocsHref #experiencepositionitemtype
+   * */
   positions: ExperiencePositionItemType[]
   /** Indicates if this is the user's current employer */
   isCurrentEmployer?: boolean
 }
 
+export type WorkExperienceProps = {
+  className?: string
+  /** @fumadocsHref #experienceitemtype */
+  experiences: ExperienceItemType[]
+}
+
 export function WorkExperience({
   className,
   experiences,
-}: {
-  className?: string
-  experiences: ExperienceItemType[]
-}) {
+}: WorkExperienceProps) {
   return (
     <div className={cn("bg-background px-4", className)}>
       {experiences.map((experience) => (
@@ -79,14 +85,14 @@ export function WorkExperience({
   )
 }
 
-export function ExperienceItem({
-  experience,
-}: {
+export type ExperienceItemProps = {
   experience: ExperienceItemType
-}) {
+}
+
+export function ExperienceItem({ experience }: ExperienceItemProps) {
   return (
     <div className="space-y-4 py-4">
-      <div className="flex items-center gap-3">
+      <div className="not-prose flex items-center gap-3">
         <div
           className="flex size-6 shrink-0 items-center justify-center"
           aria-hidden
@@ -128,11 +134,13 @@ export function ExperienceItem({
   )
 }
 
+export type ExperiencePositionItemProps = {
+  position: ExperiencePositionItemType
+}
+
 export function ExperiencePositionItem({
   position,
-}: {
-  position: ExperiencePositionItemType
-}) {
+}: ExperiencePositionItemProps) {
   const ExperienceIcon = iconMap[position.icon || "business"]
 
   return (
@@ -144,7 +152,7 @@ export function ExperiencePositionItem({
       <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
         <CollapsibleTrigger
           className={cn(
-            "group block w-full text-left select-none",
+            "group not-prose block w-full text-left select-none",
             "relative before:absolute before:-top-1 before:-right-1 before:-bottom-1.5 before:left-7 before:rounded-lg hover:before:bg-muted/30",
             "data-disabled:before:content-none"
           )}
@@ -196,7 +204,7 @@ export function ExperiencePositionItem({
           </div>
         </CollapsibleTrigger>
 
-        <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+        <CollapsibleContent className="overflow-hidden">
           {position.description && (
             <Prose className="pt-2 pl-9">
               <ReactMarkdown>{position.description}</ReactMarkdown>
@@ -205,7 +213,7 @@ export function ExperiencePositionItem({
         </CollapsibleContent>
 
         {Array.isArray(position.skills) && position.skills.length > 0 && (
-          <ul className="flex flex-wrap gap-1.5 pt-3 pl-9">
+          <ul className="not-prose flex flex-wrap gap-1.5 pt-3 pl-9">
             {position.skills.map((skill, index) => (
               <li key={index} className="flex">
                 <Skill>{skill}</Skill>
@@ -218,13 +226,11 @@ export function ExperiencePositionItem({
   )
 }
 
-function Prose({ className, ...props }: React.ComponentProps<"div">) {
+function Prose({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "prose prose-sm max-w-none font-mono text-foreground prose-zinc dark:prose-invert",
-        "prose-a:font-medium prose-a:wrap-break-word prose-a:text-foreground prose-a:underline prose-a:underline-offset-4",
-        "prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none",
+        "prose prose-sm max-w-none prose-ncdai font-mono text-foreground prose-zinc dark:prose-invert",
         className
       )}
       {...props}
@@ -232,7 +238,7 @@ function Prose({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function Skill({ className, ...props }: React.ComponentProps<"span">) {
+function Skill({ className, ...props }: ComponentProps<"span">) {
   return (
     <span
       className={cn(

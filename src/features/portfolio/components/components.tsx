@@ -20,7 +20,7 @@ export function Components() {
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative py-4">
+      <div className="relative pt-2">
         <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-2 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
           <div className="border-r border-edge" />
           <div className="border-l border-edge md:border-x" />
@@ -42,7 +42,7 @@ export function Components() {
               <div className="relative flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background">
                 <ComponentIcon
                   className="pointer-events-none size-4 text-muted-foreground"
-                  variant={post.metadata.icon}
+                  variant={post.slug}
                   aria-hidden
                 />
                 {post.metadata.new && (
@@ -61,7 +61,7 @@ export function Components() {
         </div>
       </div>
 
-      <div className="screen-line-before flex justify-center py-2">
+      <div className="-mt-px flex justify-center py-2">
         <Button className="px-3" variant="default" asChild>
           <Link href="/components">
             All Components

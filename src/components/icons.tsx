@@ -6,6 +6,7 @@ import {
   MoonStarIcon,
   MouseIcon,
   QuoteIcon,
+  SeparatorHorizontalIcon,
   SquareTerminalIcon,
   TerminalSquareIcon,
   ToggleLeftIcon,
@@ -367,7 +368,7 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
     case "theme-switcher":
       return <MoonStarIcon {...props} />
 
-    case "apple-hello-effect":
+    case "apple-hello-effect": {
       const { className, ...restProps } = props
       return (
         <Icons.apple
@@ -375,6 +376,7 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
           {...restProps}
         />
       )
+    }
 
     case "shimmering-text":
       return <ZapIcon {...props} />
@@ -406,11 +408,16 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
         </svg>
       )
 
-    case "copy-button":
-      return <CopyIcon {...props} />
+    case "copy-button": {
+      const { className, ...restProps } = props
+      return <CopyIcon className={cn(className, "size-3.5")} {...restProps} />
+    }
 
     case "code-block-command":
       return <SquareTerminalIcon {...props} />
+
+    case "text-flip":
+      return <SeparatorHorizontalIcon {...props} />
 
     default:
       return <Icons.react {...props} />

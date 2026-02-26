@@ -1,13 +1,15 @@
 import type { Registry } from "shadcn/schema"
 
+import { getRegistryItemUrl } from "@/utils/registry"
+
 export const components: Registry["items"] = [
   {
     name: "theme-switcher",
     type: "registry:component",
-    description:
-      "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.",
     title: "Theme Switcher",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Toggle between system, light, and dark themes in Next.js apps.",
     dependencies: ["next-themes", "lucide-react", "motion"],
     files: [
       {
@@ -18,25 +20,27 @@ export const components: Registry["items"] = [
     docs: "https://chanhdai.com/components/theme-switcher",
   },
   {
-    name: "flip-sentences",
+    name: "text-flip",
     type: "registry:component",
-    title: "Flip Sentences",
+    title: "Text Flip",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Animated text that cycles through items with a smooth flip transition.",
     dependencies: ["motion"],
     files: [
       {
-        path: "components/flip-sentences/flip-sentences.tsx",
+        path: "components/text-flip/text-flip.tsx",
         type: "registry:component",
       },
     ],
+    docs: "https://chanhdai.com/components/text-flip",
   },
   {
     name: "apple-hello-effect",
     type: "registry:component",
-    description:
-      "Create a Xin chào and Hello writing effect inspired by Apple using Motion for React.",
     title: "Apple Hello Effect",
     author: "ncdai <dai@chanhdai.com>",
+    description: "SVG writing animation inspired by Apple's Hello screen.",
     dependencies: ["motion"],
     files: [
       {
@@ -49,10 +53,10 @@ export const components: Registry["items"] = [
   {
     name: "wheel-picker",
     type: "registry:component",
-    description:
-      "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
     title: "Wheel Picker",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
     dependencies: ["@ncdai/react-wheel-picker"],
     files: [
       {
@@ -63,32 +67,54 @@ export const components: Registry["items"] = [
     docs: "https://chanhdai.com/components/react-wheel-picker",
   },
   {
+    name: "typography",
+    type: "registry:component",
+    title: "Typography",
+    author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Custom prose styles for headings, links, inline code, and emphasis.",
+    devDependencies: ["@tailwindcss/typography"],
+    css: {
+      "@plugin @tailwindcss/typography": {},
+      "@utility prose-ncdai": {
+        "@apply prose-headings:tracking-tight prose-headings:text-balance prose-h2:font-semibold":
+          {},
+        "@apply prose-a:font-medium prose-a:wrap-break-word prose-a:text-foreground prose-a:underline prose-a:underline-offset-4":
+          {},
+        "@apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none":
+          {},
+        "@apply prose-strong:font-medium": {},
+      },
+    },
+  },
+  {
     name: "work-experience",
     type: "registry:component",
-    description:
-      "Displays a list of work experiences with role details and durations.",
     title: "Work Experience",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Display work experiences with role details, company logos, and durations.",
     dependencies: ["react-markdown", "lucide-react"],
     devDependencies: ["@tailwindcss/typography"],
-    registryDependencies: ["collapsible", "separator"],
+    registryDependencies: [
+      "collapsible",
+      "separator",
+      getRegistryItemUrl("typography"),
+    ],
     files: [
       {
         path: "components/work-experience/work-experience.tsx",
         type: "registry:component",
       },
     ],
-    css: {
-      "@plugin @tailwindcss/typography": {},
-    },
     docs: "https://chanhdai.com/components/work-experience",
   },
   {
     name: "shimmering-text",
     type: "registry:component",
-    description: "Smooth shimmering text animation built with Motion.",
     title: "Shimmering Text",
     author: "ncdai <dai@chanhdai.com>",
+    description: "Smooth, light-sweeping shimmer animation for text.",
     dependencies: ["motion"],
     files: [
       {
@@ -100,12 +126,12 @@ export const components: Registry["items"] = [
   {
     name: "slide-to-unlock",
     type: "registry:component",
-    description:
-      "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
     title: "Slide to Unlock",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Interactive slider inspired by the classic iPhone 'slide to unlock' gesture.",
     dependencies: ["motion"],
-    registryDependencies: ["@ncdai/shimmering-text"],
+    registryDependencies: [getRegistryItemUrl("shimmering-text")],
     files: [
       {
         path: "components/slide-to-unlock/slide-to-unlock.tsx",
@@ -117,20 +143,22 @@ export const components: Registry["items"] = [
   {
     name: "testimonials-marquee",
     type: "registry:component",
-    description:
-      "A testimonials marquee component for showcasing user feedback in a scrolling format.",
     title: "Testimonials Marquee",
     author: "ncdai <dai@chanhdai.com>",
-    registryDependencies: ["@kibo-ui/marquee", "@ncdai/testimonial"],
+    description: "Scrolling marquee to showcase user testimonials.",
+    registryDependencies: [
+      "@kibo-ui/marquee",
+      getRegistryItemUrl("testimonial"),
+    ],
     docs: "https://chanhdai.com/components/testimonials-marquee",
   },
   {
     name: "testimonial",
     type: "registry:component",
-    description:
-      "A testimonial component for displaying user feedback with author information and verified badge.",
     title: "Testimonial",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Display user feedback with author info, avatar, and verified badge.",
     files: [
       {
         path: "components/testimonial/testimonial.tsx",
@@ -141,10 +169,10 @@ export const components: Registry["items"] = [
   {
     name: "github-stars",
     type: "registry:component",
-    description:
-      "Display GitHub repository star count with formatted numbers and a tooltip showing the full count.",
     title: "GitHub Stars",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Display GitHub repo star count with formatted numbers and full-count tooltip.",
     registryDependencies: ["button", "tooltip"],
     files: [
       {
@@ -156,10 +184,10 @@ export const components: Registry["items"] = [
   {
     name: "scroll-fade-effect",
     type: "registry:component",
-    description:
-      "A React component that adds a fade effect to content as you scroll.",
     title: "Scroll Fade Effect",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Fade content edges as you scroll, for both vertical and horizontal layouts.",
     files: [
       {
         path: "components/scroll-fade-effect/scroll-fade-effect.tsx",
@@ -252,10 +280,10 @@ export const components: Registry["items"] = [
   {
     name: "consent-manager",
     type: "registry:component",
-    description:
-      "A React component for managing user consent for cookies and tracking in Next.js applications.",
     title: "Consent Manager",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Cookie and tracking consent banner for Next.js, built on c15t.",
     dependencies: ["@c15t/nextjs"],
     registryDependencies: ["button"],
     files: [
@@ -287,9 +315,9 @@ export const components: Registry["items"] = [
   {
     name: "copy-button",
     type: "registry:component",
-    description: "Copy text to clipboard with visual feedback and animation.",
     title: "Copy Button",
     author: "ncdai <dai@chanhdai.com>",
+    description: "Copy text to clipboard with visual feedback and animation.",
     dependencies: ["lucide-react", "motion"],
     registryDependencies: ["button"],
     files: [
@@ -306,12 +334,12 @@ export const components: Registry["items"] = [
   {
     name: "code-block-command",
     type: "registry:component",
-    description:
-      "A code block command component for displaying installation commands with copy functionality.",
     title: "Code Block Command",
     author: "ncdai <dai@chanhdai.com>",
+    description:
+      "Display install commands with package manager switcher and copy button.",
     dependencies: ["@base-ui/react", "lucide-react", "motion", "jotai"],
-    registryDependencies: ["@ncdai/copy-button"],
+    registryDependencies: [getRegistryItemUrl("copy-button")],
     files: [
       {
         path: "components/code-block-command/code-block-command.tsx",

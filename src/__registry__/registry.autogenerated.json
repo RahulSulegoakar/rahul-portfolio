@@ -50,7 +50,7 @@
       "name": "theme-switcher",
       "title": "Theme Switcher",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.",
+      "description": "Toggle between system, light, and dark themes in Next.js apps.",
       "dependencies": [
         "next-themes",
         "lucide-react",
@@ -66,25 +66,27 @@
       "type": "registry:component"
     },
     {
-      "name": "flip-sentences",
-      "title": "Flip Sentences",
+      "name": "text-flip",
+      "title": "Text Flip",
       "author": "ncdai <dai@chanhdai.com>",
+      "description": "Animated text that cycles through items with a smooth flip transition.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "src/registry/components/flip-sentences/flip-sentences.tsx",
+          "path": "src/registry/components/text-flip/text-flip.tsx",
           "type": "registry:component"
         }
       ],
+      "docs": "https://chanhdai.com/components/text-flip",
       "type": "registry:component"
     },
     {
       "name": "apple-hello-effect",
       "title": "Apple Hello Effect",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "Create a Xin chào and Hello writing effect inspired by Apple using Motion for React.",
+      "description": "SVG writing animation inspired by Apple's Hello screen.",
       "dependencies": [
         "motion"
       ],
@@ -115,10 +117,30 @@
       "type": "registry:component"
     },
     {
+      "name": "typography",
+      "title": "Typography",
+      "author": "ncdai <dai@chanhdai.com>",
+      "description": "Custom prose styles for headings, links, inline code, and emphasis.",
+      "devDependencies": [
+        "@tailwindcss/typography"
+      ],
+      "css": {
+        "@plugin @tailwindcss/typography": {},
+        "@utility prose-ncdai": {
+          "@apply prose-headings:tracking-tight prose-headings:text-balance prose-h2:font-semibold": {},
+          "@apply prose-a:font-medium prose-a:wrap-break-word prose-a:text-foreground prose-a:underline prose-a:underline-offset-4": {},
+          "@apply prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none": {},
+          "@apply prose-strong:font-medium": {}
+        }
+      },
+      "type": "registry:component",
+      "files": []
+    },
+    {
       "name": "work-experience",
       "title": "Work Experience",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "Displays a list of work experiences with role details and durations.",
+      "description": "Display work experiences with role details, company logos, and durations.",
       "dependencies": [
         "react-markdown",
         "lucide-react"
@@ -128,7 +150,8 @@
       ],
       "registryDependencies": [
         "collapsible",
-        "separator"
+        "separator",
+        "https://chanhdai.com/r/typography.json"
       ],
       "files": [
         {
@@ -136,9 +159,6 @@
           "type": "registry:component"
         }
       ],
-      "css": {
-        "@plugin @tailwindcss/typography": {}
-      },
       "docs": "https://chanhdai.com/components/work-experience",
       "type": "registry:component"
     },
@@ -146,7 +166,7 @@
       "name": "shimmering-text",
       "title": "Shimmering Text",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "Smooth shimmering text animation built with Motion.",
+      "description": "Smooth, light-sweeping shimmer animation for text.",
       "dependencies": [
         "motion"
       ],
@@ -162,12 +182,12 @@
       "name": "slide-to-unlock",
       "title": "Slide to Unlock",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
+      "description": "Interactive slider inspired by the classic iPhone 'slide to unlock' gesture.",
       "dependencies": [
         "motion"
       ],
       "registryDependencies": [
-        "@ncdai/shimmering-text"
+        "https://chanhdai.com/r/shimmering-text.json"
       ],
       "files": [
         {
@@ -182,10 +202,10 @@
       "name": "testimonials-marquee",
       "title": "Testimonials Marquee",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "A testimonials marquee component for showcasing user feedback in a scrolling format.",
+      "description": "Scrolling marquee to showcase user testimonials.",
       "registryDependencies": [
         "@kibo-ui/marquee",
-        "@ncdai/testimonial"
+        "https://chanhdai.com/r/testimonial.json"
       ],
       "docs": "https://chanhdai.com/components/testimonials-marquee",
       "type": "registry:component",
@@ -195,7 +215,7 @@
       "name": "testimonial",
       "title": "Testimonial",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "A testimonial component for displaying user feedback with author information and verified badge.",
+      "description": "Display user feedback with author info, avatar, and verified badge.",
       "files": [
         {
           "path": "src/registry/components/testimonial/testimonial.tsx",
@@ -208,7 +228,7 @@
       "name": "github-stars",
       "title": "GitHub Stars",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "Display GitHub repository star count with formatted numbers and a tooltip showing the full count.",
+      "description": "Display GitHub repo star count with formatted numbers and full-count tooltip.",
       "registryDependencies": [
         "button",
         "tooltip"
@@ -225,7 +245,7 @@
       "name": "scroll-fade-effect",
       "title": "Scroll Fade Effect",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "A React component that adds a fade effect to content as you scroll.",
+      "description": "Fade content edges as you scroll, for both vertical and horizontal layouts.",
       "files": [
         {
           "path": "src/registry/components/scroll-fade-effect/scroll-fade-effect.tsx",
@@ -312,7 +332,7 @@
       "name": "consent-manager",
       "title": "Consent Manager",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "A React component for managing user consent for cookies and tracking in Next.js applications.",
+      "description": "Cookie and tracking consent banner for Next.js, built on c15t.",
       "dependencies": [
         "@c15t/nextjs"
       ],
@@ -373,7 +393,7 @@
       "name": "code-block-command",
       "title": "Code Block Command",
       "author": "ncdai <dai@chanhdai.com>",
-      "description": "A code block command component for displaying installation commands with copy functionality.",
+      "description": "Display install commands with package manager switcher and copy button.",
       "dependencies": [
         "@base-ui/react",
         "lucide-react",
@@ -381,7 +401,7 @@
         "jotai"
       ],
       "registryDependencies": [
-        "@ncdai/copy-button"
+        "https://chanhdai.com/r/copy-button.json"
       ],
       "files": [
         {
