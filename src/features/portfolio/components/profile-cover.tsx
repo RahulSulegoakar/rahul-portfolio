@@ -1,12 +1,19 @@
+"use client"
+
+import { useRef } from "react"
+
 import { BrandContextMenu } from "@/components/brand-context-menu"
 import { cn } from "@/lib/utils"
 
 import { StickmanDodger } from "./stickman-dodger"
 
 export function ProfileCover() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
   return (
     <BrandContextMenu>
       <div
+        ref={containerRef}
         className={cn(
           "aspect-2/1 border-x border-edge select-none sm:aspect-3/1",
           "flex items-center justify-center text-black dark:text-white",

@@ -288,29 +288,10 @@ export const components: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "src/components/consent-manager.tsx",
-        type: "registry:component",
-      },
-      {
-        path: "components/consent-manager/consent-manager-client.tsx",
+        path: "components/consent-manager/consent-manager.tsx",
         type: "registry:component",
       },
     ],
-    cssVars: {
-      light: {
-        "popover-border":
-          "color-mix(in oklab, var(--color-black) 15%, transparent)",
-        "shadow-popover": "0 6px 24px rgba(0, 0, 0, 0.25)",
-      },
-      dark: {
-        "popover-border": "oklch(0.37 0.013 285.805)",
-        "shadow-popover": "0 0 24px rgba(0, 0, 0, 0.5)",
-      },
-      theme: {
-        "color-popover-border": "var(--popover-border)",
-        "shadow-popover": "var(--shadow-popover)",
-      },
-    },
   },
   {
     name: "copy-button",
@@ -339,16 +320,17 @@ export const components: Registry["items"] = [
     description:
       "Display install commands with package manager switcher and copy button.",
     dependencies: ["@base-ui/react", "lucide-react", "motion", "jotai"],
-    registryDependencies: [getRegistryItemUrl("copy-button")],
+    registryDependencies: [
+      getRegistryItemUrl("copy-button"),
+      getRegistryItemUrl("scroll-fade-effect"),
+    ],
     files: [
       {
         path: "components/code-block-command/code-block-command.tsx",
-        target: "components/ncdai/code-block-command.tsx",
         type: "registry:component",
       },
       {
         path: "src/components/base/ui/tabs.tsx",
-        target: "components/ncdai/base/tabs.tsx",
         type: "registry:component",
       },
       {

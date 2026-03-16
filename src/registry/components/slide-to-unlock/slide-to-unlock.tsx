@@ -36,7 +36,7 @@ function useSlideToUnlock() {
   return context
 }
 
-export type SlideToUnlockRootOwnProps = {
+export type SlideToUnlockRootProps = ComponentProps<"div"> & {
   /**
    * Width of the drag handle in pixels.
    * @defaultValue 56
@@ -45,9 +45,6 @@ export type SlideToUnlockRootOwnProps = {
   /** Called when the handle is dragged fully to the end. */
   onUnlock?: () => void
 }
-
-export type SlideToUnlockRootProps = ComponentProps<"div"> &
-  SlideToUnlockRootOwnProps
 
 export function SlideToUnlock({
   className,
@@ -95,7 +92,7 @@ export function SlideToUnlock({
       <div
         data-slot="slide-to-unlock"
         className={cn(
-          "w-54 rounded-xl bg-zinc-100 p-1 shadow-inner ring ring-black/5 ring-inset dark:bg-zinc-900 dark:ring-white/10",
+          "w-54 rounded-xl bg-muted p-1 shadow-inner ring-1 ring-foreground/10 ring-inset",
           className
         )}
         {...props}
@@ -130,7 +127,10 @@ export function SlideToUnlockTrack({
   )
 }
 
-export type SlideToUnlockTextOwnProps = {
+export type SlideToUnlockTextProps = Omit<
+  ComponentPropsWithoutRef<typeof motion.div>,
+  "children"
+> & {
   /**
    * Accepts a render function as `children` to react to the dragging state.
    *
@@ -143,12 +143,6 @@ export type SlideToUnlockTextOwnProps = {
    */
   children: JSX.Element | ((props: { isDragging: boolean }) => JSX.Element)
 }
-
-export type SlideToUnlockTextProps = Omit<
-  ComponentPropsWithoutRef<typeof motion.div>,
-  "children"
-> &
-  SlideToUnlockTextOwnProps
 
 export function SlideToUnlockText({
   className,
@@ -199,7 +193,6 @@ export function SlideToUnlockHandle({
       )}
       style={{ width, x, ...style }}
       drag="x"
-      dragDirectionLock
       dragConstraints={trackRef}
       dragElastic={0}
       dragMomentum={false}
@@ -208,13 +201,9 @@ export function SlideToUnlockHandle({
       {...props}
     >
       {children ?? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 256 256"
-          aria-hidden
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden>
           <path
-            d="M237.66,133.66l-96,96A8,8,0,0,1,128,224V184H48a16,16,0,0,1-16-16V88A16,16,0,0,1,48,72h80V32a8,8,0,0,1,13.66-5.66l96,96A8,8,0,0,1,237.66,133.66Z"
+            d="M24 12 12.75 3v4.696H0v8.608h12.75V21z"
             fill="currentColor"
           />
         </svg>

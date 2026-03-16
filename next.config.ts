@@ -4,7 +4,7 @@ import path from "path"
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["chanhdai-macbook.local"],
+  allowedDevOrigins: ["ncdai-macbook.local"],
   turbopack: {
     root: path.join(__dirname, "."),
   },
@@ -37,8 +37,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/:section(blog|components)/work-experience-component",
-        destination: "/:section/work-experience",
+        source: "/:section(blog|components)/work-experience",
+        destination: "/:section/work-experience-component",
         permanent: true,
       },
       {
@@ -52,11 +52,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:section(blog|components)/:slug.mdx",
-        destination: "/blog.mdx/:slug",
+        destination: "/doc.mdx/:slug",
       },
       {
         source: "/:section(blog|components)/:slug",
-        destination: "/blog.mdx/:slug",
+        destination: "/doc.mdx/:slug",
         has: [
           {
             type: "header",

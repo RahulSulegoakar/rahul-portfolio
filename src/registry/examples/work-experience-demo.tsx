@@ -1,3 +1,5 @@
+import { BriefcaseBusinessIcon, CodeXmlIcon } from "lucide-react"
+
 import type { ExperienceItemType } from "@/registry/components/work-experience"
 import { WorkExperience } from "@/registry/components/work-experience"
 
@@ -16,7 +18,7 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
         title: "Design Engineer",
         employmentPeriod: "03.2024 — present",
         employmentType: "Part-time",
-        icon: "code",
+        icon: CodeXmlIcon,
         description: `- Integrated VNPAY-QR for secure transactions.
 - Registered the e-commerce site with [online.gov.vn](https://online.gov.vn) for compliance.
 - Developed online ordering to streamline purchases.
@@ -38,10 +40,10 @@ const WORK_EXPERIENCE: ExperienceItemType[] = [
       },
       {
         id: "1",
-        title: "Founder & Director",
+        title: "Founder",
         employmentPeriod: "03.2024 — present",
         employmentType: "Part-time",
-        icon: "business",
+        icon: BriefcaseBusinessIcon,
         skills: ["Business Ownership", "Business Law", "Business Tax"],
       },
     ],

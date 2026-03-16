@@ -5,48 +5,36 @@ import { useEffect, useRef, useState } from "react"
 
 import { ElectricBorder } from "@/components/react-bits/electric-border"
 
+const HOVER_DELAY_MS = 150
+
 export function AvatarElectricEffect({ children }: { children: JSX.Element }) {
   const [isHovered, setIsHovered] = useState(false)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearHoverTimeout = () => {
+    if (!hoverTimeoutRef.current) return
+
+    clearTimeout(hoverTimeoutRef.current)
+    hoverTimeoutRef.current = null
+  }
 
   useEffect(() => {
-    const audio = new Audio(
-      "https://assets.chanhdai.com/audio/electromagnetic.mp3"
-    )
-    audio.preload = "auto"
-    audio.volume = 0.3
-    audioRef.current = audio
-
     return () => {
-      audio.pause()
-      audioRef.current = null
+      clearHoverTimeout()
     }
   }, [])
 
   const handleMouseEnter = () => {
-    setIsHovered(true)
+    clearHoverTimeout()
 
-    const audio = audioRef.current
-    if (!audio) return
-
-    audio.currentTime = 0
-    const playPromise = audio.play()
-
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // ignore playback errors (autoplay policy, etc.)
-      })
-    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsHovered(true)
+    }, HOVER_DELAY_MS)
   }
 
   const handleMouseLeave = () => {
+    clearHoverTimeout()
     setIsHovered(false)
-
-    const audio = audioRef.current
-    if (!audio) return
-
-    audio.pause()
-    audio.currentTime = 0
   }
 
   return (

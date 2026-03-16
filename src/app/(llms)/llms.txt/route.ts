@@ -1,11 +1,11 @@
 import { SITE_INFO } from "@/config/site"
-import { getAllPosts } from "@/features/blog/data/posts"
+import { getAllDocs } from "@/features/doc/data/documents"
 
-const allPosts = getAllPosts()
+const allPosts = getAllDocs()
 
 const content = `# chanhdai.com
 
-> A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Design Engineer.
+> A minimal, pixel-perfect dev portfolio, shadcn registry, and blog to showcase my work as a Design Engineer.
 
 - [About](${SITE_INFO.url}/about.md): A quick intro to me, my tech stack, and how to connect.
 - [Experience](${SITE_INFO.url}/experience.md): Highlights from my career and key roles I've taken on.
@@ -18,6 +18,7 @@ const content = `# chanhdai.com
 ${allPosts.map((item) => `- [${item.metadata.title}](${SITE_INFO.url}/blog/${item.slug}.mdx): ${item.metadata.description}`).join("\n")}
 `
 
+export const revalidate = false
 export const dynamic = "force-static"
 
 export async function GET() {

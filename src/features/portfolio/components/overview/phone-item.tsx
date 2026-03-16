@@ -3,8 +3,10 @@
 import { PhoneIcon } from "lucide-react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { toast } from "sonner"
+import { useWebHaptics } from "web-haptics/react"
 
 import { useIsClient } from "@/hooks/use-is-client"
+import { trackEvent } from "@/lib/events"
 import { CopyButton } from "@/registry/components/copy-button"
 import { copyToClipboardWithEvent } from "@/utils/copy"
 import { decodePhoneNumber, formatPhoneNumber } from "@/utils/string"
@@ -36,6 +38,8 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
     toast.success("Phone number copied")
   })
 
+  const { trigger } = useWebHaptics({ debug: true })
+
   return (
     <IntroItem className="group">
       <IntroItemIcon>
@@ -55,10 +59,20 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
 
       <div className="-translate-x-3 opacity-0 transition-opacity ease-out group-hover:opacity-100">
         <CopyButton
-          className="text-muted-foreground [&_svg:not([class*='size-'])]:size-3.5"
+          className="rounded-md border-none text-muted-foreground [&_svg:not([class*='size-'])]:size-3.5"
           variant="ghost"
           size="icon-xs"
           text={isClient ? phoneNumberDecoded : "[Phone protected]"}
+          onCopySuccess={() => {
+            trigger("success")
+            trackEvent({
+              name: "copy_phone_number",
+              properties: {
+                method: "button",
+              },
+            })
+          }}
+          onCopyError={() => trigger("error")}
         />
       </div>
     </IntroItem>

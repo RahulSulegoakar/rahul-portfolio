@@ -20,6 +20,19 @@
       "type": "registry:lib"
     },
     {
+      "name": "haptic",
+      "title": "Haptic Feedback",
+      "author": "ncdai <dai@chanhdai.com>",
+      "description": "Trigger haptic feedback on mobile devices.",
+      "files": [
+        {
+          "path": "src/registry/lib/haptic/haptic.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "type": "registry:lib"
+    },
+    {
       "name": "use-controllable-state",
       "title": "Controllable State Hook",
       "files": [
@@ -341,28 +354,10 @@
       ],
       "files": [
         {
-          "path": "src/components/consent-manager.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "src/registry/components/consent-manager/consent-manager-client.tsx",
+          "path": "src/registry/components/consent-manager/consent-manager.tsx",
           "type": "registry:component"
         }
       ],
-      "cssVars": {
-        "theme": {
-          "color-popover-border": "var(--popover-border)",
-          "shadow-popover": "var(--shadow-popover)"
-        },
-        "light": {
-          "popover-border": "color-mix(in oklab, var(--color-black) 15%, transparent)",
-          "shadow-popover": "0 6px 24px rgba(0, 0, 0, 0.25)"
-        },
-        "dark": {
-          "popover-border": "oklch(0.37 0.013 285.805)",
-          "shadow-popover": "0 0 24px rgba(0, 0, 0, 0.5)"
-        }
-      },
       "type": "registry:component"
     },
     {
@@ -401,18 +396,17 @@
         "jotai"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/copy-button.json"
+        "https://chanhdai.com/r/copy-button.json",
+        "https://chanhdai.com/r/scroll-fade-effect.json"
       ],
       "files": [
         {
           "path": "src/registry/components/code-block-command/code-block-command.tsx",
-          "type": "registry:component",
-          "target": "components/ncdai/code-block-command.tsx"
+          "type": "registry:component"
         },
         {
           "path": "src/components/base/ui/tabs.tsx",
-          "type": "registry:component",
-          "target": "components/ncdai/base/tabs.tsx"
+          "type": "registry:component"
         },
         {
           "path": "src/hooks/use-package-manager.ts",
@@ -434,6 +428,85 @@
         }
       },
       "type": "registry:component"
+    },
+    {
+      "name": "login-01",
+      "title": "Login 01",
+      "description": "A simple login form.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "field"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/login-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "src/registry/blocks/login-01/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "authentication",
+        "login"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "hero-01",
+      "title": "Hero 01",
+      "description": "A hero section with a golden spiral background.",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/hero-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/hero/page.tsx"
+        },
+        {
+          "path": "src/registry/blocks/hero-01/components/hero-block.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "layout",
+        "hero"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "blog-01",
+      "title": "Blog 01",
+      "description": "A simple blog section with a grid layout.",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/blog-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/blog/page.tsx"
+        },
+        {
+          "path": "src/registry/blocks/blog-01/components/article-item.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "layout",
+        "blog"
+      ],
+      "type": "registry:block"
     }
   ]
 }

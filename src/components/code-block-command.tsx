@@ -65,7 +65,7 @@ export function CodeBlockCommand({
         {Object.entries(tabs).map(([key, value]) => {
           return (
             <TabsContent key={key} value={key}>
-              <pre>
+              <pre className="scroll-fade-effect-x">
                 <code
                   data-slot="code-block"
                   data-language="bash"
@@ -81,7 +81,8 @@ export function CodeBlockCommand({
       </Tabs>
 
       <CopyButton
-        className="absolute top-2 right-2 z-10"
+        className="absolute top-2 right-2 z-10 rounded-md border-none"
+        size="icon-xs"
         text={tabs[packageManager] || ""}
         event="copy_npm_command"
       />

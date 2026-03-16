@@ -1,10 +1,11 @@
 import { SITE_INFO } from "@/config/site"
-import { getAllPosts } from "@/features/blog/data/posts"
+import { getAllDocs } from "@/features/doc/data/documents"
 
+export const revalidate = false
 export const dynamic = "force-static"
 
 export function GET() {
-  const allPosts = getAllPosts()
+  const allPosts = getAllDocs()
 
   const itemsXml = allPosts
     .map(

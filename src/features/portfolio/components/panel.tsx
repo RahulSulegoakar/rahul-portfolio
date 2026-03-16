@@ -20,7 +20,10 @@ function PanelHeader({ className, ...props }: React.ComponentProps<"header">) {
   return (
     <header
       data-slot="panel-header"
-      className={cn("screen-line-after px-4", className)}
+      className={cn(
+        "screen-line-after px-4 has-data-[slot=panel-description]:*:data-[slot=panel-title]:screen-line-after",
+        className
+      )}
       {...props}
     />
   )
@@ -46,7 +49,23 @@ function PanelTitleSup({ className, ...props }: React.ComponentProps<"sup">) {
   return (
     <sup
       className={cn(
-        "-top-[0.75em] ml-1 text-sm font-medium text-muted-foreground tabular-nums select-none",
+        "-top-[0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function PanelDescription({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="panel-description"
+      className={cn(
+        "py-4 font-mono text-sm text-balance text-muted-foreground",
         className
       )}
       {...props}
@@ -60,4 +79,11 @@ function PanelContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-export { Panel, PanelContent, PanelHeader, PanelTitle, PanelTitleSup }
+export {
+  Panel,
+  PanelContent,
+  PanelDescription,
+  PanelHeader,
+  PanelTitle,
+  PanelTitleSup,
+}

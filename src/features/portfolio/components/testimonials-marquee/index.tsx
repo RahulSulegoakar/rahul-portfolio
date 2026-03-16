@@ -1,4 +1,4 @@
-import { Maximize2Icon } from "lucide-react"
+import { ArrowUpRightIcon } from "lucide-react"
 import Link from "next/link"
 
 import {
@@ -10,65 +10,82 @@ import {
 import { Button } from "@/components/ui/button"
 
 import { TESTIMONIALS_1, TESTIMONIALS_2 } from "../../data/testimonials"
+import type { Testimonial } from "../../types/testimonials"
 import { Panel } from "../panel"
 import { TestimonialItem } from "./testimonial-item"
+
+function compareFn(a: Testimonial, b: Testimonial) {
+  return a.date.localeCompare(b.date, undefined, { numeric: true })
+}
+
+const FEATURED_TESTIMONIALS = [
+  ...TESTIMONIALS_1.filter((item) => item.isFeatured),
+  ...TESTIMONIALS_2.filter((item) => item.isFeatured),
+].sort(compareFn)
 
 export function TestimonialsMarquee() {
   return (
     <Panel
       id="testimonials"
-      className="before:z-11 after:z-10 [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
+      className="before:content-none after:content-none [&_.rfm-initial-child-container]:items-stretch! [&_.rfm-marquee]:items-stretch!"
     >
       <h2 className="sr-only">Testimonials</h2>
 
-      <Marquee>
-        <MarqueeFade side="left" />
-        <MarqueeFade side="right" />
+      <div className="grid gap-2 px-2 sm:grid-cols-2">
+        {FEATURED_TESTIMONIALS.map((item) => (
+          <TestimonialItem
+            key={item.url}
+            className="border-border bg-accent-muted"
+            {...item}
+          />
+        ))}
+      </div>
 
-        <MarqueeContent>
-          {TESTIMONIALS_1.slice()
-            .sort((a, b) => a.authorName.localeCompare(b.authorName))
-            .map((item) => (
-              <MarqueeItem
-                key={item.url}
-                className="mx-0 h-full w-xs border-r border-edge"
-              >
-                <TestimonialItem {...item} />
-              </MarqueeItem>
-            ))}
-        </MarqueeContent>
-      </Marquee>
+      <div className="flex h-2 w-full" />
 
-      <div className="screen-line-before screen-line-after relative flex h-4 w-full" />
+      <TestimonialList data={TESTIMONIALS_1} />
 
-      <Marquee>
-        <MarqueeFade side="left" />
-        <MarqueeFade side="right" />
+      <div className="flex h-2 w-full" />
 
-        <MarqueeContent direction="right">
-          {TESTIMONIALS_2.slice()
-            .sort((a, b) => a.authorName.localeCompare(b.authorName))
-            .map((item) => (
-              <MarqueeItem
-                key={item.url}
-                className="mx-0 h-full w-xs border-r border-edge"
-              >
-                <TestimonialItem {...item} />
-              </MarqueeItem>
-            ))}
-        </MarqueeContent>
-      </Marquee>
+      <TestimonialList direction="right" data={TESTIMONIALS_2} />
 
-      <Button
-        className="absolute right-0 bottom-0 z-10 -translate-x-1 -translate-y-[calc(var(--spacing)+1px)] ring-1 ring-background"
-        variant="outline"
-        size="icon-sm"
-        asChild
-      >
-        <Link href="/testimonials" aria-label="See all testimonials">
-          <Maximize2Icon />
-        </Link>
-      </Button>
+      <div className="absolute right-0 bottom-0 z-10 -translate-x-2 rounded-lg bg-background ring-1 ring-background">
+        <Button className="size-7" variant="outline" size="icon-sm" asChild>
+          <Link href="/testimonials" aria-label="See all testimonials">
+            <ArrowUpRightIcon />
+          </Link>
+        </Button>
+      </div>
     </Panel>
+  )
+}
+
+function TestimonialList({
+  direction,
+  data,
+}: {
+  direction?: "right" | "left"
+  data: Testimonial[]
+}) {
+  return (
+    <Marquee>
+      <MarqueeFade side="left" />
+      <MarqueeFade side="right" />
+
+      <MarqueeContent direction={direction}>
+        {data
+          .filter((item) => !item.isFeatured)
+          .sort(compareFn)
+          .map((item) => (
+            <MarqueeItem
+              key={item.url}
+              className="mx-1 h-full max-w-xs min-w-2xs"
+              style={item.style}
+            >
+              <TestimonialItem {...item} />
+            </MarqueeItem>
+          ))}
+      </MarqueeContent>
+    </Marquee>
   )
 }

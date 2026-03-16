@@ -15,24 +15,26 @@ import { MDX } from "@/components/mdx"
 import { Button } from "@/components/ui/button"
 import { Kbd } from "@/components/ui/kbd"
 import { Prose } from "@/components/ui/typography"
-import { SITE_INFO } from "@/config/site"
+import { SITE_INFO, X_USERNAME } from "@/config/site"
 import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts"
 import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions"
 import { PostShareMenu } from "@/features/blog/components/post-share-menu"
 import {
   findNeighbour,
-  getAllPosts,
-  getPostBySlug,
-} from "@/features/blog/data/posts"
-import type { Post } from "@/features/blog/types/post"
+  getAllDocs,
+  getDocBySlug,
+} from "@/features/doc/data/documents"
+import type { Doc } from "@/features/doc/types/document"
 import { USER } from "@/features/portfolio/data/user"
 import { cn } from "@/lib/utils"
 
+export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = false
+
 export async function generateStaticParams() {
-  const posts = getAllPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
+  const docs = getAllDocs()
+  return docs.map((doc) => ({ slug: doc.slug }))
 }
 
 export async function generateMetadata({
@@ -41,16 +43,18 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const slug = (await params).slug
-  const post = getPostBySlug(slug)
+  const doc = getDocBySlug(slug)
 
-  if (!post) {
+  if (!doc) {
     return notFound()
   }
 
-  const { title, description, image, createdAt, updatedAt } = post.metadata
+  const { title, description, image, createdAt, updatedAt } = doc.metadata
 
-  const postUrl = getPostUrl(post)
-  const ogImage = image || `/og/simple?title=${encodeURIComponent(title)}`
+  const postUrl = getDocUrl(doc)
+  const ogImage =
+    image ||
+    `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
 
   return {
     title,
@@ -72,23 +76,25 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: X_USERNAME,
+      creator: X_USERNAME,
       images: [ogImage],
     },
   }
 }
 
-function getPageJsonLd(post: Post): WithContext<PageSchema> {
+function getPageJsonLd(doc: Doc): WithContext<PageSchema> {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.metadata.title,
-    description: post.metadata.description,
+    headline: doc.metadata.title,
+    description: doc.metadata.description,
     image:
-      post.metadata.image ||
-      `/og/simple?title=${encodeURIComponent(post.metadata.title)}`,
-    url: `${SITE_INFO.url}${getPostUrl(post)}`,
-    datePublished: new Date(post.metadata.createdAt).toISOString(),
-    dateModified: new Date(post.metadata.updatedAt).toISOString(),
+      doc.metadata.image ||
+      `/og/simple?title=${encodeURIComponent(doc.metadata.title)}&description=${encodeURIComponent(doc.metadata.description)}`,
+    url: `${SITE_INFO.url}${getDocUrl(doc)}`,
+    datePublished: new Date(doc.metadata.createdAt).toISOString(),
+    dateModified: new Date(doc.metadata.updatedAt).toISOString(),
     author: {
       "@type": "Person",
       name: USER.displayName,
@@ -106,23 +112,23 @@ export default async function Page({
   }>
 }) {
   const slug = (await params).slug
-  const post = getPostBySlug(slug)
+  const doc = getDocBySlug(slug)
 
-  if (!post) {
+  if (!doc) {
     notFound()
   }
 
-  const toc = getTableOfContents(post.content)
+  const toc = getTableOfContents(doc.content)
 
-  const allPosts = getAllPosts()
-  const { previous, next } = findNeighbour(allPosts, slug)
+  const allDocs = getAllDocs()
+  const { previous, next } = findNeighbour(allDocs, slug)
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getPageJsonLd(post)).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(getPageJsonLd(doc)).replace(/</g, "\\u003c"),
         }}
       />
 
@@ -130,8 +136,9 @@ export default async function Page({
 
       <div className="flex items-center justify-between p-2 pl-4">
         <Button
-          className="h-7 gap-2 rounded-lg px-0 font-mono text-muted-foreground transition-[color] hover:text-foreground"
+          className="h-7 gap-2 border-none px-0 font-mono text-muted-foreground hover:text-foreground"
           variant="link"
+          size="sm"
           asChild
         >
           <Link href="/blog">
@@ -142,17 +149,22 @@ export default async function Page({
 
         <div className="flex items-center gap-2">
           <LLMCopyButtonWithViewOptions
-            markdownUrl={`${getPostUrl(post)}.mdx`}
-            isComponent={post.metadata.category === "components"}
+            markdownUrl={`${getDocUrl(doc)}.mdx`}
+            isComponent={doc.metadata.category === "components"}
           />
 
-          <PostShareMenu title={post.metadata.title} url={getPostUrl(post)} />
+          <PostShareMenu title={doc.metadata.title} url={getDocUrl(doc)} />
 
           {previous && (
             <Tooltip>
               <TooltipTrigger
                 render={
-                  <Button variant="secondary" size="icon-sm" asChild>
+                  <Button
+                    className="size-7 border-none"
+                    variant="secondary"
+                    size="icon-sm"
+                    asChild
+                  >
                     <Link href={`/blog/${previous.slug}`}>
                       <ArrowLeftIcon />
                       <span className="sr-only">Previous</span>
@@ -175,7 +187,12 @@ export default async function Page({
             <Tooltip>
               <TooltipTrigger
                 render={
-                  <Button variant="secondary" size="icon-sm" asChild>
+                  <Button
+                    className="size-7 border-none"
+                    variant="secondary"
+                    size="icon-sm"
+                    asChild
+                  >
                     <Link href={`/blog/${next.slug}`}>
                       <span className="sr-only">Next</span>
                       <ArrowRightIcon />
@@ -208,15 +225,15 @@ export default async function Page({
 
       <Prose className="px-4">
         <h1 className="screen-line-after text-3xl font-semibold tracking-tight">
-          {post.metadata.title}
+          {doc.metadata.title}
         </h1>
 
-        <p className="text-muted-foreground">{post.metadata.description}</p>
+        <p className="text-muted-foreground">{doc.metadata.description}</p>
 
         <InlineTOC items={toc} />
 
         <div>
-          <MDX code={post.content} />
+          <MDX code={doc.content} />
         </div>
       </Prose>
 
@@ -225,7 +242,7 @@ export default async function Page({
   )
 }
 
-function getPostUrl(post: Post) {
-  const isComponent = post.metadata.category === "components"
-  return isComponent ? `/components/${post.slug}` : `/blog/${post.slug}`
+function getDocUrl(doc: Doc) {
+  const isComponent = doc.metadata.category === "components"
+  return isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`
 }

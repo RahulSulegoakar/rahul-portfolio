@@ -1,6 +1,6 @@
 # [chanhdai.com](https://chanhdai.com) &middot; [![GitHub License](https://img.shields.io/github/license/ncdai/chanhdai.com?label=License)](https://github.com/ncdai/chanhdai.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/ncdai/chanhdai.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
 
-A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Design Engineer.
+A minimal, pixel-perfect dev portfolio, shadcn registry, and blog to showcase my work as a Design Engineer.
 
 → Check out the live site: [chanhdai.com](https://chanhdai.com)
 
@@ -27,13 +27,16 @@ A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase
 - Analytics with [PostHog](https://posthog.com) and [OpenPanel](https://openpanel.dev)
 - Consent management via [c15t](https://c15t.com)
 
-### Blog
+### Content
 
-- Supports MDX & Markdown
+Centralized document system powered by MDX:
+
+- Unified content layer for blog posts and component docs
+- Category-based content organization
 - Raw `.mdx` endpoints for AI readability
-- Syntax highlighting for clear code presentation
+- Syntax highlighting with code blocks
 - Dynamic OG images for rich link previews
-- RSS feed for easy content distribution
+- RSS feed for content distribution
 
 ### Registry
 
@@ -44,24 +47,6 @@ Each entry is well-documented and includes:
 - Live preview & code snippets
 - Beautiful, readable code blocks
 - One-click command blocks (pnpm, npm, yarn, bun)
-
-### Analytics
-
-User behavior tracking with [PostHog](https://posthog.com) and [OpenPanel](https://openpanel.dev) to understand how visitors interact with the site:
-
-- **Copy events** - Track code & command copies
-- **Engagement** - Monitor name pronunciation plays, command menu usage
-- **Search behavior** - Analyze search queries (debounced)
-- **User actions** - Navigation, theme changes, content interactions
-- **Screen views** - Automatic page view tracking (OpenPanel)
-
-Built with privacy in mind:
-
-- Consent management via [c15t](https://c15t.com)
-- Cookieless mode until consent
-- Production-only tracking
-- Type-safe event schema with Zod
-- Dual analytics setup for redundancy and comprehensive insights
 
 ## Development
 
@@ -108,8 +93,6 @@ This project is proudly supported by:
           />
         </a>
       </td>
-    </tr>
-    <tr>
       <td>
         <a href="https://shadcraft.com?utm_source=chanhdai.com#gh-light-mode-only">
           <img
@@ -124,22 +107,22 @@ This project is proudly supported by:
           />
         </a>
       </td>
+    </tr>
+    <tr>
       <td>
-        <a href="https://uirules.com?utm_source=chanhdai.com#gh-light-mode-only">
+        <a href="https://www.shadcnblocks.com?utm_source=chanhdai.com#gh-light-mode-only">
           <img
-            src="https://assets.chanhdai.com/images/sponsors/uirules.svg?v=1#gh-light-mode-only"
-            alt="UI Rules"
+            src="https://assets.chanhdai.com/images/sponsors/shadcnblocks.svg?v=1#gh-light-mode-only"
+            alt="Shadcnblocks"
           />
         </a>
-        <a href="https://uirules.com?utm_source=chanhdai.com#gh-dark-mode-only">
+        <a href="https://www.shadcnblocks.com?utm_source=chanhdai.com#gh-dark-mode-only">
           <img
-            src="https://assets.chanhdai.com/images/sponsors/uirules-dark.svg?v=1#gh-dark-mode-only"
-            alt="UI Rules"
+            src="https://assets.chanhdai.com/images/sponsors/shadcnblocks-dark.svg?v=1#gh-dark-mode-only"
+            alt="Shadcnblocks"
           />
         </a>
       </td>
-    </tr>
-    <tr>
       <td>
         <a href="https://reactbits.dev?utm_source=chanhdai.com#gh-light-mode-only">
           <img
@@ -151,6 +134,36 @@ This project is proudly supported by:
           <img
             src="https://assets.chanhdai.com/images/sponsors/reactbits-dark.svg?v=1#gh-dark-mode-only"
             alt="React Bits"
+          />
+        </a>
+      </td>
+      <td>
+        <a href="https://shoogle.dev?utm_source=chanhdai.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/shoogle.svg?v=1#gh-light-mode-only"
+            alt="Shoogle"
+          />
+        </a>
+        <a href="https://shoogle.dev?utm_source=chanhdai.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/shoogle-dark.svg?v=1#gh-dark-mode-only"
+            alt="Shoogle"
+          />
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://uirules.com?utm_source=chanhdai.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/uirules.svg?v=1#gh-light-mode-only"
+            alt="UI Rules"
+          />
+        </a>
+        <a href="https://uirules.com?utm_source=chanhdai.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/uirules-dark.svg?v=1#gh-dark-mode-only"
+            alt="UI Rules"
           />
         </a>
       </td>
@@ -168,6 +181,7 @@ This project is proudly supported by:
           />
         </a>
       </td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -182,21 +196,3 @@ This project is proudly supported by:
 
 [![RepoStars-dark](https://www.repostars.dev/api/embed?repo=ncdai%2Fchanhdai.com&theme=dark#gh-dark-mode-only)](https://www.repostars.dev/?repos=ncdai%2Fchanhdai.com&theme=dark#gh-dark-mode-only)
 [![RepoStars-light](https://www.repostars.dev/api/embed?repo=ncdai%2Fchanhdai.com&theme=light#gh-light-mode-only)](https://www.repostars.dev/?repos=ncdai%2Fchanhdai.com&theme=light#gh-light-mode-only)
-
-## Acknowledgments
-
-- [React](https://react.dev)
-- [Next.js](https://nextjs.org)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Radix UI](https://www.radix-ui.com)
-- [Base UI](https://base-ui.com)
-- [Motion](https://motion.dev)
-- [shadcn/ui](https://ui.shadcn.com)
-- [Aceternity UI](https://ui.aceternity.com)
-- [Kibo UI](https://www.kibo-ui.com)
-- [Lucide](https://lucide.dev)
-- [Fumadocs](https://fumadocs.dev)
-- [PostHog](https://posthog.com)
-- [OpenPanel](https://openpanel.dev)
-- [c15t](https://c15t.com)
-- And many other open-source libraries used in `package.json`

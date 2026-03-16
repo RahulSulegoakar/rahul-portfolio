@@ -1,12 +1,15 @@
 "use client"
 
-import type { HTMLMotionProps, Variants } from "motion/react"
+import type { Variants } from "motion/react"
 import { motion } from "motion/react"
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-export type ShimmeringTextOwnProps = {
+export type ShimmeringTextProps = Omit<
+  React.ComponentProps<typeof motion.span>,
+  "children"
+> & {
   /** The text to render with the shimmering effect. */
   text: string
   /**
@@ -18,9 +21,6 @@ export type ShimmeringTextOwnProps = {
    * @defaultValue false */
   isStopped?: boolean
 }
-
-export type ShimmeringTextProps = Omit<HTMLMotionProps<"span">, "children"> &
-  ShimmeringTextOwnProps
 
 export function ShimmeringText({
   text,
@@ -57,8 +57,7 @@ export function ShimmeringText({
     <motion.span
       className={cn(
         "inline-block select-none",
-        "[--color:var(--color-zinc-400)] [--shimmering-color:var(--color-zinc-950)]",
-        "dark:[--color:var(--color-zinc-600)] dark:[--shimmering-color:var(--color-zinc-50)]",
+        "[--color:var(--muted-foreground)] [--shimmering-color:var(--foreground)]",
         className
       )}
       {...props}

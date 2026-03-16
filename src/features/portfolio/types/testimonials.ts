@@ -9,4 +9,10 @@ export type Testimonial = {
   url: string
   /** The testimonial text content or recommendation message */
   quote: string
+  /** Date when the testimonial was given (YYYY-MM-DD) */
+  date: string
+  /** Optional CSS styles to apply to the testimonial component */
+  style?: React.CSSProperties
+  /** Flag to indicate if this testimonial should be highlighted as featured */
+  isFeatured?: boolean
 }

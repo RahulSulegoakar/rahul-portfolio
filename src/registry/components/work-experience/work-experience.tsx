@@ -2,12 +2,9 @@ import {
   BriefcaseBusinessIcon,
   ChevronsDownUpIcon,
   ChevronsUpDownIcon,
-  CodeXmlIcon,
-  DraftingCompassIcon,
-  GraduationCapIcon,
 } from "lucide-react"
 import Image from "next/image"
-import type { ComponentProps } from "react"
+import type { ComponentProps, ComponentType } from "react"
 import ReactMarkdown from "react-markdown"
 
 import {
@@ -18,19 +15,10 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 
-const iconMap = {
-  code: CodeXmlIcon,
-  design: DraftingCompassIcon,
-  business: BriefcaseBusinessIcon,
-  education: GraduationCapIcon,
-} as const
-
 /**
  * Represents the valid keys of the `iconMap` object, used to specify the type of icon
  * associated with an experience position.
  */
-export type ExperiencePositionIconType = keyof typeof iconMap
-
 export type ExperiencePositionItemType = {
   /** Unique identifier for the position */
   id: string
@@ -43,7 +31,7 @@ export type ExperiencePositionItemType = {
   /** A brief description of the position or responsibilities */
   description?: string
   /** An icon representing the position */
-  icon?: ExperiencePositionIconType
+  icon?: ComponentType<ComponentProps<"svg">>
   /** A list of skills associated with the position */
   skills?: string[]
   /** Indicates if the position details are expanded in the UI */
@@ -93,10 +81,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
   return (
     <div className="space-y-4 py-4">
       <div className="not-prose flex items-center gap-3">
-        <div
-          className="flex size-6 shrink-0 items-center justify-center"
-          aria-hidden
-        >
+        <div className="flex size-6 shrink-0 items-center justify-center">
           {experience.companyLogo ? (
             <Image
               src={experience.companyLogo}
@@ -105,6 +90,7 @@ export function ExperienceItem({ experience }: ExperienceItemProps) {
               height={24}
               quality={100}
               className="rounded-full"
+              aria-hidden
               unoptimized
             />
           ) : (
@@ -141,7 +127,7 @@ export type ExperiencePositionItemProps = {
 export function ExperiencePositionItem({
   position,
 }: ExperiencePositionItemProps) {
-  const ExperienceIcon = iconMap[position.icon || "business"]
+  const ExperienceIcon = position.icon ?? BriefcaseBusinessIcon // iconMap[position.icon || "business"]
 
   return (
     <Collapsible
@@ -164,7 +150,6 @@ export function ExperiencePositionItem({
                 "bg-muted text-muted-foreground",
                 "border border-muted-foreground/15 ring-1 ring-edge ring-offset-1 ring-offset-background"
               )}
-              aria-hidden
             >
               <ExperienceIcon className="size-4" />
             </div>
@@ -173,10 +158,7 @@ export function ExperiencePositionItem({
               {position.title}
             </h4>
 
-            <div
-              className="shrink-0 text-muted-foreground group-disabled:hidden [&_svg]:size-4"
-              aria-hidden
-            >
+            <div className="shrink-0 text-muted-foreground group-disabled:hidden [&_svg]:size-4">
               <ChevronsDownUpIcon className="hidden group-data-[state=open]:block" />
               <ChevronsUpDownIcon className="hidden group-data-[state=closed]:block" />
             </div>
@@ -191,7 +173,7 @@ export function ExperiencePositionItem({
                 </dl>
 
                 <Separator
-                  className="data-[orientation=vertical]:h-4"
+                  className="data-vertical:h-4 data-vertical:self-center"
                   orientation="vertical"
                 />
               </>

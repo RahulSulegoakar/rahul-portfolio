@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { SITE_INFO, X_USERNAME } from "@/config/site"
 import {
   TESTIMONIALS_1,
   TESTIMONIALS_2,
@@ -19,14 +20,33 @@ import {
 export const metadata: Metadata = {
   title: "Loved by Devs Worldwide",
   description: "See what developers are saying about my work and projects.",
+  alternates: {
+    canonical: "/testimonials",
+  },
+  openGraph: {
+    url: "/testimonials",
+    type: "website",
+    images: {
+      url: SITE_INFO.ogImage,
+      width: 1200,
+      height: 630,
+      alt: "Loved by Devs Worldwide",
+    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: X_USERNAME,
+    creator: X_USERNAME,
+    images: [SITE_INFO.ogImage],
+  },
 }
 
 const TESTIMONIALS = [
   ...TESTIMONIALS_1.slice().sort((a, b) =>
-    a.authorName.localeCompare(b.authorName)
+    a.date.localeCompare(b.date, undefined, { numeric: true })
   ),
   ...TESTIMONIALS_2.slice().sort((a, b) =>
-    a.authorName.localeCompare(b.authorName)
+    a.date.localeCompare(b.date, undefined, { numeric: true })
   ),
 ]
 
@@ -65,7 +85,7 @@ export default function TestimonialsPage() {
               rel="noopener"
             >
               <Testimonial>
-                <TestimonialQuote>
+                <TestimonialQuote className="text-pretty">
                   <p>{item.quote}</p>
                 </TestimonialQuote>
 

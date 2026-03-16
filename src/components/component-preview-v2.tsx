@@ -8,7 +8,6 @@ import { Index } from "@/__registry__/index"
 import { cn } from "@/lib/utils"
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "./base/ui/tooltip"
-import { CodeCollapsibleWrapper } from "./code-collapsible-wrapper"
 import { Button } from "./ui/button"
 import { Code as CodeInline } from "./ui/typography"
 import { OpenInV0Button } from "./v0-open-button"
@@ -19,7 +18,6 @@ export function ComponentPreviewV2({
   openInV0Url,
   canReplay = false,
   prose = false,
-  codeCollapsible = false,
   remountOnThemeChange = false,
   children,
   ...props
@@ -59,14 +57,14 @@ export function ComponentPreviewV2({
     >
       <div data-slot="preview" className="rounded-t-xl border p-2">
         {(canReplay || openInV0Url) && (
-          <div data-slot="buttons" className="mb-2 flex justify-end gap-2">
+          <div data-slot="buttons" className="mb-2 flex justify-end gap-0">
             {canReplay && (
               <Tooltip>
                 <TooltipTrigger
                   render={
                     <Button
-                      className="rounded-md"
-                      variant="secondary"
+                      className="border-none"
+                      variant="ghost"
                       size="icon-sm"
                       onClick={() => setReplay((v) => v + 1)}
                     >
@@ -92,7 +90,7 @@ export function ComponentPreviewV2({
           <React.Suspense
             fallback={
               <div className="flex items-center justify-center text-sm text-muted-foreground">
-                Loading...
+                Loading…
               </div>
             }
           >
@@ -103,16 +101,13 @@ export function ComponentPreviewV2({
         {(canReplay || openInV0Url) && <div className="mt-2 h-7" />}
       </div>
 
-      <div className="**:data-rehype-pretty-code-figure:m-0">
-        {codeCollapsible ? (
-          <CodeCollapsibleWrapper className="my-0 rounded-t-none border border-t-0">
-            {Code}
-          </CodeCollapsibleWrapper>
-        ) : (
-          <div className="*:data-rehype-pretty-code-figure:rounded-t-none *:data-rehype-pretty-code-figure:border *:data-rehype-pretty-code-figure:border-t-0">
-            {Code}
-          </div>
+      <div
+        className={cn(
+          "*:data-rehype-pretty-code-figure:m-0 *:data-rehype-pretty-code-figure:rounded-t-none *:data-rehype-pretty-code-figure:border-x *:data-rehype-pretty-code-figure:border-b [&_pre]:max-h-80 [&_pre]:rounded-b-2xl",
+          "**:data-fade-overlay:size-28 **:data-fade-overlay:rounded-tr-none **:data-fade-overlay:[--fade-background:var(--fade-radial-gradient)]"
         )}
+      >
+        {Code}
       </div>
     </div>
   )

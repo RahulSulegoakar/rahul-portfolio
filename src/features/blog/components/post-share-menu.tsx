@@ -26,7 +26,7 @@ export function PostShareMenu({ title, url }: { title: string; url: string }) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="active:scale-none"
+          className="size-7 border-none active:scale-none"
           variant="secondary"
           size="icon-sm"
         >
@@ -35,6 +35,8 @@ export function PostShareMenu({ title, url }: { title: string; url: string }) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
+        className="w-fit"
+        alignOffset={-6}
         collisionPadding={8}
         onCloseAutoFocus={(e) => e.preventDefault()}
       >

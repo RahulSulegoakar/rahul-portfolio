@@ -72,7 +72,8 @@ export const mdxCodeBlockComponents = {
         {__rawString__ && (
           <>
             <CopyButton
-              className="absolute top-2 right-2 z-10"
+              className="absolute top-2 right-2 z-10 rounded-md border-none"
+              size="icon-xs"
               text={__rawString__}
               event="copy_code_block"
             />
@@ -83,7 +84,6 @@ export const mdxCodeBlockComponents = {
                 data-fade-overlay
                 style={
                   {
-                    "--fade-width": "6rem",
                     "--fade-color": "var(--code)",
                   } as React.CSSProperties
                 }

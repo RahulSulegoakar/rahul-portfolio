@@ -16,7 +16,7 @@ export const META_THEME_COLORS = {
 
 export const MAIN_NAV: NavItem[] = [
   {
-    title: "Portfolio",
+    title: "Home",
     href: "/",
   },
   {
@@ -24,15 +24,21 @@ export const MAIN_NAV: NavItem[] = [
     href: "/components",
   },
   {
+    title: "Blocks",
+    href: "/blocks",
+  },
+  {
     title: "Blog",
     href: "/blog",
   },
-  // {
-  //   title: "Sponsors",
-  //   href: "/sponsors",
-  // },
+  {
+    title: "Sponsors",
+    href: "/sponsors",
+    className: "sm:max-md:hidden",
+  },
 ]
 
+export const X_USERNAME = "@iamncdai"
 export const GITHUB_USERNAME = "RahulSulegoakar"
 export const SOURCE_CODE_GITHUB_REPO = "RahulSulegoakar/rahul-portfolio"
 export const SOURCE_CODE_GITHUB_URL =

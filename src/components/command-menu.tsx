@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "@bprogress/next/app"
 import { useCommandState } from "cmdk"
 import type { LucideProps } from "lucide-react"
 import {
@@ -11,7 +12,6 @@ import {
   CornerDownLeftIcon,
   DownloadIcon,
   FileTextIcon,
-  HeartIcon,
   HomeIcon,
   LayersIcon,
   MoonStarIcon,
@@ -19,13 +19,11 @@ import {
   QuoteIcon,
   RssIcon,
   SunMediumIcon,
-  TextIcon,
   TextInitialIcon,
   TriangleDashedIcon,
   TypeIcon,
 } from "lucide-react"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
@@ -39,13 +37,10 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
-import type { PostPreview } from "@/features/blog/types/post"
+import type { DocPreview } from "@/features/doc/types/document"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links"
 import { useDuckFollowerVisibility } from "@/hooks/use-duck-follower-visibility"
-import { useSound } from "@/hooks/use-sound"
 import { trackEvent } from "@/lib/events"
-import { SOUNDS } from "@/lib/sounds"
-import { cn } from "@/lib/utils"
 import { copyToClipboardWithEvent } from "@/utils/copy"
 
 import { getWordmarkSVG } from "./chanhdai-wordmark"
@@ -67,7 +62,7 @@ type CommandLinkItem = {
 
 const MENU_LINKS: CommandLinkItem[] = [
   {
-    title: "Portfolio",
+    title: "Home",
     href: "/",
     icon: HomeIcon,
   },
@@ -77,9 +72,19 @@ const MENU_LINKS: CommandLinkItem[] = [
     icon: Icons.react,
   },
   {
+    title: "Blocks",
+    href: "/blocks",
+    icon: Icons.gridView,
+  },
+  {
     title: "Blog",
     href: "/blog",
-    icon: RssIcon,
+    icon: Icons.news,
+  },
+  {
+    title: "Sponsors",
+    href: "/sponsors",
+    icon: Icons.favourite,
   },
 ]
 
@@ -140,11 +145,6 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
 
 const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   {
-    title: "Sponsors",
-    href: "/sponsors",
-    icon: HeartIcon,
-  },
-  {
     title: "llms.txt",
     href: "/llms.txt",
     icon: FileTextIcon,
@@ -158,33 +158,48 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   },
 ]
 
-export function CommandMenu({ posts }: { posts: PostPreview[] }) {
+type BlockItem = {
+  name: string
+  description: string
+}
+
+export function CommandMenu({
+  posts,
+  blocks,
+  enabledHotkeys = false,
+}: {
+  posts: DocPreview[]
+  blocks: BlockItem[]
+  enabledHotkeys?: boolean
+}) {
   const router = useRouter()
 
   const { setTheme, resolvedTheme } = useTheme()
 
   const [open, setOpen] = useState(false)
 
-  const playClick = useSound(SOUNDS.click)
-
   const [, setIsDuckFollowerVisible] = useDuckFollowerVisibility()
 
-  useHotkeys("mod+k, slash", (e) => {
-    e.preventDefault()
+  useHotkeys(
+    "mod+k, slash",
+    (e) => {
+      e.preventDefault()
 
-    setOpen((open) => {
-      if (!open) {
-        trackEvent({
-          name: "open_command_menu",
-          properties: {
-            method: "keyboard",
-            key: e.key === "/" ? "/" : e.metaKey ? "cmd+k" : "ctrl+k",
-          },
-        })
-      }
-      return !open
-    })
-  })
+      setOpen((open) => {
+        if (!open) {
+          trackEvent({
+            name: "open_command_menu",
+            properties: {
+              method: "keyboard",
+              key: e.key === "/" ? "/" : e.metaKey ? "cmd+k" : "ctrl+k",
+            },
+          })
+        }
+        return !open
+      })
+    },
+    { enabled: enabledHotkeys }
+  )
 
   const handleOpenLink = useCallback(
     (href: string, openInNewTab = false) => {
@@ -223,7 +238,6 @@ export function CommandMenu({ posts }: { posts: PostPreview[] }) {
   const createThemeHandler = useCallback(
     (theme: "light" | "dark" | "system") => () => {
       setOpen(false)
-      playClick(0.5)
 
       trackEvent({
         name: "command_menu_action",
@@ -234,15 +248,8 @@ export function CommandMenu({ posts }: { posts: PostPreview[] }) {
       })
 
       setTheme(theme)
-
-      // if (!document.startViewTransition) {
-      //   setTheme(theme);
-      //   return;
-      // }
-
-      // document.startViewTransition(() => setTheme(theme));
     },
-    [playClick, setTheme]
+    [setTheme]
   )
 
   const handleToggleDuckFollower = useCallback(() => {
@@ -274,14 +281,19 @@ export function CommandMenu({ posts }: { posts: PostPreview[] }) {
     [posts]
   )
 
+  const blockLinks = useMemo(
+    () =>
+      blocks.map((block) => ({
+        title: block.name,
+        href: `/blocks#${block.name}`,
+        keywords: ["block"],
+      })),
+    [blocks]
+  )
+
   return (
     <>
-      <Button
-        variant="secondary"
-        className={cn(
-          "h-8 gap-1.5 rounded-full border border-input bg-white px-2.5 text-muted-foreground shadow-xs select-none hover:bg-white dark:bg-input/30 dark:hover:bg-input/30",
-          "relative before:pointer-events-none before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/4%)] dark:before:shadow-[0_-1px_--theme(--color-white/6%)]"
-        )}
+      <CommandMenuTrigger
         onClick={() => {
           setOpen(true)
           trackEvent({
@@ -291,23 +303,7 @@ export function CommandMenu({ posts }: { posts: PostPreview[] }) {
             },
           })
         }}
-      >
-        <Icons.search aria-hidden />
-
-        <span className="font-sans text-sm/4 font-medium sm:hidden">
-          Search…
-        </span>
-
-        <KbdGroup className="hidden sm:in-[.os-macos_&]:flex">
-          <Kbd className="w-5 min-w-5">⌘</Kbd>
-          <Kbd className="w-5 min-w-5">K</Kbd>
-        </KbdGroup>
-
-        <KbdGroup className="hidden sm:not-[.os-macos_&]:flex">
-          <Kbd>Ctrl</Kbd>
-          <Kbd className="w-5 min-w-5">K</Kbd>
-        </KbdGroup>
-      </Button>
+      />
 
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandMenuInput />
@@ -335,9 +331,16 @@ export function CommandMenu({ posts }: { posts: PostPreview[] }) {
           />
 
           <CommandLinkGroup
+            heading="Blocks"
+            links={blockLinks}
+            fallbackIcon={Icons.gridView}
+            onLinkSelect={handleOpenLink}
+          />
+
+          <CommandLinkGroup
             heading="Blog"
             links={blogLinks}
-            fallbackIcon={TextIcon}
+            fallbackIcon={Icons.news}
             onLinkSelect={handleOpenLink}
           />
 
@@ -431,6 +434,32 @@ export function CommandMenu({ posts }: { posts: PostPreview[] }) {
   )
 }
 
+function CommandMenuTrigger({ ...props }: React.ComponentProps<typeof Button>) {
+  return (
+    <Button
+      data-slot="command-menu-trigger"
+      className="gap-1.5 rounded-full text-muted-foreground shadow-none select-none hover:bg-background hover:text-muted-foreground dark:hover:bg-input/30"
+      variant="outline"
+      size="sm"
+      {...props}
+    >
+      <Icons.search />
+
+      <span className="font-sans text-sm/4 font-medium sm:hidden">Search…</span>
+
+      <KbdGroup className="hidden sm:in-[.os-macos_&]:flex">
+        <Kbd className="w-5 min-w-5">⌘</Kbd>
+        <Kbd className="w-5 min-w-5">K</Kbd>
+      </KbdGroup>
+
+      <KbdGroup className="hidden sm:not-[.os-macos_&]:flex">
+        <Kbd>Ctrl</Kbd>
+        <Kbd className="w-5 min-w-5">K</Kbd>
+      </KbdGroup>
+    </Button>
+  )
+}
+
 function CommandMenuInput() {
   const [searchValue, setSearchValue] = useState("")
 
@@ -493,7 +522,7 @@ function CommandLinkGroup({
             ) : (
               <Icon />
             )}
-            {link.title}
+            <p className="line-clamp-1">{link.title}</p>
           </CommandItem>
         )
       })}
@@ -555,17 +584,17 @@ function CommandMenuFooter() {
     <>
       <div className="flex h-10" />
 
-      <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 rounded-b-2xl border-t bg-zinc-100/30 px-4 text-xs font-medium dark:bg-zinc-800/30">
-        <RahulMark className="size-6 text-muted-foreground" aria-hidden />
+      <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 rounded-b-2xl border-t px-4 text-xs font-medium">
+        <RahulMark className="size-6 text-muted-foreground" />
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2 max-sm:hidden">
           <span>{ENTER_ACTION_LABELS[selectedCommandKind]}</span>
           <Kbd>
             <CornerDownLeftIcon />
           </Kbd>
           <Separator
             orientation="vertical"
-            className="data-[orientation=vertical]:h-4"
+            className="data-vertical:h-4 data-vertical:self-center"
           />
           <span className="text-muted-foreground">Exit</span>
           <Kbd>Esc</Kbd>
@@ -575,7 +604,7 @@ function CommandMenuFooter() {
   )
 }
 
-function postToCommandLinkItem(post: PostPreview): CommandLinkItem {
+function postToCommandLinkItem(post: DocPreview): CommandLinkItem {
   const isComponent = post.category === "components"
 
   const IconComponent = isComponent

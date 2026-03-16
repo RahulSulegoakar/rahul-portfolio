@@ -1,15 +1,21 @@
 import { RssIcon } from "lucide-react"
-import Link from "next/link"
 
 import { SITE_INFO, SOURCE_CODE_GITHUB_URL } from "@/config/site"
 import { cn } from "@/lib/utils"
 
 import { Icons } from "./icons"
 
-export function SiteFooter() {
+export function SiteFooter({
+  width = "default",
+}: {
+  width?: "default" | "wide"
+}) {
   return (
     <footer className="max-w-screen overflow-x-hidden px-2">
-      <div className="screen-line-before mx-auto border-x border-edge pt-4 md:max-w-3xl">
+      <div
+        data-width={width}
+        className="screen-line-before mx-auto border-x border-edge pt-4 data-[width=wide]:container data-[width=default]:md:max-w-3xl"
+      >
         <p className="mb-1 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
           Inspired by tailwindcss.com & ui.shadcn.com
         </p>
@@ -36,37 +42,8 @@ export function SiteFooter() {
           .
         </p>
 
-        <div className="screen-line-before flex justify-center gap-2 py-3 font-mono text-xs text-muted-foreground sm:hidden">
-          <Link
-            className="font-medium transition-[color] hover:text-foreground"
-            href="/sponsors"
-          >
-            Sponsors
-          </Link>
-
-          <span className="opacity-50">•</span>
-
-          <a
-            className="font-medium transition-[color] hover:text-foreground"
-            href={`${SITE_INFO.url}/llms.txt`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            llms.txt
-          </a>
-        </div>
-
         <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
           <div className="mx-auto flex items-center justify-center gap-3 border-x border-edge bg-background px-4">
-            <Link
-              className="flex font-mono text-xs font-medium text-muted-foreground transition-[color] hover:text-foreground max-sm:hidden"
-              href="/sponsors"
-            >
-              Sponsors
-            </Link>
-
-            <Separator className="max-sm:hidden" />
-
             <a
               className="flex font-mono text-xs font-medium text-muted-foreground transition-[color] hover:text-foreground max-sm:hidden"
               href={`${SITE_INFO.url}/llms.txt`}
@@ -142,7 +119,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="pb-[env(safe-area-inset-bottom,0px)]">
-        <div className="flex h-2" />
+        <div className="flex h-16 sm:h-2" />
       </div>
     </footer>
   )

@@ -3,10 +3,11 @@
 "use client"
 
 import { ChevronDownIcon } from "lucide-react"
-import { useMemo, useState, useTransition } from "react"
+import { useMemo, useRef, useState } from "react"
 
 import { Icons } from "@/components/icons"
-import { buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
+import { ButtonGroup, ButtonGroupSeparator } from "@/components/ui/button-group"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,25 +15,29 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import type { CopyState } from "@/hooks/use-copy-to-clipboard"
-import { cn } from "@/lib/utils"
 import { CopyStateIcon } from "@/registry/components/copy-button"
 
 const cache = new Map<string, string>()
 
 export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
   const [state, setState] = useState<CopyState>("idle")
-  const [, startTransition] = useTransition()
+  const [isCopying, setIsCopying] = useState(false)
+  const operationRef = useRef(false)
 
-  const handleCopy = () => {
-    startTransition(async () => {
-      try {
-        const cached = cache.get(markdownUrl)
-        if (cached) {
-          await navigator.clipboard.writeText(cached)
-          setState("done")
-          return
-        }
+  const handleCopy = async () => {
+    if (operationRef.current) return
 
+    operationRef.current = true
+
+    const loadingTimer = setTimeout(() => {
+      setIsCopying(true)
+    }, 150)
+
+    try {
+      const cached = cache.get(markdownUrl)
+      if (cached) {
+        await navigator.clipboard.writeText(cached)
+      } else {
         await navigator.clipboard.write([
           new ClipboardItem({
             "text/plain": fetch(markdownUrl)
@@ -43,24 +48,31 @@ export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
               }),
           }),
         ])
-        setState("done")
-      } catch {
-        setState("error")
-      } finally {
-        await new Promise((resolve) => setTimeout(resolve, 1500))
-        setState("idle")
       }
-    })
+      setState("done")
+    } catch {
+      setState("error")
+    } finally {
+      clearTimeout(loadingTimer)
+      setIsCopying(false)
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+      operationRef.current = false
+      setState("idle")
+    }
   }
 
   return (
-    <button
-      className="flex h-7 items-center gap-1.5 rounded-l-full pr-2 pl-2.5 text-sm font-medium will-change-transform disabled:pointer-events-none disabled:opacity-50"
+    <Button
+      className="h-7 gap-1.5 border-none pr-2 pl-2.5 text-[0.8125rem] active:scale-none [&_svg:not([class*='size-'])]:size-3.5"
+      variant="secondary"
+      size="sm"
+      aria-busy={isCopying}
+      disabled={isCopying}
       onClick={handleCopy}
     >
       <CopyStateIcon state={state} />
-      MDX
-    </button>
+      <span className="max-[28rem]:hidden">Copy Page</span>
+    </Button>
   )
 }
 
@@ -97,6 +109,11 @@ export function ViewOptions({
         icon: Icons.markdown,
       },
       {
+        title: "Open in GitHub",
+        href: `https://github.com/ncdai/chanhdai.com/blob/main/src/features/doc/content/${markdownUrl.split("/").slice(-1).join("/")}`,
+        icon: Icons.github,
+      },
+      {
         title: "Open in ChatGPT",
         href: `https://chatgpt.com/?${new URLSearchParams({
           hints: "search",
@@ -112,6 +129,20 @@ export function ViewOptions({
         icon: Icons.claude,
       },
       {
+        title: "Open in Cursor",
+        href: `https://cursor.com/link/prompt?${new URLSearchParams({
+          text: q,
+        })}`,
+        icon: Icons.cursor,
+      },
+      {
+        title: "Open in Grok",
+        href: `https://grok.com/?${new URLSearchParams({
+          q,
+        })}`,
+        icon: Icons.grok,
+      },
+      {
         title: "Open in Scira AI",
         href: `https://scira.ai/?${new URLSearchParams({
           q,
@@ -121,7 +152,7 @@ export function ViewOptions({
     ]
 
     if (isComponent) {
-      _items.splice(1, 0, {
+      _items.splice(2, 0, {
         title: "Open in v0",
         href: `https://v0.app/?${new URLSearchParams({
           q,
@@ -136,14 +167,21 @@ export function ViewOptions({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex size-7 items-center justify-center gap-2 rounded-r-full text-sm">
+        <Button
+          className="size-7 border-none active:scale-none"
+          variant="secondary"
+          size="icon-sm"
+        >
           <ChevronDownIcon className="mt-0.5 size-4" />
           <span className="sr-only">View Options</span>
-        </button>
+        </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
-        align="end"
+        className="w-fit"
+        align="start"
+        alignOffset={-6}
+        collisionPadding={8}
         onCloseAutoFocus={(e) => e.preventDefault()}
       >
         {items.map(({ title, href, icon: Icon }) => (
@@ -167,18 +205,10 @@ export function LLMCopyButtonWithViewOptions({
   isComponent?: boolean
 }) {
   return (
-    <div
-      className={cn(
-        buttonVariants({
-          size: "sm",
-          variant: "secondary",
-          className:
-            "gap-0 divide-x px-0 font-sans active:scale-none dark:divide-white/10",
-        })
-      )}
-    >
+    <ButtonGroup>
       <LLMCopyButton markdownUrl={markdownUrl} />
+      <ButtonGroupSeparator className="border-y-4 border-secondary dark:bg-white/20 data-vertical:my-0" />
       <ViewOptions markdownUrl={markdownUrl} isComponent={isComponent} />
-    </div>
+    </ButtonGroup>
   )
 }

@@ -1,6 +1,6 @@
 import type { User } from "@/features/portfolio/types/user"
 
-export const USER = {
+export const USER: User = {
   firstName: "Rahul",
   lastName: "Sulegaokar",
   displayName: "Rahul Sulegaokar",
@@ -28,11 +28,13 @@ export const USER = {
       title: "Design Engineer",
       company: "Shadcraft",
       website: "https://shadcraft.com",
+      experienceId: "shadcraft",
     },
     {
       title: "Founder",
       company: "Quaric",
       website: "https://quaric.com",
+      experienceId: "quaric",
     },
   ],
   about: `
@@ -76,4 +78,4 @@ Skilled in Next.js, React, TypeScript, Tailwind CSS, and modern frontend technol
     "india web developer",
   ],
   dateCreated: "2023-10-20", // YYYY-MM-DD
-} satisfies User
+}

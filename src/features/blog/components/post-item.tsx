@@ -2,21 +2,21 @@ import { format } from "date-fns"
 import Image from "next/image"
 import Link from "next/link"
 
-import type { Post } from "@/features/blog/types/post"
+import type { Doc } from "@/features/doc/types/document"
 import { cn } from "@/lib/utils"
 
 export function PostItem({
   post,
   shouldPreloadImage,
 }: {
-  post: Post
+  post: Doc
   shouldPreloadImage?: boolean
 }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "group flex flex-col gap-2 p-2",
+        "group flex flex-col gap-2 p-2 transition-[background-color] ease-out hover:bg-accent-muted",
         "max-sm:screen-line-before max-sm:screen-line-after",
         "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
       )}
@@ -45,7 +45,7 @@ export function PostItem({
       )}
 
       <div className="flex flex-col gap-1 p-2">
-        <h3 className="text-lg leading-snug font-medium text-balance underline-offset-4 group-hover:underline">
+        <h3 className="text-lg leading-snug font-medium text-balance">
           {post.metadata.title}
           {post.metadata.new && (
             <span className="ml-2 inline-block size-2 -translate-y-px rounded-full bg-info">

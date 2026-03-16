@@ -5,10 +5,9 @@ import Script from "next/script"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import type { WebSite, WithContext } from "schema-dts"
 
-import { ConsentManager } from "@/components/consent-manager"
 import { DuckFollower } from "@/components/duck-follower"
 import { Providers } from "@/components/providers"
-import { META_THEME_COLORS, SITE_INFO } from "@/config/site"
+import { META_THEME_COLORS, SITE_INFO, X_USERNAME } from "@/config/site"
 import { USER } from "@/features/portfolio/data/user"
 import { fontMono, fontPixelSquare, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
@@ -40,9 +39,6 @@ const darkModeScript = String.raw`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
-  alternates: {
-    canonical: "/",
-  },
   title: {
     template: `%s – ${SITE_INFO.name}`,
     default: `${USER.displayName} – ${USER.jobTitle}`,
@@ -76,7 +72,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@iamncdai", // Twitter username
+    site: X_USERNAME,
+    creator: X_USERNAME,
     images: [SITE_INFO.ogImage],
   },
   icons: {
@@ -141,10 +138,8 @@ export default function RootLayout({
       <body>
         <Providers>
           <NuqsAdapter>
-            <ConsentManager>
-              {children}
-              <DuckFollower />
-            </ConsentManager>
+            {children}
+            <DuckFollower />
           </NuqsAdapter>
         </Providers>
       </body>
