@@ -19,7 +19,7 @@ export function IntroItemIcon({
   return (
     <div
       className={cn(
-        "flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background",
+        "flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted ring-1 ring-line ring-offset-1 ring-offset-background",
         "[&_svg]:pointer-events-none [&_svg]:text-muted-foreground [&_svg:not([class*='size-'])]:size-4",
         className
       )}
@@ -43,7 +43,7 @@ export function IntroItemLink({
     <a
       className={cn("underline-offset-4 hover:underline", className)}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener"
       {...props}
     />
   )

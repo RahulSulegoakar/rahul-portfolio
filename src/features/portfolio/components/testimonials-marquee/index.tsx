@@ -8,6 +8,7 @@ import {
   MarqueeItem,
 } from "@/components/kibo-ui/marquee"
 import { Button } from "@/components/ui/button"
+import { TestimonialSpotlight } from "@/registry/components/testimonial-spotlight"
 
 import { TESTIMONIALS_1, TESTIMONIALS_2 } from "../../data/testimonials"
 import type { Testimonial } from "../../types/testimonials"
@@ -33,9 +34,9 @@ export function TestimonialsMarquee() {
 
       <div className="grid gap-2 px-2 sm:grid-cols-2">
         {FEATURED_TESTIMONIALS.map((item) => (
-          <TestimonialItem
+          <TestimonialSpotlight
             key={item.url}
-            className="border-border bg-accent-muted"
+            className="bg-accent-muted"
             {...item}
           />
         ))}

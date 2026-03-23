@@ -21,6 +21,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "haptic": {
     name: "haptic",
@@ -36,6 +38,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "use-controllable-state": {
     name: "use-controllable-state",
@@ -55,6 +59,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "use-sound": {
     name: "use-sound",
@@ -70,6 +76,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "theme-switcher": {
     name: "theme-switcher",
@@ -85,6 +93,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "text-flip": {
     name: "text-flip",
@@ -100,6 +110,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "apple-hello-effect": {
     name: "apple-hello-effect",
@@ -115,6 +127,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "wheel-picker": {
     name: "wheel-picker",
@@ -130,6 +144,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "work-experience": {
     name: "work-experience",
@@ -145,6 +161,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "shimmering-text": {
     name: "shimmering-text",
@@ -160,6 +178,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "slide-to-unlock": {
     name: "slide-to-unlock",
@@ -175,6 +195,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "testimonial": {
     name: "testimonial",
@@ -190,6 +212,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "github-stars": {
     name: "github-stars",
@@ -205,6 +229,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "scroll-fade-effect": {
     name: "scroll-fade-effect",
@@ -220,6 +246,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "consent-manager": {
     name: "consent-manager",
@@ -235,6 +263,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "copy-button": {
     name: "copy-button",
@@ -254,6 +284,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "code-block-command": {
     name: "code-block-command",
@@ -277,6 +309,25 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "testimonial-spotlight": {
+    name: "testimonial-spotlight",
+    description: "Testimonial card with spotlight effect on hover.",
+    type: "registry:component",
+    files: [{
+      path: "src/registry/components/testimonial-spotlight/testimonial-spotlight.tsx",
+      type: "registry:component",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/components/testimonial-spotlight/testimonial-spotlight.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
   },
   "login-01": {
     name: "login-01",
@@ -296,44 +347,92 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: ["application","login"],
+    meta: undefined,
   },
   "hero-01": {
     name: "hero-01",
     description: "A hero section with a golden spiral background.",
     type: "registry:block",
     files: [{
-      path: "src/registry/blocks/hero-01/page.tsx",
-      type: "registry:page",
-      target: "app/hero/page.tsx",
+      path: "src/registry/blocks/hero-01/hero-01.tsx",
+      type: "registry:component",
+      target: "",
     },{
-      path: "src/registry/blocks/hero-01/components/hero-block.tsx",
+      path: "src/registry/blocks/hero-01/components/hero-01-icons.tsx",
       type: "registry:component",
       target: "",
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/blocks/hero-01/page.tsx")
+      const mod = await import("@/registry/blocks/hero-01/hero-01.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: ["marketing","hero"],
+    meta: {"previewClassName":"flex min-h-svh flex-col items-center pt-8"},
   },
   "blog-01": {
     name: "blog-01",
-    description: "A simple blog section with a grid layout.",
+    description: "A blog section with a grid layout.",
     type: "registry:block",
     files: [{
-      path: "src/registry/blocks/blog-01/page.tsx",
-      type: "registry:page",
-      target: "app/blog/page.tsx",
+      path: "src/registry/blocks/blog-01/blog-01.tsx",
+      type: "registry:component",
+      target: "",
     },{
       path: "src/registry/blocks/blog-01/components/article-item.tsx",
       type: "registry:component",
       target: "",
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/blocks/blog-01/page.tsx")
+      const mod = await import("@/registry/blocks/blog-01/blog-01.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: ["content","blog"],
+    meta: undefined,
+  },
+  "blog-02": {
+    name: "blog-02",
+    description: "A blog section with a lined grid layout.",
+    type: "registry:block",
+    files: [{
+      path: "src/registry/blocks/blog-02/blog-02.tsx",
+      type: "registry:component",
+      target: "",
+    },{
+      path: "src/registry/blocks/blog-02/components/article-item.tsx",
+      type: "registry:component",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/blocks/blog-02/blog-02.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["content","blog"],
+    meta: undefined,
+  },
+  "testimonials-01": {
+    name: "testimonials-01",
+    description: "A testimonials section with dual marquees.",
+    type: "registry:block",
+    files: [{
+      path: "src/registry/blocks/testimonials-01/testimonials-01.tsx",
+      type: "registry:component",
+      target: "",
+    },{
+      path: "src/registry/blocks/testimonials-01/components/testimonial-list.tsx",
+      type: "registry:component",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/blocks/testimonials-01/testimonials-01.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: ["marketing","testimonials"],
+    meta: {"previewClassName":"container mx-auto flex min-h-svh flex-col justify-center"},
   },
   "text-flip-demo": {
     name: "text-flip-demo",
@@ -349,6 +448,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "apple-hello-effect-vi-demo": {
     name: "apple-hello-effect-vi-demo",
@@ -364,6 +465,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "apple-hello-effect-en-demo": {
     name: "apple-hello-effect-en-demo",
@@ -379,6 +482,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "theme-switcher-demo": {
     name: "theme-switcher-demo",
@@ -394,6 +499,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "wheel-picker-demo": {
     name: "wheel-picker-demo",
@@ -409,6 +516,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "wheel-picker-form-demo": {
     name: "wheel-picker-form-demo",
@@ -424,6 +533,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "work-experience-demo": {
     name: "work-experience-demo",
@@ -439,6 +550,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "shimmering-text-demo-01": {
     name: "shimmering-text-demo-01",
@@ -454,6 +567,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "shimmering-text-demo-02": {
     name: "shimmering-text-demo-02",
@@ -469,6 +584,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "slide-to-unlock-demo-01": {
     name: "slide-to-unlock-demo-01",
@@ -484,6 +601,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "slide-to-unlock-demo-02": {
     name: "slide-to-unlock-demo-02",
@@ -499,6 +618,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "slide-to-unlock-demo-03": {
     name: "slide-to-unlock-demo-03",
@@ -514,6 +635,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "testimonial-demo": {
     name: "testimonial-demo",
@@ -529,6 +652,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "testimonials-marquee-demo-01": {
     name: "testimonials-marquee-demo-01",
@@ -544,6 +669,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "testimonials-marquee-demo-02": {
     name: "testimonials-marquee-demo-02",
@@ -559,6 +686,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "github-stars-demo": {
     name: "github-stars-demo",
@@ -574,6 +703,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "scroll-fade-effect-demo-01": {
     name: "scroll-fade-effect-demo-01",
@@ -589,6 +720,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "scroll-fade-effect-demo-02": {
     name: "scroll-fade-effect-demo-02",
@@ -604,6 +737,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "scroll-fade-effect-demo-03": {
     name: "scroll-fade-effect-demo-03",
@@ -619,6 +754,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "scroll-fade-effect-demo-04": {
     name: "scroll-fade-effect-demo-04",
@@ -634,6 +771,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "code-block-command-demo": {
     name: "code-block-command-demo",
@@ -649,6 +788,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "code-block-command-convert-demo": {
     name: "code-block-command-convert-demo",
@@ -664,6 +805,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "copy-button-demo": {
     name: "copy-button-demo",
@@ -679,6 +822,8 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
   },
   "haptic-demo": {
     name: "haptic-demo",
@@ -694,5 +839,41 @@ export const Index: Record<string, any> = {
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "testimonial-spotlight-demo-01": {
+    name: "testimonial-spotlight-demo-01",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/testimonial-spotlight-demo-01.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/testimonial-spotlight-demo-01.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "testimonial-spotlight-demo-02": {
+    name: "testimonial-spotlight-demo-02",
+    description: "",
+    type: "registry:example",
+    files: [{
+      path: "src/registry/examples/testimonial-spotlight-demo-02.tsx",
+      type: "registry:example",
+      target: "",
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/examples/testimonial-spotlight-demo-02.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
   },
 }

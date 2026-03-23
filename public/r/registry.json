@@ -430,6 +430,22 @@
       "type": "registry:component"
     },
     {
+      "name": "testimonial-spotlight",
+      "title": "Testimonial Spotlight",
+      "author": "ncdai <dai@chanhdai.com>",
+      "description": "Testimonial card with spotlight effect on hover.",
+      "registryDependencies": [
+        "https://chanhdai.com/r/testimonial.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/components/testimonial-spotlight/testimonial-spotlight.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "type": "registry:component"
+    },
+    {
       "name": "login-01",
       "title": "Login 01",
       "description": "A simple login form.",
@@ -452,7 +468,7 @@
         }
       ],
       "categories": [
-        "authentication",
+        "application",
         "login"
       ],
       "type": "registry:block"
@@ -462,21 +478,24 @@
       "title": "Hero 01",
       "description": "A hero section with a golden spiral background.",
       "registryDependencies": [
-        "button"
+        "button",
+        "https://chanhdai.com/r/style.json"
       ],
       "files": [
         {
-          "path": "src/registry/blocks/hero-01/page.tsx",
-          "type": "registry:page",
-          "target": "app/hero/page.tsx"
+          "path": "src/registry/blocks/hero-01/hero-01.tsx",
+          "type": "registry:component"
         },
         {
-          "path": "src/registry/blocks/hero-01/components/hero-block.tsx",
+          "path": "src/registry/blocks/hero-01/components/hero-01-icons.tsx",
           "type": "registry:component"
         }
       ],
+      "meta": {
+        "previewClassName": "flex min-h-svh flex-col items-center pt-8"
+      },
       "categories": [
-        "layout",
+        "marketing",
         "hero"
       ],
       "type": "registry:block"
@@ -484,7 +503,7 @@
     {
       "name": "blog-01",
       "title": "Blog 01",
-      "description": "A simple blog section with a grid layout.",
+      "description": "A blog section with a grid layout.",
       "dependencies": [
         "date-fns"
       ],
@@ -493,9 +512,8 @@
       ],
       "files": [
         {
-          "path": "src/registry/blocks/blog-01/page.tsx",
-          "type": "registry:page",
-          "target": "app/blog/page.tsx"
+          "path": "src/registry/blocks/blog-01/blog-01.tsx",
+          "type": "registry:component"
         },
         {
           "path": "src/registry/blocks/blog-01/components/article-item.tsx",
@@ -503,10 +521,82 @@
         }
       ],
       "categories": [
-        "layout",
+        "content",
         "blog"
       ],
       "type": "registry:block"
+    },
+    {
+      "name": "blog-02",
+      "title": "Blog 02",
+      "description": "A blog section with a lined grid layout.",
+      "dependencies": [
+        "date-fns"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://chanhdai.com/r/style.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/blog-02/blog-02.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/blocks/blog-02/components/article-item.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "content",
+        "blog"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "testimonials-01",
+      "title": "Testimonials 01",
+      "description": "A testimonials section with dual marquees.",
+      "registryDependencies": [
+        "https://www.kibo-ui.com/r/marquee.json",
+        "https://chanhdai.com/r/testimonial-spotlight.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/blocks/testimonials-01/testimonials-01.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "src/registry/blocks/testimonials-01/components/testimonial-list.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "previewClassName": "container mx-auto flex min-h-svh flex-col justify-center"
+      },
+      "categories": [
+        "marketing",
+        "testimonials"
+      ],
+      "type": "registry:block"
+    },
+    {
+      "name": "style",
+      "cssVars": {
+        "theme": {
+          "color-line": "color-mix(in oklab, var(--border) 64%, var(--background))"
+        }
+      },
+      "css": {
+        "@utility screen-line-top": {
+          "@apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-line": {}
+        },
+        "@utility screen-line-bottom": {
+          "@apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-line": {}
+        }
+      },
+      "type": "registry:style",
+      "files": []
     }
   ]
 }

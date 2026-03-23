@@ -1,5 +1,7 @@
 import type { Registry } from "shadcn/schema"
 
+import { getRegistryItemUrl } from "@/utils/registry"
+
 export const blocks: Registry["items"] = [
   {
     name: "login-01",
@@ -18,45 +20,90 @@ export const blocks: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    categories: ["authentication", "login"],
+    categories: ["application", "login"],
   },
   {
     name: "hero-01",
     title: "Hero 01",
     description: "A hero section with a golden spiral background.",
     type: "registry:block",
-    registryDependencies: ["button"],
+    registryDependencies: ["button", getRegistryItemUrl("style")],
     files: [
       {
-        path: "blocks/hero-01/page.tsx",
-        target: "app/hero/page.tsx",
-        type: "registry:page",
+        path: "blocks/hero-01/hero-01.tsx",
+        type: "registry:component",
       },
       {
-        path: "blocks/hero-01/components/hero-block.tsx",
+        path: "blocks/hero-01/components/hero-01-icons.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["layout", "hero"],
+    categories: ["marketing", "hero"],
+    meta: {
+      previewClassName: "flex min-h-svh flex-col items-center pt-8",
+    },
   },
   {
     name: "blog-01",
     title: "Blog 01",
-    description: "A simple blog section with a grid layout.",
+    description: "A blog section with a grid layout.",
     type: "registry:block",
     dependencies: ["date-fns"],
     registryDependencies: ["button"],
     files: [
       {
-        path: "blocks/blog-01/page.tsx",
-        target: "app/blog/page.tsx",
-        type: "registry:page",
+        path: "blocks/blog-01/blog-01.tsx",
+        type: "registry:component",
       },
       {
         path: "blocks/blog-01/components/article-item.tsx",
         type: "registry:component",
       },
     ],
-    categories: ["layout", "blog"],
+    categories: ["content", "blog"],
+  },
+  {
+    name: "blog-02",
+    title: "Blog 02",
+    description: "A blog section with a lined grid layout.",
+    type: "registry:block",
+    dependencies: ["date-fns"],
+    registryDependencies: ["button", getRegistryItemUrl("style")],
+    files: [
+      {
+        path: "blocks/blog-02/blog-02.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/blog-02/components/article-item.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["content", "blog"],
+  },
+  {
+    name: "testimonials-01",
+    title: "Testimonials 01",
+    description: "A testimonials section with dual marquees.",
+    type: "registry:block",
+    registryDependencies: [
+      "https://www.kibo-ui.com/r/marquee.json",
+      getRegistryItemUrl("testimonial-spotlight"),
+    ],
+    files: [
+      {
+        path: "blocks/testimonials-01/testimonials-01.tsx",
+        type: "registry:component",
+      },
+      {
+        path: "blocks/testimonials-01/components/testimonial-list.tsx",
+        type: "registry:component",
+      },
+    ],
+    categories: ["marketing", "testimonials"],
+    meta: {
+      previewClassName:
+        "container mx-auto flex min-h-svh flex-col justify-center",
+    },
   },
 ]

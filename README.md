@@ -71,6 +71,30 @@ This project is proudly supported by:
 <table>
   <tbody>
     <tr>
+      <td colspan="3"><strong>Open Source Program</strong></td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://openpanel.dev/open-source?utm_source=chanhdai.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/openpanel.svg?v=1#gh-light-mode-only"
+            alt="OpenPanel"
+          />
+        </a>
+        <a href="https://openpanel.dev/open-source?utm_source=chanhdai.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/openpanel-dark.svg?v=1#gh-dark-mode-only"
+            alt="OpenPanel"
+          />
+        </a>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Gold Sponsors</strong></td>
+    </tr>
+    <tr>
       <td>
         <a href="https://shadcnstudio.com?utm_source=chanhdai.com&utm_medium=banner&utm_campaign=github#gh-light-mode-only">
           <img src="https://assets.chanhdai.com/images/sponsors/shadcnstudio.svg?v=2#gh-light-mode-only" alt="shadcnstudio.com" />
@@ -93,22 +117,26 @@ This project is proudly supported by:
           />
         </a>
       </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Silver Sponsors</strong></td>
+    </tr>
+    <tr>
       <td>
-        <a href="https://shadcraft.com?utm_source=chanhdai.com#gh-light-mode-only">
+        <a href="https://shadcncraft.com?utm_source=chanhdai.com#gh-light-mode-only">
           <img
-            src="https://assets.chanhdai.com/images/sponsors/shadcraft.svg?v=1#gh-light-mode-only"
-            alt="Shadcraft"
+            src="https://assets.chanhdai.com/images/sponsors/shadcncraft.svg?v=1#gh-light-mode-only"
+            alt="shadcncraft"
           />
         </a>
-        <a href="https://shadcraft.com?utm_source=chanhdai.com#gh-dark-mode-only">
+        <a href="https://shadcncraft.com?utm_source=chanhdai.com#gh-dark-mode-only">
           <img
-            src="https://assets.chanhdai.com/images/sponsors/shadcraft-dark.svg?v=1#gh-dark-mode-only"
-            alt="Shadcraft"
+            src="https://assets.chanhdai.com/images/sponsors/shadcncraft-dark.svg?v=1#gh-dark-mode-only"
+            alt="shadcncraft"
           />
         </a>
       </td>
-    </tr>
-    <tr>
       <td>
         <a href="https://www.shadcnblocks.com?utm_source=chanhdai.com#gh-light-mode-only">
           <img
@@ -137,20 +165,9 @@ This project is proudly supported by:
           />
         </a>
       </td>
-      <td>
-        <a href="https://shoogle.dev?utm_source=chanhdai.com#gh-light-mode-only">
-          <img
-            src="https://assets.chanhdai.com/images/sponsors/shoogle.svg?v=1#gh-light-mode-only"
-            alt="Shoogle"
-          />
-        </a>
-        <a href="https://shoogle.dev?utm_source=chanhdai.com#gh-dark-mode-only">
-          <img
-            src="https://assets.chanhdai.com/images/sponsors/shoogle-dark.svg?v=1#gh-dark-mode-only"
-            alt="Shoogle"
-          />
-        </a>
-      </td>
+    </tr>
+    <tr>
+      <td colspan="3"><strong>Spark Supporters</strong></td>
     </tr>
     <tr>
       <td>
@@ -168,20 +185,33 @@ This project is proudly supported by:
         </a>
       </td>
       <td>
-        <a href="https://openpanel.dev?utm_source=chanhdai.com#gh-light-mode-only">
+        <a href="https://shoogle.dev?utm_source=chanhdai.com#gh-light-mode-only">
           <img
-            src="https://assets.chanhdai.com/images/sponsors/openpanel.svg?v=1#gh-light-mode-only"
-            alt="OpenPanel"
+            src="https://assets.chanhdai.com/images/sponsors/shoogle.svg?v=1#gh-light-mode-only"
+            alt="Shoogle"
           />
         </a>
-        <a href="https://openpanel.dev?utm_source=chanhdai.com#gh-dark-mode-only">
+        <a href="https://shoogle.dev?utm_source=chanhdai.com#gh-dark-mode-only">
           <img
-            src="https://assets.chanhdai.com/images/sponsors/openpanel-dark.svg?v=1#gh-dark-mode-only"
-            alt="OpenPanel"
+            src="https://assets.chanhdai.com/images/sponsors/shoogle-dark.svg?v=1#gh-dark-mode-only"
+            alt="Shoogle"
           />
         </a>
       </td>
-      <td></td>
+      <td>
+        <a href="https://www.fonttrio.xyz?utm_source=chanhdai.com#gh-light-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/fonttrio.svg?v=1#gh-light-mode-only"
+            alt="Fonttrio"
+          />
+        </a>
+        <a href="https://www.fonttrio.xyz?utm_source=chanhdai.com#gh-dark-mode-only">
+          <img
+            src="https://assets.chanhdai.com/images/sponsors/fonttrio-dark.svg?v=1#gh-dark-mode-only"
+            alt="Fonttrio"
+          />
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>

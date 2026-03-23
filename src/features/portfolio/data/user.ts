@@ -26,9 +26,9 @@ export const USER: User = {
     },
     {
       title: "Design Engineer",
-      company: "Shadcraft",
-      website: "https://shadcraft.com",
-      experienceId: "shadcraft",
+      company: "shadcncraft",
+      website: "https://shadcncraft.com",
+      experienceId: "shadcncraft",
     },
     {
       title: "Founder",
@@ -53,7 +53,7 @@ Skilled in Next.js, React, TypeScript, Tailwind CSS, and modern frontend technol
   avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
   ogImage:
     "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=7",
-  namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3?v=1",
+  namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3?v=3",
   timeZone: "Asia/Ho_Chi_Minh",
   keywords: [
     "rahul sulegaokar",

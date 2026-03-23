@@ -4,14 +4,13 @@ import Link from "next/link"
 import blocks from "@/__registry__/__blocks__.json"
 import { DesktopNav } from "@/components/desktop-nav"
 import { NavItemGitHub } from "@/components/nav-item-github"
+import { SiteHeaderMark } from "@/components/site-header-mark"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Separator } from "@/components/ui/separator"
 import { MAIN_NAV } from "@/config/site"
 import { getAllDocs } from "@/features/doc/data/documents"
 import type { DocPreview } from "@/features/doc/types/document"
 import { cn } from "@/lib/utils"
-
-import { SiteHeaderMark } from "./site-header-mark"
-import { ThemeToggle } from "./theme-toggle"
-import { Separator } from "./ui/separator"
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
@@ -25,11 +24,7 @@ const MobileNav = dynamic(() =>
   import("@/components/mobile-nav").then((mod) => mod.MobileNav)
 )
 
-export function SiteHeader({
-  width = "default",
-}: {
-  width?: "default" | "wide"
-}) {
+export function SiteHeader() {
   const posts = getAllDocs()
 
   // Minimize data serialized to client component - only send necessary fields
@@ -41,20 +36,8 @@ export function SiteHeader({
 
   return (
     <>
-      <header
-        className={cn(
-          "sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2"
-          // "data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]",
-          // "not-dark:data-[affix=true]:**:data-header-container:after:bg-border",
-          // "transition-shadow duration-300"
-        )}
-      >
-        <div
-          data-slot="site-header-container"
-          data-width={width}
-          className="screen-line-before screen-line-after mx-auto flex h-12 items-center justify-between gap-2 border-x border-edge px-2 after:z-1 after:transition-[background-color] data-[width=wide]:container sm:gap-4 data-[width=default]:md:max-w-3xl"
-          data-header-container
-        >
+      <header className="sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2">
+        <div className="screen-line-top screen-line-bottom mx-auto flex h-12 items-center justify-between gap-2 border-x border-line px-2 group-has-data-[slot=layout-wide]/layout:container after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-3xl">
           <BrandContextMenu>
             <Link
               className="transition-[scale] ease-out active:scale-[0.98] has-data-[visible=false]:pointer-events-none [&_svg]:h-8"

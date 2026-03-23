@@ -1,5 +1,6 @@
 import "@/styles/globals.css"
 
+import { GoogleTagManager } from "@next/third-parties/google"
 import type { Metadata, Viewport } from "next"
 import Script from "next/script"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
@@ -9,8 +10,7 @@ import { DuckFollower } from "@/components/duck-follower"
 import { Providers } from "@/components/providers"
 import { META_THEME_COLORS, SITE_INFO, X_USERNAME } from "@/config/site"
 import { USER } from "@/features/portfolio/data/user"
-import { fontMono, fontPixelSquare, fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
+import { fontVariables } from "@/lib/fonts"
 
 function getWebSiteJsonLd(): WithContext<WebSite> {
   return {
@@ -108,15 +108,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={cn(
-        fontSans.variable,
-        fontMono.variable,
-        fontPixelSquare.variable
-      )}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
         <script
           type="text/javascript"
@@ -134,6 +126,10 @@ export default function RootLayout({
           }}
         />
       </head>
+
+      {process.env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      )}
 
       <body>
         <Providers>

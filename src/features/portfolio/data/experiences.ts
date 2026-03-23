@@ -2,11 +2,10 @@ import type { Experience } from "../types/experiences"
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: "shadcraft",
-    companyName: "Shadcraft",
-    companyLogo:
-      "https://assets.chanhdai.com/images/companies/shadcraft.svg?v=2",
-    companyWebsite: "https://shadcraft.com",
+    id: "shadcncraft",
+    companyName: "shadcncraft",
+    companyLogo: "https://assets.chanhdai.com/images/companies/shadcncraft.svg",
+    companyWebsite: "https://shadcncraft.com",
     positions: [
       {
         id: "1",
