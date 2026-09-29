@@ -39,7 +39,7 @@
     "capture:cover": "bun run ./src/scripts/capture-cover.mts",
     "avatars:sync": "bun run ./src/scripts/sync-x-avatars.mts",
     "craft:upload": "bun run ./src/scripts/craft-upload.mts",
-    "generate-libphonenumber-metadata": "libphonenumber-metadata-generator ./src/assets/libphonenumber.metadata.json --countries VN --extended",
+    "generate-libphonenumber-metadata": "libphonenumber-metadata-generator ./src/assets/libphonenumber.metadata.json --countries IN --extended",
     "upgrade:next": "npx @next/codemod@latest upgrade latest",
     "upgrade:tailwind": "npx @tailwindcss/upgrade@latest",
     "prepare": "husky"

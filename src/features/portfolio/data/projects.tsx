@@ -1,158 +1,121 @@
-import { ChanhDaiMark } from "@/components/chanhdai-mark"
-import {
-  QuaricIcon,
-  ReactWheelPickerIcon,
-  ZaDarkIcon,
-} from "@/components/icons"
-
 import type { Project } from "../types/projects"
 
 export const PROJECTS: Project[] = [
   {
-    id: "react-wheel-picker",
-    title: "React Wheel Picker",
+    id: "ai-agent-app-simulations",
+    title: "AI Agent App Simulations",
     period: {
-      start: "05.2025",
+      start: "07.2025",
+      end: "05.2026",
     },
-    link: "https://react-wheel-picker.chanhdai.com",
     skills: [
-      "Open Source",
-      "React",
-      "TypeScript",
-      "Monorepo",
-      "Turborepo",
-      "pnpm-workspace",
-      "Package Publishing",
-      "NPM Registry",
-      "GitHub Actions",
+      "AGI, Inc.",
+      "Next.js",
+      "Redux",
+      "Tailwind CSS",
+      "React Native",
+      "Expo",
+      "Agent Evaluation",
     ],
-    description: `iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support. / Backed by [▲ Vercel OSS Program](https://vercel.com/blog/summer-2025-oss-program#react-wheel-picker)
-- Natural touch scrolling with smooth inertia, mouse drag and scroll for desktop
-- Infinite loop scrolling
-- Unstyled core for complete style customization
-- Full keyboard navigation and type-ahead search
-`,
-    icon: <ReactWheelPickerIcon />,
+    description: `Functional, pixel-accurate clones of major consumer apps used as realistic training and evaluation environments for AI agents.
+- Airbnb, Amazon, Gmail, Uber, LinkedIn, and 12+ other apps across web and mobile
+- Deterministic sandboxes with configurable behaviors and real data
+- Scoring frameworks so agent performance can be benchmarked reliably`,
     isExpanded: true,
   },
   {
-    id: "chanhdaidotcom",
-    title: "chanhdai.com",
+    id: "realevals",
+    title: "RealEvals",
     period: {
-      start: "01.2025",
+      start: "07.2025",
+      end: "05.2026",
     },
-    link: "https://github.com/ncdai/chanhdai.com",
-    skills: [
-      "Open Source",
-      "Next.js 16",
-      "Tailwind CSS v4",
-      "Radix UI",
-      "Base UI",
-      "Motion",
-      "shadcn/ui",
-      "shadcn registry",
-      "Vercel",
-    ],
-    description: "A pixel-perfect dev portfolio and shadcn registry.",
-    icon: <ChanhDaiMark />,
+    link: "https://realevals.xyz",
+    skills: ["AGI, Inc.", "AI Agents", "Leaderboard", "Agent Evaluation"],
+    description: "A public leaderboard for AI agent performance.",
   },
   {
-    id: "quaricdotcom",
-    title: "quaric.com",
+    id: "pizza-brand-platform",
+    title: "Pizza Brand Platform",
     period: {
-      start: "03.2024",
-      end: "07.2025",
+      start: "11.2021",
+      end: "05.2023",
     },
-    link: "https://quaric.com",
     skills: [
-      "Company Project",
-      "Next.js 15",
-      "Tailwind CSS v3",
-      "shadcn/ui",
-      "Strapi 5",
-      "VNPAY-QR",
-      "Docker",
-      "Docker Compose",
-      "NGINX",
+      "Nilede Technologies",
+      "Mobile App",
+      "Web App",
+      "Admin Portal",
+      "UI/UX Design",
     ],
-    icon: <QuaricIcon />,
+    description: `A full-stack digital ecosystem for a pizza brand.
+- Customer mobile app and web app
+- Franchise and store order management admin portal`,
   },
   {
-    id: "zadark",
-    title: "ZaDark",
-    period: {
-      start: "01.2022",
-    },
-    link: "https://zadark.com",
-    skills: [
-      "Pet Project",
-      "Open Source",
-      "Browser Extension",
-      "CLI",
-      "Docusaurus 3",
-    ],
-    description: `ZaDark adds Dark Mode, anti-peeking, customizable fonts, backgrounds, and more to Zalo Web and PC.
-- Earned 10M+ VND in net sales from a paid Safari Extension*
-- 80k+ downloads on SourceForge* (awarded Community Leader badge by SourceForge)
-- 30k+ active users via Chrome Web Store*
-- Bronze Medal — 10th Design, Manufacturing, and Application Award 2022
-
-<p class="text-muted-foreground">* Peak metrics.</p>
-`,
-    icon: <ZaDarkIcon />,
-  },
-  {
-    id: "penphy",
-    title: "Penphy",
+    id: "liplick-pizzeria",
+    title: "Liplick Pizzeria",
     period: {
       start: "01.2019",
-      end: "08.2019",
+      end: "11.2021",
     },
-    link: "https://www.youtube.com/watch?v=EdU7rUO-UA4",
-    skills: ["Startup Project", "JavaScript", "React Native"],
-    description: "2nd Prize — Business Startup Competition 2019",
+    skills: ["buildnboost", "Mobile App", "Web App", "UI/UX Design", "Figma"],
+    description: "Mobile and web ordering experience for Liplick Pizzeria.",
   },
   {
-    id: "unlimitedstudy",
-    title: "UnlimitedStudy",
+    id: "floret",
+    title: "Floret — Mumbai University App",
+    period: {
+      start: "01.2019",
+      end: "11.2021",
+    },
+    skills: ["buildnboost", "Mobile App", "UI/UX Design"],
+    description:
+      "A university app for attendance tracking, exam management, assignment submission, and syllabus access.",
+  },
+  {
+    id: "flycloudcross",
+    title: "FlyCloudCross",
+    period: {
+      start: "01.2019",
+      end: "11.2021",
+    },
+    skills: ["buildnboost", "Next.js", "Tailwind CSS", "UI/UX Design"],
+    description: "Website for FlyCloudCross LLC, a Dubai-based travel agency.",
+  },
+  {
+    id: "bcp-event-site",
+    title: "Bombay College of Pharmacy Event Site",
+    period: {
+      start: "01.2019",
+      end: "11.2021",
+    },
+    skills: ["buildnboost", "Laravel", "Tailwind CSS", "CRM"],
+    description:
+      "Event website with an integrated admin panel for CRM, built for Bombay College of Pharmacy.",
+  },
+  {
+    id: "smartbistro",
+    title: "SmartBistro",
     period: {
       start: "01.2017",
-      end: "08.2018",
+      end: "12.2018",
     },
-    link: "https://muctim.tuoitre.vn/cong-cu-ho-tro-viec-day-va-hoc-55107.htm",
-    skills: [
-      "National Competition",
-      "Creative Software",
-      "PHP",
-      "Laravel 4",
-      "MySQL",
-      "jQuery",
-      "Bootstrap 3",
-    ],
-    description: `UnlimitedStudy is a website that provides teaching and learning support tools for teachers and students.
-- 3rd Prize — National Science and Engineering Fair 2018 (ViSEF)
-- 3rd Prize — National Young Informatics Contest 2018
-- Reached 7k+ users, mainly high school students in Can Tho City
-- Pilot implemented in high schools across Can Tho City with English quizzes, supervised by English subject specialists from the Can Tho City Department of Education and Training`,
+    skills: ["Freelance", "Ionic", "Angular", "Cordova", "Figma"],
+    description:
+      "A cross-platform app built with Ionic, Angular, and Cordova — first project owning both design and code on the same product.",
   },
   {
-    id: "study-english",
-    title: "Study English",
+    id: "aatronix",
+    title: "AaTronix",
     period: {
-      start: "11.2016",
-      end: "12.2017",
+      start: "12.2014",
+      end: "12.2016",
     },
-    link: "https://www.youtube.com/watch?v=OYgugvjqU4A",
-    skills: [
-      "National Competition",
-      "Creative Software",
-      "PHP",
-      "Laravel 4",
-      "MySQL",
-    ],
-    description: `Study English is a free, mobile-friendly website for high school English learning, offering vocabulary, quizzes, listening practice, and more.
-- Consolation Prize — National Youth and Children’s Creativity Contest 2016
-- 1st Prize — Can Tho City Youth and Children’s Creativity Contest 2016
-- Consolation Prize — Can Tho City Young Informatics Contest 2016`,
+    link: "https://aatronix.blogspot.com",
+    skills: ["Android", "Custom ROMs", "XDA Developers", "Blogging"],
+    description: `Custom Android ROMs and a monetized tech blog.
+- Built and distributed custom ROMs on XDA Developers forums
+- Monetized via AdSense and AdFly`,
   },
 ]

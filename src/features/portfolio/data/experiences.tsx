@@ -3,216 +3,123 @@ import {
   CodeXmlIcon,
   DraftingCompassIcon,
   LightbulbIcon,
+  SmartphoneIcon,
 } from "lucide-react"
 
 import type { Experience } from "@/features/portfolio/types/experiences"
 
 export const EXPERIENCES: Experience[] = [
   {
-    id: "shadcncraft",
-    companyName: "shadcncraft",
-    companyLogo: "https://assets.chanhdai.com/images/companies/shadcncraft.svg",
-    companyWebsite: "https://shadcncraft.com?atp=ncdai",
-    location: "Melbourne, Australia",
-    locationType: "Remote",
-    positions: [
-      {
-        id: "1",
-        title: "Design Engineer",
-        employmentPeriod: {
-          start: "01.2026",
-        },
-        employmentType: "Full-time",
-        icon: <CodeXmlIcon />,
-        description: `- Design and build Pro components/blocks, from Figma to production-ready React.
-- Build and maintain the @shadcncraft registry.
-- Build and enhance features for the marketing website.
-- Build and maintain Storybook documentation.
-- Design and build the Upgrade Bundle feature.`,
-        skills: [
-          "TypeScript",
-          "Next.js",
-          "Tailwind CSS",
-          "shadcn/registry",
-          "Figma",
-          "Polar",
-          "Storybook",
-          "Design",
-        ],
-        isExpanded: true,
-      },
-    ],
-    isCurrentEmployer: true,
-  },
-  {
-    id: "quaric",
-    companyName: "Quaric",
-    companyLogo: "https://assets.chanhdai.com/images/companies/quaric.svg",
-    companyWebsite: "https://quaric.com",
-    location: "Can Tho, Viet Nam",
-    locationType: "Remote",
+    id: "buildnboost",
+    companyName: "buildnboost",
+    companyIcon: <LightbulbIcon strokeWidth={1.8} />,
+    location: "Mumbai, India",
     positions: [
       {
         id: "2",
-        title: "Design Engineer",
+        title: "Founder",
         employmentPeriod: {
-          start: "03.2024",
+          start: "05.2023",
         },
-        employmentType: "Part-time",
-        icon: <CodeXmlIcon />,
-        description: `- Created Quaric Brand Identity.
-- Created the Quaric Design System to standardize design practices and accelerate development.
-
-In-house Project: [Quaric Website](https://quaric.com)
-- Designed the UI/UX for Quaric Website, delivering a seamless experience.
-- Developed online ordering to streamline purchases.
-- Integrated VNPAY-QR for secure transactions.
-- Registered the e-commerce site with [online.gov.vn](http://online.gov.vn/website/chi-tiet-115855) for compliance.
-
-In-house Project: [ZaDark](https://zadark.com)
-- Build and maintain ZaDark.com with Docusaurus, integrating AdSense.
-- Develop and maintain the ZaDark extension for Zalo Web on Chrome, Safari, Edge, and Firefox — with 20k+ active users via Chrome Web Store (as of Sep 2025).`,
+        employmentType: "Self-employed",
+        icon: <LightbulbIcon />,
+        description: `- Resumed and scaled the agency, serving international clients across the US, Israel, Dubai, and the UK.
+- Build and launch SaaS products for founders end-to-end — design, development, deployment — outsourcing selectively as builds scale.
+- Shipped web3 and full-stack projects.
+- Now running the agency selectively alongside full-time work.`,
         skills: [
+          "Business Ownership",
+          "SaaS Development",
+          "Full-stack Development",
           "Next.js",
-          "Strapi",
-          "Auth0",
-          "VNPAY-QR",
-          "Docker",
-          "NGINX",
-          "Google Cloud",
-          "Docusaurus",
-          "Extension",
-          "UI/UX Design",
-          "UX Writing",
-          "Design System",
-          "Brand Design",
+          "React",
+          "Laravel",
+          "Tailwind CSS",
+          "Web3",
           "Figma",
         ],
+        isExpanded: true,
       },
       {
         id: "1",
         title: "Founder",
         employmentPeriod: {
-          start: "03.2024",
+          start: "01.2019",
+          end: "11.2021",
         },
-        employmentType: "Part-time",
+        employmentType: "Self-employed",
         icon: <LightbulbIcon />,
-        skills: ["Business Ownership", "Business Law", "Business Tax"],
+        description: `- Founded a web/app development agency at 20, serving clients across India, Dubai, and Oman.
+- Shipped Liplick Pizzeria (mobile + web), FlyCloudCross (Dubai), the Floret Mumbai University app, and a CRM-integrated event site for Bombay College of Pharmacy.
+- Owned every project end-to-end — design to deployment.
+- Paused solo operations in 2021 to take a founding product role at Nilede Technologies.`,
+        skills: ["Laravel", "Next.js", "React", "Tailwind CSS", "Figma"],
       },
     ],
     isCurrentEmployer: true,
   },
   {
-    id: "simplamo",
-    companyName: "Simplamo",
-    companyLogo: "https://assets.chanhdai.com/images/companies/simplamo.webp",
-    location: "Ho Chi Minh City, Viet Nam",
-    locationType: "On-site",
+    id: "agi-inc",
+    companyName: "AGI, Inc.",
+    companyIcon: <CodeXmlIcon strokeWidth={1.8} />,
+    locationType: "Remote",
     positions: [
       {
-        id: "2",
-        title: "Senior Frontend Developer",
+        id: "1",
+        title: "Full-Stack Engineer",
         employmentPeriod: {
-          start: "10.2022",
-          end: "01.2026",
+          start: "07.2025",
+          end: "05.2026",
         },
         employmentType: "Full-time",
         icon: <CodeXmlIcon />,
-        description: `- Built Tree & Gantt views features to improve goal organization, visibility, and progress tracking.
-- Developed [AI Chat](https://help.simplamo.com/features/simplamo-ai/ai-chat/guide_simplamo_ai_chat?ref=IN-926722) and [AI Assistant](https://help.simplamo.com/features/simplamo-ai/ai-expert/aiexpert-rockdiscribe?ref=IN-926722) features.
-- Developed [Whiteboards](https://help.simplamo.com/features/whiteboard/overview?ref=IN-926722) with real-time collaboration.
-- Built and maintained the [Zalo Mini App](https://zalo.me/s/1736112917405511258/) for Simplamo with seamless integration.
-- Developed interactive chart and analytics widgets for the [Dashboard](https://help.simplamo.com/features/dashboard/overview) to enhance data visualization.
-- Developed and maintained core features to enhance functionality and user experience.
-- Ensured UI/UX consistency and adherence to standards.
-- Implemented robust frontend solutions for web and mobile platforms.
-- Analyzed technical capabilities and provided optimal solutions.`,
+        description: `- Built functional, pixel-accurate clones of major consumer apps — Airbnb, Amazon, Gmail, Uber, LinkedIn, and 12+ others — used as realistic training and evaluation environments for AI agents.
+- Shipped deterministic sandboxes with configurable behaviors, real data, and scoring frameworks so agent performance could be benchmarked reliably.
+- Extended the same approach to mobile, building React Native + Expo simulations alongside the Next.js/Redux/Tailwind web stack.
+- Contributed to [realevals.xyz](https://realevals.xyz), a public leaderboard for AI agent performance.
+- Picked up RLHF and reward engineering on the job to improve evaluation accuracy.`,
         skills: [
           "TypeScript",
           "Next.js",
-          "React Native",
-          "MobX",
-          "MobX-State-Tree",
+          "Redux",
           "Tailwind CSS",
-          "Dify",
-          "Zalo Mini App",
-          "Agile",
+          "React Native",
+          "Expo",
+          "RLHF",
+          "Agent Evaluation",
         ],
-      },
-      {
-        id: "1",
-        title: "UI Lead",
-        employmentPeriod: {
-          start: "10.2022",
-          end: "01.2026",
-        },
-        employmentType: "Full-time",
-        icon: <DraftingCompassIcon />,
-        description: `- Ensured UI/UX consistency and high-quality standards.
-- Designed intuitive, user-focused interfaces aligned with business goals.
-- Defined and established a cohesive UI style for Simplamo.`,
-        skills: ["Creativity", "UI/UX Design", "Figma"],
+        isExpanded: true,
       },
     ],
   },
   {
-    id: "tungtung",
-    companyName: "Tung Tung",
-    companyLogo: "https://assets.chanhdai.com/images/companies/tungtung.webp",
-    location: "Ho Chi Minh City, Viet Nam",
-    locationType: "Hybrid",
+    id: "nilede-technologies",
+    companyName: "Nilede Technologies",
+    companyIcon: <BriefcaseBusinessIcon strokeWidth={1.8} />,
+    locationType: "On-site",
     positions: [
       {
-        id: "3",
-        title: "Web Developer",
-        employmentPeriod: {
-          start: "2020",
-          end: "2022",
-        },
-        employmentType: "Full-time",
-        description: `- Built a scalable design system for consistency and efficiency.
-- Built a complex rich-text editor based on ProseMirror and Slate for customizable content creation.
-- Integrated APIs with the Backend Team to enhance functionality.`,
-        icon: <CodeXmlIcon />,
-        skills: ["React", "Redux", "Storybook", "Lerna", "Agile"],
-      },
-      {
-        id: "2",
-        title: "Mobile Developer",
-        employmentPeriod: {
-          start: "2019",
-          end: "2020",
-        },
-        employmentType: "Full-time",
-        description: `- Rebuilt the app with React Native for better UX and performance.
-- Integrated MoMo and in-app purchases for seamless payments.
-- Optimized deployment for staging and production.
-- Published on App Store and Google Play, ensuring compliance.`,
-        icon: <CodeXmlIcon />,
-        skills: [
-          "React Native",
-          "Redux",
-          "MoMo Payment API",
-          "App Store",
-          "Google Play Store",
-          "App Center",
-          "Agile",
-        ],
-      },
-      {
         id: "1",
-        title: "UI/UX Designer",
+        title: "Founding Member & Product Lead",
         employmentPeriod: {
-          start: "2018",
-          end: "2019",
+          start: "11.2021",
+          end: "05.2023",
         },
         employmentType: "Full-time",
-        description: `- Designed a Landing Page for enterprise clients.
-- Redesigned the Online Quiz Platform for a modern look on web and mobile.
-- Redesigned the Pricing interface for individual customers.
-- Enhanced UX by improving usability, navigation, and user flow.`,
         icon: <DraftingCompassIcon />,
-        skills: ["UI/UX Design", "Sketch"],
+        description: `- Joined as a founding team member, owning product direction, sales, and development oversight.
+- Led a 4-person development team shipping CRM backends and multi-tenant SaaS infrastructure.
+- Built a full-stack pizza brand platform spanning mobile app, web app, and franchise admin portal.
+- Drove business development — cold outreach, partnerships, client acquisition — across clients in India, the US, and the UK.`,
+        skills: [
+          "Product Management",
+          "Team Leadership",
+          "CRM Development",
+          "Multi-tenant SaaS",
+          "UI/UX Design",
+          "Business Development",
+          "Sales",
+        ],
       },
     ],
   },
@@ -222,47 +129,42 @@ In-house Project: [ZaDark](https://zadark.com)
     companyIcon: <BriefcaseBusinessIcon strokeWidth={1.8} />,
     positions: [
       {
-        id: "2",
-        title: "Full-stack Developer",
+        id: "1",
+        title: "Product Designer & Developer",
         employmentPeriod: {
-          start: "2018",
-          end: "2020",
+          start: "01.2017",
+          end: "12.2018",
         },
-        employmentType: "Part-time",
-        description: `- Built an order management website with real-time delivery tracking.
-- Developed an e-commerce site for bird’s nest products.
-- Created a map to display monitoring station data.
-- Designed a customizable WordPress landing page.`,
-        icon: <CodeXmlIcon />,
-        skills: [
-          "Laravel",
-          "React",
-          "Express.js",
-          "Socket.IO",
-          "MongoDB",
-          "Firebase",
-          "WordPress",
-          "Docker",
-          "NGINX",
-        ],
+        employmentType: "Freelance",
+        icon: <DraftingCompassIcon />,
+        description: `- Designed and built websites and apps independently for local businesses.
+- Shipped SmartBistro, a cross-platform app built with Ionic, Angular, and Cordova — first project owning both design and code on the same product.`,
+        skills: ["UI/UX Design", "Figma", "Ionic", "Angular", "Cordova"],
       },
+    ],
+  },
+  {
+    id: "aatronix",
+    companyName: "AaTronix",
+    companyIcon: <SmartphoneIcon strokeWidth={1.8} />,
+    companyWebsite: "https://aatronix.blogspot.com",
+    positions: [
       {
         id: "1",
-        title: "Graphic & UI/UX Designer",
+        title: "Android Custom ROM Developer & Blogger",
         employmentPeriod: {
-          start: "2018",
-          end: "2019",
+          start: "12.2014",
+          end: "12.2016",
         },
         employmentType: "Part-time",
-        description: "Designed logos, posters, ads, and UI.",
-        icon: <DraftingCompassIcon />,
+        icon: <CodeXmlIcon />,
+        description: `- Built and distributed custom Android ROMs on XDA Developers forums.
+- Ran a monetized blog with consistent traffic via AdSense and AdFly.`,
         skills: [
-          "Creativity",
-          "UI/UX Design",
-          "Graphic Design",
-          "Sketch",
-          "Adobe Photoshop",
-          "Adobe Illustrator",
+          "Android",
+          "Custom ROM Development",
+          "Blogging",
+          "Content Monetization",
         ],
       },
     ],

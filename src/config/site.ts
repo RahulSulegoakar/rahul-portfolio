@@ -6,7 +6,7 @@ import { USER } from "@/features/portfolio/data/user"
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: process.env.NEXT_PUBLIC_APP_URL || "https://chanhdai.com",
+  url: process.env.NEXT_PUBLIC_APP_URL || "https://rahulsulegaokar.com",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -55,11 +55,12 @@ export const MOBILE_NAV: NavItem<Route>[] = [
 
 export const X_HANDLE = SOCIAL.x.handle
 export const GITHUB_USERNAME = SOCIAL.github.handle
-export const SOURCE_CODE_GITHUB_REPO = "ncdai/chanhdai.com"
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/ncdai/chanhdai.com"
+export const SOURCE_CODE_GITHUB_REPO = "RahulSulegoakar/rahul-portfolio"
+export const SOURCE_CODE_GITHUB_URL =
+  "https://github.com/RahulSulegoakar/rahul-portfolio"
 
-export const SPONSORSHIP_URL = "https://github.com/sponsors/ncdai"
+export const SPONSORSHIP_URL = "https://github.com/sponsors/RahulSulegoakar"
 
 export const UTM_PARAMS = {
-  utm_source: "chanhdai.com",
+  utm_source: "rahulsulegaokar.com",
 }
