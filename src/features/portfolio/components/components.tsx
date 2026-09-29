@@ -1,75 +1,99 @@
-import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
+import type { Route } from "next"
+import Link from "next/link"
+import { ArrowRightIcon } from "lucide-react"
 
-import { ComponentIcon } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { getPostsByCategory } from "@/features/blog/data/posts";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import {
+  ComponentItem,
+  ComponentItemDot,
+  ComponentItemIcon,
+  ComponentItemTitle,
+} from "@/app/(app)/(pages)/components/component-item"
+import { ComponentIcon } from "@/features/doc/components/component-icon"
+import { getComponentDocs } from "@/features/doc/data/documents"
 
-import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel";
+import { HandwrittenArrow, HandwrittenNote } from "./handwritten-note"
+import { Panel, PanelHeader, PanelTitle, PanelTitleSup } from "./panel"
+import { PanelTitleCopy } from "./panel-title-copy"
+
+const ID = "components"
 
 export function Components() {
-  const posts = getPostsByCategory("components");
+  const components = getComponentDocs()
 
   return (
-    <Panel id="components">
+    <Panel id={ID}>
       <PanelHeader>
         <PanelTitle>
-          Components
-          <PanelTitleSup>({posts.length})</PanelTitleSup>
+          <a href={`#${ID}`}>Components</a>
+          <PanelTitleSup>({components.length})</PanelTitleSup>
+          <PanelTitleCopy id={ID} />
         </PanelTitle>
       </PanelHeader>
 
-      <div className="relative py-4">
-        <div className="absolute inset-0 -z-1 grid grid-cols-1 gap-4 max-sm:hidden sm:grid-cols-2">
-          <div className="border-r border-edge"></div>
-          <div className="border-l border-edge"></div>
+      <HandwrittenNote
+        className="top-4 left-full ml-3 hidden w-36 flex-col items-start xl:flex"
+        aria-hidden
+      >
+        <span className="-rotate-3">
+          free to copy
+          <span className="block" />
+          yours to keep
+        </span>
+        <HandwrittenArrow className="mt-2 -rotate-3" />
+      </HandwrittenNote>
+
+      <div className="relative pt-4">
+        <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-1 max-sm:hidden sm:grid-cols-2 md:grid-cols-3">
+          <div className="border-r border-line" />
+          <div className="border-r border-line max-md:hidden" />
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {posts.slice(0, 6).map((post) => (
-            <Link
-              key={post.slug}
-              href={`/components/${post.slug}`}
+        <div className="screen-line-bottom h-px" />
+
+        <ul className="grid grid-cols-1 overflow-x-clip sm:grid-cols-2 md:grid-cols-3">
+          {components.slice(0, 12).map((c) => (
+            <li
+              key={c.slug}
               className={cn(
-                "group flex items-center gap-4 p-4 transition-[background-color] ease-out hover:bg-accent-muted",
-                "max-sm:screen-line-before max-sm:screen-line-after",
-                "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
+                "max-sm:screen-line-bottom",
+                "sm:max-md:nth-[2n+1]:screen-line-bottom",
+                "md:nth-[3n+1]:screen-line-bottom"
               )}
             >
-              <div
-                className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted ring-1 ring-edge ring-offset-1 ring-offset-background"
-                aria-hidden
-              >
-                <ComponentIcon
-                  className="pointer-events-none size-4 text-muted-foreground"
-                  variant={post.metadata.icon}
-                />
-              </div>
-
-              <h2 className="leading-snug font-medium text-balance underline-offset-4 group-hover:underline">
-                {post.metadata.title}
-              </h2>
-
-              {post.metadata.new && (
-                <span className="flex -translate-x-1 translate-y-px items-center justify-center">
-                  <span className="flex size-2 rounded-sm bg-info" />
-                  <span className="sr-only">New</span>
-                </span>
-              )}
-            </Link>
+              <ComponentItem href={`/components/${c.slug}` as Route}>
+                <ComponentItemIcon>
+                  <ComponentIcon slug={c.slug} />
+                  {(c.metadata.new || c.metadata.updated) && (
+                    <ComponentItemDot
+                      aria-label={c.metadata.new ? "New" : "Updated"}
+                    />
+                  )}
+                </ComponentItemIcon>
+                <ComponentItemTitle as="h3">
+                  {c.metadata.title}
+                </ComponentItemTitle>
+              </ComponentItem>
+            </li>
           ))}
-        </div>
+        </ul>
+
+        <div className="screen-line-top h-4 before:-top-px" />
       </div>
 
-      <div className="screen-line-before flex justify-center py-2">
-        <Button className="px-3" variant="default" asChild>
-          <Link href="/components">
-            All Components
-            <ArrowRightIcon />
-          </Link>
+      <div className="screen-line-top flex justify-center py-4">
+        <Button
+          className="gap-2 pr-2.5 pl-3 shadow-[inset_0_0_1px] shadow-foreground/20"
+          variant="secondary"
+          size="sm"
+          nativeButton={false}
+          render={<Link href="/components" />}
+        >
+          All components
+          <ArrowRightIcon />
         </Button>
       </div>
     </Panel>
-  );
+  )
 }

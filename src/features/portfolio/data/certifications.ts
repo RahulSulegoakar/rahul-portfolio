@@ -1,4 +1,4 @@
-import type { Certification } from "../types/certifications";
+import type { Certification } from "../types/certifications"
 
 export const CERTIFICATIONS: Certification[] = [
   {
@@ -18,22 +18,6 @@ export const CERTIFICATIONS: Certification[] = [
     credentialID: "dfb419c8-5ed7-43f2-b60c-446bc50a39b1",
     credentialURL:
       "https://animations.dev/certificate/dfb419c8-5ed7-43f2-b60c-446bc50a39b1",
-  },
-  {
-    title: "Certificate of Trademark Registration No. 565092",
-    issuer: "Intellectual Property Office of Viet Nam",
-    issueDate: "2025-08-18",
-    credentialID: "565092",
-    credentialURL:
-      "https://drive.google.com/file/d/1NgRp81ZAAUKEtuI9RefG0e8yni6JkoE8/view?usp=sharing",
-  },
-  {
-    title: "Certificate of Trademark Registration No. 543682",
-    issuer: "Intellectual Property Office of Viet Nam",
-    issueDate: "2025-05-08",
-    credentialID: "543682",
-    credentialURL:
-      "https://drive.google.com/file/d/1x7YzlK1kyz16h28ux9k3KAwnZFAabsvq/view?usp=sharing",
   },
   {
     title: "Next.js SEO Fundamentals",
@@ -63,28 +47,12 @@ export const CERTIFICATIONS: Certification[] = [
       "https://nextjs.org/learn/certificate?course=react-foundations&user=47463&certId=react-foundations-47463-1745634245158",
   },
   {
-    title: "Certificate of Copyright Registration No. 0040/2025/QTG",
-    issuer: "Copyright Office of Viet Nam",
-    issueDate: "2025-01-02",
-    credentialID: "0040/2025/QTG",
-    credentialURL:
-      "https://drive.google.com/file/d/1kVBByVLlYPyyUJvxKga670wvVPNmZ2nV/view?usp=sharing",
-  },
-  {
     title: "Vietnamese Standardized Test of English Proficiency (CEFR B1)",
     issuer: "USSH-VNUHCM",
     issueDate: "2024-12-17",
     credentialID: "QH58202305187",
     credentialURL:
       "https://vbcc.hcmussh.edu.vn/?type=11&certificateType=7&no=QH58202305187&fullName=Nguy%E1%BB%85n+Ch%C3%A1nh+%C4%90%E1%BA%A1i&dob=2000-08-14",
-  },
-  {
-    title: "Certificate of Copyright Registration No. 7994/2024/QTG",
-    issuer: "Copyright Office of Viet Nam",
-    issueDate: "2024-09-18",
-    credentialID: "7994/2024/QTG",
-    credentialURL:
-      "https://drive.google.com/file/d/1otjV4GNOLFj4JD2tHWLuZpUIVyITYNUy/view?usp=sharing",
   },
   {
     title: "Engaging in Persuasive and Credible Communication",
@@ -162,4 +130,4 @@ export const CERTIFICATIONS: Certification[] = [
     credentialURL:
       "https://drive.google.com/file/d/1-NHhjKlQbhlcO7bpRue1XzDgDaudOf2N/view?usp=sharing",
   },
-];
+]

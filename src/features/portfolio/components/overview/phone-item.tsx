@@ -1,45 +1,83 @@
-"use client";
+"use client"
 
-import { PhoneIcon } from "lucide-react";
+import { useId } from "react"
+import { copyToClipboardWithEvent } from "@/utils/copy"
+import { decodePhoneNumber, formatPhoneNumber } from "@/utils/string"
+import { useTiks } from "@rexa-developer/tiks/react"
+import { PhoneIcon } from "lucide-react"
+import { useHotkeys } from "react-hotkeys-hook"
 
-import { useIsClient } from "@/hooks/use-is-client";
-import { decodePhoneNumber, formatPhoneNumber } from "@/utils/string";
+import { trackEvent } from "@/lib/events"
+import { useIsClient } from "@/hooks/use-is-client"
+import { toast } from "@/components/ui/toast"
+import { CopyButton } from "@/components/copy-button"
 
 import {
   IntroItem,
   IntroItemContent,
   IntroItemIcon,
   IntroItemLink,
-} from "./intro-item";
+} from "./intro-item"
+import { RevealEncodedTextScript } from "./reveal-encoded-text"
 
 type PhoneItemProps = {
-  phoneNumber: string;
-};
+  phoneNumberB64: string
+}
 
-export function PhoneItem({ phoneNumber }: PhoneItemProps) {
-  const isClient = useIsClient();
-  const phoneNumberDecoded = decodePhoneNumber(phoneNumber);
+export function PhoneItem({ phoneNumberB64 }: PhoneItemProps) {
+  const id = useId()
+  const isClient = useIsClient()
+  const phoneNumberDecoded = decodePhoneNumber(phoneNumberB64)
+  const phoneNumberFormatted = formatPhoneNumber(phoneNumberDecoded)
+
+  const { success } = useTiks()
+
+  useHotkeys("shift+p", () => {
+    copyToClipboardWithEvent(phoneNumberDecoded, {
+      name: "copy_phone_number",
+      properties: {
+        method: "keyboard",
+        key: "shift+p",
+      },
+    })
+    success()
+    toast.add({ type: "success", title: "Phone number copied" })
+  })
 
   return (
-    <IntroItem>
+    <IntroItem className="group">
       <IntroItemIcon>
         <PhoneIcon />
       </IntroItemIcon>
 
-      <IntroItemContent>
+      <IntroItemContent className="flex">
         <IntroItemLink
-          href={isClient ? `tel:${phoneNumberDecoded}` : "#"}
-          aria-label={
-            isClient
-              ? `Call ${formatPhoneNumber(phoneNumberDecoded)}`
-              : "Phone number"
-          }
+          id={id}
+          href={isClient ? `tel:${phoneNumberDecoded}` : ""}
+          suppressHydrationWarning
         >
-          {isClient
-            ? formatPhoneNumber(phoneNumberDecoded)
-            : "[Phone protected]"}
+          {isClient ? phoneNumberFormatted : ""}
         </IntroItemLink>
       </IntroItemContent>
+
+      <div className="-translate-x-3 translate-y-px opacity-0 transition-opacity ease-out group-hover:opacity-100 group-has-focus-visible:opacity-100 pointer-coarse:opacity-100">
+        <CopyButton
+          className="rounded-md border-none text-muted-foreground [&_svg:not([class*='size-'])]:size-4"
+          variant="ghost"
+          size="icon-xs"
+          text={() => phoneNumberDecoded}
+          onCopySuccess={() => {
+            trackEvent({
+              name: "copy_phone_number",
+              properties: {
+                method: "button",
+              },
+            })
+          }}
+        />
+      </div>
+
+      <RevealEncodedTextScript id={id} textB64={btoa(phoneNumberFormatted)} />
     </IntroItem>
-  );
+  )
 }

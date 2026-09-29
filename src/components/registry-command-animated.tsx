@@ -1,30 +1,31 @@
-"use client";
+"use client"
 
-import { motion } from "motion/react";
-import { useRef } from "react";
+import { useRef } from "react"
+import { motion } from "motion/react"
 
-import { registryConfig } from "@/config/registry";
-import type { PackageManager } from "@/hooks/use-config";
-import { useConfig } from "@/hooks/use-config";
-import { FlipSentences } from "@/registry/flip-sentences";
-import { components } from "@/registry/registry-components";
-
+import { registryConfig } from "@/config/registry"
+import type { PackageManager } from "@/hooks/use-package-manager"
+import { usePackageManager } from "@/hooks/use-package-manager"
 import {
   Tabs,
   TabsContent,
   TabsIndicator,
   TabsList,
   TabsTrigger,
-} from "./base/ui/tabs";
-import { CopyButton } from "./copy-button";
-import { getIconForPackageManager } from "./icons";
+} from "@/components/ui/tabs"
+import { components } from "@/registry/components/_registry"
+import { IconSwap, IconSwapItem } from "@/registry/components/icon-swap"
+import { TextFlip } from "@/registry/components/text-flip"
+
+import { CopyButton } from "./copy-button"
+import { getIconForPackageManager } from "./icons"
 
 const pmCommands = {
   pnpm: "pnpm dlx",
-  yarn: "npx",
+  yarn: "yarn",
   npm: "npx",
   bun: "bunx --bun",
-};
+}
 
 const registryItemNames = components
   .map((component) => component.name)
@@ -32,14 +33,12 @@ const registryItemNames = components
     a.localeCompare(b, "en", {
       sensitivity: "base",
     })
-  );
+  )
 
 export function RegistryCommandAnimated() {
-  const [config, setConfig] = useConfig();
+  const [packageManager, setPackageManager] = usePackageManager()
 
-  const packageManager = config.packageManager || "pnpm";
-
-  const currentItemRef = useRef(registryItemNames[0]);
+  const currentItemRef = useRef(registryItemNames[0])
 
   return (
     <div className="relative overflow-hidden">
@@ -47,15 +46,16 @@ export function RegistryCommandAnimated() {
         className="gap-0"
         value={packageManager}
         onValueChange={(value) => {
-          setConfig((prev) => ({
-            ...prev,
-            packageManager: value as PackageManager,
-          }));
+          setPackageManager(value as PackageManager)
         }}
       >
-        <div className="px-4 shadow-[inset_0_-1px_0_0] shadow-edge">
-          <TabsList className="h-10 rounded-none bg-transparent p-0 dark:bg-transparent [&_svg]:me-2 [&_svg]:size-4 [&_svg]:text-muted-foreground">
-            {getIconForPackageManager(packageManager)}
+        <div className="px-4 shadow-[inset_0_-1px_0_0] shadow-line">
+          <TabsList className="h-10 rounded-none bg-transparent p-0 inset-ring-0 dark:bg-transparent [&_svg]:size-4 [&_svg]:text-muted-foreground">
+            <IconSwap>
+              <IconSwapItem className="mr-2" key={packageManager}>
+                {getIconForPackageManager(packageManager)}
+              </IconSwapItem>
+            </IconSwap>
 
             {Object.entries(pmCommands).map(([key]) => {
               return (
@@ -66,10 +66,10 @@ export function RegistryCommandAnimated() {
                 >
                   {key}
                 </TabsTrigger>
-              );
+              )
             })}
 
-            <TabsIndicator className="h-0.5 translate-y-0 rounded-none bg-foreground shadow-none dark:bg-foreground" />
+            <TabsIndicator className="h-0.5 translate-y-0 rounded-none bg-foreground ring-0 dark:bg-foreground" />
           </TabsList>
         </div>
 
@@ -85,39 +85,39 @@ export function RegistryCommandAnimated() {
                   value={key}
                   render={<span className="block sm:inline-block" />}
                 >
-                  {command} shadcn add <span className="sm:hidden">\</span>
+                  {command} shadcn add{" "}
+                  <span className="select-none sm:hidden" aria-hidden="true">
+                    \
+                  </span>
                 </TabsContent>
-              );
+              )
             })}
 
             <span>{registryConfig.namespace}/</span>
 
-            <FlipSentences
+            <TextFlip
               className="text-foreground"
               as={motion.span}
-              variants={{
-                initial: { y: -12, opacity: 0 },
-                animate: { y: 0, opacity: 1 },
-                exit: { y: 12, opacity: 0 },
-              }}
               onIndexChange={(index: number) => {
-                currentItemRef.current = registryItemNames[index];
+                currentItemRef.current = registryItemNames[index]
               }}
             >
               {registryItemNames}
-            </FlipSentences>
+            </TextFlip>
           </code>
         </pre>
       </Tabs>
 
       <CopyButton
-        className="absolute top-1.5 right-1.5 size-7 rounded-lg [&_svg]:size-3.5"
-        getValue={() => {
-          const baseCommand = pmCommands[packageManager] || pmCommands["pnpm"];
-          return `${baseCommand} shadcn add ${registryConfig.namespace}/${currentItemRef.current}`;
+        className="absolute top-1.5 right-1.5 z-10 size-7 border-none text-muted-foreground"
+        variant="ghost"
+        size="icon-sm"
+        text={() => {
+          const baseCommand = pmCommands[packageManager] || pmCommands["pnpm"]
+          return `${baseCommand} shadcn@latest add ${registryConfig.namespace}/${currentItemRef.current}`
         }}
         event="copy_npm_command"
       />
     </div>
-  );
+  )
 }

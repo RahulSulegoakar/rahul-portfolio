@@ -1,26 +1,6 @@
-import Image from "next/image";
+import Image from "next/image"
 
-import { ScrollFadeEffect } from "@/registry/scroll-fade-effect";
-
-interface Artwork {
-  artist: string;
-  art: string;
-}
-
-const works: Artwork[] = [
-  {
-    artist: "Ornella Binni",
-    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
-  },
-  {
-    artist: "Tom Byrom",
-    art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
-  },
-  {
-    artist: "Vladimir Malyavko",
-    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
-  },
-];
+import { ScrollFadeEffect } from "@/registry/components/scroll-fade-effect"
 
 export default function ScrollFadeEffectHorizontalDemo() {
   return (
@@ -32,7 +12,7 @@ export default function ScrollFadeEffectHorizontalDemo() {
               <Image
                 src={artwork.art}
                 alt={`Photo by ${artwork.artist}`}
-                className="aspect-3/4 h-fit w-fit rounded-sm object-cover"
+                className="aspect-3/4 size-fit rounded-sm object-cover"
                 width={300}
                 height={400}
               />
@@ -48,5 +28,25 @@ export default function ScrollFadeEffectHorizontalDemo() {
         </div>
       </ScrollFadeEffect>
     </div>
-  );
+  )
 }
+
+interface Artwork {
+  artist: string
+  art: string
+}
+
+const works: Artwork[] = [
+  {
+    artist: "Ornella Binni",
+    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Tom Byrom",
+    art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+]

@@ -1,84 +1,65 @@
-import type { User } from "@/features/portfolio/types/user";
+import type { User } from "@/features/portfolio/types/user"
 
-export const USER = {
-  firstName: "Rahul",
-  lastName: "Sulegaokar",
-  displayName: "Rahul Sulegaokar",
-  username: "rahulsulegaokar",
+export const USER: User = {
+  firstName: "Chánh Đại",
+  lastName: "Nguyễn",
+  displayName: "Chánh Đại",
+  username: "ncdai",
   gender: "male",
   pronouns: "he/him",
-  bio: "Product Designer & Frontend Developer with 7+ years of experience, specializing in end-to-end product development from concept to launch.",
+  bio: "Creating with code. Small details matter.",
   flipSentences: [
-    "Product Designer & Frontend Developer",
-    "Building user-centric web experiences",
-    "Turning ideas into polished products",
+    "Creating with code. Small details matter.",
+    "Design Engineer.",
+    "Open source contributor.",
+    "I own a vintage iPhone.",
   ],
-  address: "Mumbai, India",
-  phoneNumber: "KzkxNzkwMDE1MTg4Mw", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  email: "cnN1bGVnYW9rYXJAZ21haWwuY29t", // base64 encoded
-  website: "https://rahulsulegaokar.com",
-  jobTitle: "Lead Product Designer & Frontend Developer",
+  address: "Ho Chi Minh City, Viet Nam",
+  phoneNumberB64: "Kzg0Nzc3ODg4MTQ4", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
+  emailB64: "ZGFpQGNoYW5oZGFpLmNvbQ==", // base64 encoded
+  website: "https://chanhdai.com",
+  jobTitle: "Design Engineer",
   jobs: [
     {
-      title: "Lead Product Designer & Frontend Developer",
-      company: "Proton lab",
-      website: "https://protonlab.ai",
-    },
-    {
       title: "Design Engineer",
-      company: "Shadcraft",
-      website: "https://shadcraft.com",
+      company: "shadcncraft",
+      website: "https://shadcncraft.com?atp=ncdai",
+      experienceId: "shadcncraft",
     },
     {
       title: "Founder",
       company: "Quaric",
       website: "https://quaric.com",
+      experienceId: "quaric",
     },
   ],
-  about: `
-Product Designer & Frontend Developer with 7+ years of experience, specializing in end-to-end product development from concept to launch.
-
-Led development teams and founded buildnboost, a web and app development agency serving international clients across USA, Israel, Dubai, and UK. Specialized in building SaaS products and scalable applications with modern tech stacks.
-
-As founding team member at Nilede Technologies, led a team of 4 developers building multi-tenant SaaS platforms and CRM solutions for clients across multiple countries.
-
-Currently leading product design and development at Proton lab, building HyperWarp—an AI-powered email automation platform.
-
-Built and scaled AaTronix blog to 150k+ views, creating custom Android ROMs and building an engaged community in the Android development space.
-
-Skilled in Next.js, React, TypeScript, Tailwind CSS, and modern frontend technologies—delivering high-quality, user-centric web and mobile applications with a strong focus on both design excellence and technical implementation.
+  about: `- I’m Chánh Đại (call me Dai) — a Design Engineer with 5+ years of experience, known for pixel-perfect execution and an obsessive attention to detail.
+- Passionate about exploring new technologies and turning ideas into reality through polished, thoughtfully crafted projects.
+- Creator of [chanhdai.com](https://github.com/ncdai/chanhdai.com) (2.2k stars), [React Wheel Picker](https://react-wheel-picker.chanhdai.com) (50k+ weekly downloads, ▲ Vercel OSS Program), and [ZaDark](https://zadark.com) (80k+ downloads, 30k+ users) — peak metrics.
 `,
   avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=5",
-  namePronunciationUrl: "/audio/chanhdai.mp3",
-  timeZone: "Asia/Kolkata",
-  affiliateBadge: {
-    name: "Shadcraft",
-    url: "https://shadcraft.com",
-    logo: "https://assets.chanhdai.com/images/companies/shadcraft.svg?v=2",
+  avatarSketch: "https://assets.chanhdai.com/images/avatar-sketch.webp",
+  avatarVariants: {
+    lightOff: "https://assets.chanhdai.com/images/avatar-light-off.webp",
+    lightOn: "https://assets.chanhdai.com/images/avatar-light-on.webp",
+    darkOff: "https://assets.chanhdai.com/images/avatar-dark-off.webp",
+    darkOn: "https://assets.chanhdai.com/images/avatar-dark-on.webp",
   },
+  ogImage:
+    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?t=1778602757",
+  namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
+  timeZone: "Asia/Ho_Chi_Minh",
   keywords: [
-    "rahul sulegaokar",
-    "rahulsulegaokar",
-    "product designer",
-    "frontend developer",
-    "lead product designer",
-    "web developer",
-    "saas development",
-    "tailwind css",
-    "react developer",
-    "nextjs developer",
-    "typescript developer",
-    "ui/ux designer",
-    "mobile app developer",
-    "fullstack developer",
-    "design engineer",
-    "proton lab",
-    "hyperwarp",
-    "buildnboost",
-    "mumbai developer",
-    "india web developer",
+    "ncdai",
+    "nguyenchanhdai",
+    "nguyen chanh dai",
+    "chanhdai",
+    "chanh dai",
+    "iamncdai",
+    "quaric",
+    "zadark",
+    "nguyễn chánh đại",
+    "chánh đại",
   ],
   dateCreated: "2023-10-20", // YYYY-MM-DD
-} satisfies User;
+}

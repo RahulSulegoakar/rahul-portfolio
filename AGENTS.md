@@ -1,248 +1,88 @@
-# AI Agent Guidelines for chanhdai.com
+# AI agent guidelines for chanhdai.com
 
-This guide provides essential information for AI agents working with the chanhdai.com codebase - a Next.js dev portfolio, blog, and component registry website.
+Next.js 16 (App Router) portfolio, blog, and shadcn registry website.
 
-## Project Overview
+**Stack**: TypeScript, React 19, Tailwind CSS v4, shadcn/ui, MDX, Vitest, pnpm (Bun for scripts), Vercel
 
-Next.js portfolio, blog, and component registry website with:
+## Project structure
 
-- Component registry using shadcn/ui system
-- Blog with MDX content
-- Custom React components
+| Directory                              | Purpose                                                            |
+| -------------------------------------- | ------------------------------------------------------------------ |
+| `src/app/`                             | App Router pages, layouts, API routes                              |
+| `src/components/`                      | Shared UI components                                               |
+| `src/registry/`                        | Registry source (components, hooks, blocks, examples, lib)         |
+| `src/features/`                        | Feature modules: `doc`, `blog`, `portfolio`, `sponsor`, `bookmark` |
+| `src/config/`                          | Site (`site.ts`), registry (`registry.ts`), JSON-LD config         |
+| `src/scripts/`                         | Build scripts (registry, capture) run with Bun                     |
+| `src/hooks/`, `src/lib/`, `src/utils/` | Hooks, libraries, utilities                                        |
 
-### Tech Stack
+**Key files**: `components.json` (shadcn config), `src/features/portfolio/data/` (portfolio data), `src/features/{sponsor,bookmark}/data.tsx` (sponsor and bookmark data), `.env.example` (env vars)
 
-- **Framework**: Next.js 16 (App Router)
-- **Styling**: Tailwind CSS v4
-- **UI Components**: shadcn/ui + custom components
-- **Package Manager**: pnpm
-- **Language**: TypeScript
-- **Content**: MDX for blog posts
-- **Deployment**: Vercel
+## Component registry
 
-## Project Structure
+Built on shadcn/ui. Registry types and their definition files:
 
-### Key Directories
+| Type                 | File                                   |
+| -------------------- | -------------------------------------- |
+| `registry:component` | `src/registry/components/_registry.ts` |
+| `registry:hook`      | `src/registry/hooks/_registry.ts`      |
+| `registry:block`     | `src/registry/blocks/_registry.ts`     |
+| `registry:example`   | `src/registry/examples/_registry.ts`   |
+| `registry:lib`       | `src/registry/lib/_registry.ts`        |
+| `registry:style`     | `src/registry/styles/_registry.ts`     |
 
-- `src/app/` - Next.js App Router pages (routes, layouts, API routes)
-- `src/components/` - Shared UI components
-- `src/registry/` - Component registry source (components, hooks, blocks, examples)
-- `src/__registry__/` - Auto-generated registry files (DO NOT EDIT)
-- `src/features/` - Feature-based modules (blog, portfolio, sponsors)
-- `src/config/` - Site and registry configuration
-- `src/hooks/` - Custom React hooks
-- `src/lib/` - Utility libraries and helpers
-- `src/styles/` - Global styles and CSS
-- `src/assets/` - Static assets (fonts, metadata)
-- `src/scripts/` - Build and utility scripts
-- `src/types/` - TypeScript type definitions
-- `src/utils/` - Utility functions
+**NEVER EDIT** auto-generated outputs of `pnpm registry:build`: `registry.json`, `registry-stats.json`, `src/registry/__index__.tsx`, `public/r/*.json`
 
-### Important Files
+### Adding a new component
 
-- `src/config/site.ts` - Site configuration and navigation
-- `src/config/registry.ts` - Registry configuration
-- `src/features/portfolio/data/user.ts` - User portfolio data
-- `src/registry/index.ts` - Registry entry point
-- `components.json` - shadcn/ui configuration
+1. Create component in `src/registry/components/[name]/`
+2. Register in the appropriate `_registry.ts` file
+3. Create example in `src/registry/examples/`
+4. Run `pnpm registry:build`
+5. Add docs MDX in `src/features/doc/content/components/` (category is derived from the folder)
 
-## Component Registry System
+## Content system
 
-The project features a custom component registry built on top of shadcn/ui:
+All content lives in `src/features/doc/content/` as MDX files, split into `blog/` and `components/`. The category is derived from the immediate subfolder name (not declared in frontmatter), so a file's location determines whether it's a blog post or component doc.
 
-### Registry Structure
+- **Data layer**: `src/features/doc/data/documents.ts` (`getAllDocs`, `getDocBySlug`, `getDocsByCategory`)
+- **Blog UI**: `src/features/blog/` (rendering only, imports data from `features/doc`)
 
-- **Components** (`src/registry/registry-components.ts`) - UI components
-- **Hooks** (`src/registry/registry-hook.ts`) - Custom React hooks
-- **Blocks** (`src/registry/registry-blocks.ts`) - Pre-built blocks and sections
-- **Examples** (`src/registry/registry-examples.ts`) - Component demos
-- **Lib** (`src/registry/registry-lib.ts`) - Utility functions
+## Coding guidelines
 
-### Registry Types
-
-- `registry:component` - Reusable UI components (`src/registry/registry-components.ts`)
-- `registry:hook` - Custom React hooks (`src/registry/registry-hook.ts`)
-- `registry:block` - Pre-built blocks and sections (`src/registry/registry-blocks.ts`)
-- `registry:example` - Component examples/demos (`src/registry/registry-examples.ts`)
-- `registry:lib` - Utility libraries (`src/registry/registry-lib.ts`)
-
-### Registry Build Process
-
-```bash
-# Build registry internally
-pnpm registry:internal:build
-
-# Build shadcn registry
-pnpm registry:build
-```
-
-Auto-generated files (DO NOT EDIT):
-
-- `src/__registry__/index.tsx`
-- `src/__registry__/registry.autogenerated.json`
-- `public/r/*.json`
-
-## Development Guidelines
-
-### Getting Started
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm dev  # Runs on port 1408
-
-# Build for production
-pnpm build
-```
-
-### Code Standards
-
-- **TypeScript**: Strict mode enabled
-- **ESLint**: Next.js configuration
-- **Prettier**: Code formatting
-- **File naming**: kebab-case for files and component files
-
-### Coding Guidelines
-
-When writing code for this project, follow these principles:
-
-- Write type-safe TypeScript code with explicit types when necessary
-- Use descriptive variable and function names that make code self-documenting
-- Add comments only for complex logic or non-obvious behavior (focus on "why" not "what")
+- TypeScript strict mode; explicit types when necessary
+- kebab-case file naming
+- Descriptive names; comments only for "why", not "what"
 - No emojis in code, comments, or commit messages
-- Use JSDoc for public APIs when the signature alone isn't clear
-- Follow SOLID principles: keep functions small, focused, and easy to understand
+- Tailwind CSS v4 syntax; support dark/light modes
+- Follow SOLID principles
+- Headings in sentence-case (capitalize only the first word and proper nouns), applies to Markdown/MDX docs and prose
 
-### Component Development
-
-1. Create component in `src/registry/[component-name]/`
-2. Add to appropriate registry file (`registry-components.ts`, etc.)
-3. Create examples in `src/registry/examples/`
-4. Run registry build commands
-5. Update documentation
-
-## Working with Content
-
-### Blog Posts
-
-- Location: `src/features/blog/content/`
-- Format: MDX files
-- Supports: Custom components, code blocks, metadata
-
-### User Portfolio
-
-**Portfolio Data Files** (`src/features/portfolio/data/`):
-
-- `user.ts` - Core personal information, bio, contact details, job history
-- `experiences.ts` - Detailed work experience, education, company information
-- `projects.ts` - Portfolio projects with descriptions, links, skills, logos
-- `tech-stack.ts` - Technology stack, programming languages, tools, frameworks
-- `awards.ts` - Competition awards, prizes, academic achievements, certificates
-- `certifications.ts` - Professional certifications, course completions, credentials
-- `social-links.ts` - Social media profiles, professional networks, contact links
-- `testimonials.ts` - Professional recommendations, endorsements from colleagues and clients
-
-## Environment & Configuration
-
-### Environment Variables
-
-See `.env.example` for required variables:
-
-**Core Application**:
-
-- `APP_URL` - Application base URL (e.g., `https://acme.com`)
-
-**Registry Configuration**:
-
-- `REGISTRY_NAMESPACE` - Namespace identifier for shadcn CLI (e.g., `@acme`)
-- `REGISTRY_NAMESPACE_URL` - URL pattern for component resolution (e.g., `https://acme.com/r/{name}.json`)
-
-**External Services**:
-
-- `GITHUB_API_TOKEN` - GitHub Personal Access Token for API calls ([Get token](https://github.com/settings/tokens))
-- `NEXT_PUBLIC_DMCA_URL` - DMCA Protection badge URL ([DMCA ProtectionPro](https://www.dmca.com/ProtectionPro.aspx))
-
-**Analytics & Tracking**:
-
-- `NEXT_PUBLIC_POSTHOG_KEY` - PostHog project API key for analytics ([Get key](https://posthog.com))
-- `NEXT_PUBLIC_POSTHOG_HOST` - PostHog API host URL (e.g., `https://ph.acme.com`)
-- `NEXT_PUBLIC_POSTHOG_UI_HOST` - PostHog UI host URL (e.g., `https://us.i.posthog.com`)
-
-### Analytics Events
-
-The project uses PostHog for analytics tracking. Events are defined in `src/lib/events.ts` with Zod schema validation. PostHog is initialized in `src/instrumentation-client.ts` (production only) with consent management via `@c15t/nextjs` package.
-
-### Site Configuration
-
-- Navigation: `MAIN_NAV` in `src/config/site.ts`
-- Theme colors: `META_THEME_COLORS`
-- GitHub repo: `SOURCE_CODE_GITHUB_REPO`
-
-## Common Tasks
-
-### Adding a New Component
-
-1. Create component directory: `src/registry/[name]/`
-2. Implement component with proper TypeScript types
-3. Add to `src/registry/registry-components.ts`
-4. Create example in `src/registry/examples/`
-5. Build registry: `pnpm registry:build`
-
-### Updating User Information
-
-Edit `src/features/portfolio/data/user.ts` with new:
-
-- Personal information
-- Job details
-- Project descriptions
-- Contact information
-
-### Adding Blog Posts
-
-1. Create MDX file in `src/features/blog/content/`
-2. Include frontmatter metadata
-3. Use custom components for enhanced content
-
-### Styling Guidelines
-
-- Use Tailwind CSS v4 syntax
-- Follow existing color scheme (zinc-based)
-- Support dark/light modes
-- Use CSS variables for theme colors
-
-## Important Notes
-
-### Registry Dependencies
-
-- Components may depend on external packages
-
-### Auto-generated Files
-
-**NEVER EDIT** these files directly:
-
-- `src/__registry__/index.tsx`
-- `src/__registry__/registry.autogenerated.json`
-- Files in `public/r/`
-
-### Performance Considerations
-
-- Components use React.lazy() for code splitting
-- Images optimized with Next.js Image component
-- MDX content is statically generated
-
-### Personal Information
-
-When adapting this codebase, ensure ALL personal information is replaced. See **User Portfolio** section above for data file locations. Also update `src/config/site.ts`, blog posts, and asset URLs throughout the codebase.
-
-## Build Commands
+## Commands
 
 ```bash
-pnpm build          # Production build
-pnpm start          # Start production server
-pnpm preview        # Build and preview locally
-pnpm lint           # Run ESLint
-pnpm format:write   # Format code with Prettier
-pnpm check-types    # TypeScript type checking
+pnpm dev                # Dev server
+pnpm build              # Production build (runs registry:build first)
+pnpm test               # Vitest (watch)
+pnpm test:run           # Vitest (single run)
+pnpm lint               # ESLint
+pnpm lint:fix           # ESLint with --fix
+pnpm format:write       # Prettier
+pnpm check-types        # Type checking (tsc --noEmit)
+pnpm registry:build     # Build shadcn registry (Bun script + shadcn build)
+pnpm registry:validate  # Validate generated registry.json
 ```
+
+### Local dev URL
+
+A dev server is usually already running behind `https://ncdai.localhost` (see `allowedDevOrigins` in `next.config.ts` and `NEXT_PUBLIC_APP_URL` in `.env.local`). Use that origin to test pages and routes, never `http://localhost:3000` or a raw port. It also makes generated absolute URLs match what the code produces.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

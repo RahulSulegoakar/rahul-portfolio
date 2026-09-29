@@ -1,28 +1,52 @@
-import type { SocialLink } from "../types/social-links";
+import type { SocialProfile } from "@/features/portfolio/types/social-links"
 
-export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    icon: "https://assets.chanhdai.com/images/link-icons/x.webp?t=1759581475",
-    title: "X (formerly Twitter)",
-    description: "@rahulsulegaokar",
-    href: "https://x.com/rahulsulegaokar",
+/**
+ * Keyed registry of social profiles — the single source of truth. Icons are
+ * bound separately in `social-link-icons.tsx` (keyed by the same `SocialName`),
+ * so adding a profile here forces the icon map to stay in sync at compile time.
+ */
+export const SOCIAL = {
+  x: {
+    title: "X",
+    handle: "@iamncdai",
+    href: "https://x.com/iamncdai",
+    sameAs: true,
   },
-  {
-    icon: "https://assets.chanhdai.com/images/link-icons/github.webp?t=1759581475",
+  github: {
     title: "GitHub",
-    description: "rahulsulegaokar",
-    href: "https://github.com/rahulsulegaokar",
+    handle: "ncdai",
+    href: "https://github.com/ncdai",
+    sameAs: true,
   },
-  {
-    icon: "https://assets.chanhdai.com/images/link-icons/linkedin.webp?t=1759581475",
+  linkedin: {
     title: "LinkedIn",
-    description: "rahulsulegaokar",
-    href: "https://linkedin.com/in/rahulsulegaokar",
+    handle: "ncdai",
+    href: "https://linkedin.com/in/ncdai",
+    sameAs: true,
   },
-  {
-    icon: "https://assets.chanhdai.com/images/link-icons/youtube.webp?t=1759581475",
+  // dailydotdev: {
+  //   title: "daily.dev",
+  //   handle: "@ncdai",
+  //   href: "https://app.daily.dev/ncdai",
+  //   sameAs: true,
+  // },
+  discord: {
+    title: "Discord",
+    handle: "ncdai",
+    href: "https://discord.com/users/1186630645443739651",
+  },
+  youtube: {
     title: "YouTube",
-    description: "@rahulsulegaokar",
-    href: "https://www.youtube.com/@rahulsulegaokar",
+    handle: "@ncdai",
+    href: "https://www.youtube.com/@ncdai",
+    sameAs: true,
   },
-];
+} satisfies Record<string, SocialProfile>
+
+export type SocialName = keyof typeof SOCIAL
+
+export type SocialLink = SocialProfile & { name: SocialName }
+
+export const SOCIAL_LINKS: SocialLink[] = (
+  Object.entries(SOCIAL) as [SocialName, SocialProfile][]
+).map(([name, profile]) => ({ name, ...profile }))

@@ -1,13 +1,13 @@
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic"
 
-import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark";
-import { RahulMark } from "@/components/rahul-mark";
+import { ChanhDaiMark } from "@/components/chanhdai-mark"
+import { ChanhDaiWordmark } from "@/components/chanhdai-wordmark"
 
-import { Panel, PanelHeader, PanelTitle } from "./panel";
+import { Panel, PanelHeader, PanelTitle } from "./panel"
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
-);
+)
 
 export function Brand() {
   return (
@@ -18,27 +18,27 @@ export function Brand() {
 
       <BrandContextMenu>
         <div className="grid grid-cols-[2rem_1fr]">
-          <div className="flex h-28 items-center justify-center border-r border-dashed border-edge bg-background">
+          <div className="flex h-28 items-center justify-center border-r border-dashed border-line bg-background">
             <span className="rotate-270 text-sm text-muted-foreground select-none">
               Mark
             </span>
           </div>
 
-          <div className="screen-line-after flex items-center justify-center pr-8 after:z-1">
-            <RahulMark className="h-8 w-auto sm:h-12" />
+          <div className="screen-line-bottom flex items-center justify-center pr-8 after:z-1">
+            <ChanhDaiMark className="h-8 w-auto sm:h-12" />
           </div>
 
-          <div className="flex h-28 items-center justify-center border-r border-dashed border-edge bg-background">
+          <div className="flex h-28 items-center justify-center border-r border-dashed border-line bg-background">
             <span className="rotate-270 text-sm text-muted-foreground select-none">
               Logotype
             </span>
           </div>
 
-          <div className="screen-line-after flex items-center justify-center pr-8 after:z-1">
+          <div className="screen-line-bottom flex items-center justify-center pr-8 after:z-1">
             <ChanhDaiWordmark className="h-6 w-auto sm:h-10" />
           </div>
         </div>
       </BrandContextMenu>
     </Panel>
-  );
+  )
 }

@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import { format } from "date-fns";
-import { LoaderIcon } from "lucide-react";
-import { use } from "react";
+import { use } from "react"
+import { formatNumber } from "@/utils/format"
+import { format, parseISO } from "date-fns"
+import { LoaderIcon } from "lucide-react"
 
 import {
+  Tooltip,
   TooltipContent,
-  TooltipProvider,
-  TooltipRoot,
   TooltipTrigger,
-} from "@/components/base/ui/tooltip";
-import type { Activity } from "@/components/kibo-ui/contribution-graph";
+} from "@/components/ui/tooltip"
+import type { Activity } from "@/registry/components/contribution-graph"
 import {
   ContributionGraph,
   ContributionGraphBlock,
@@ -18,82 +18,93 @@ import {
   ContributionGraphFooter,
   ContributionGraphLegend,
   ContributionGraphTotalCount,
-} from "@/components/kibo-ui/contribution-graph";
-import { GITHUB_USERNAME, UTM_PARAMS } from "@/config/site";
-import { addQueryParams } from "@/utils/url";
+} from "@/registry/components/contribution-graph"
+import { SOCIAL } from "@/features/portfolio/data/social-links"
 
 export function GitHubContributionGraph({
   contributions,
 }: {
-  contributions: Promise<Activity[]>;
+  contributions: Promise<Activity[]>
 }) {
-  const data = use(contributions);
+  const data = use(contributions)
+
+  if (data.length === 0) {
+    return null
+  }
 
   return (
-    <TooltipProvider>
+    <figure>
       <ContributionGraph
-        className="mx-auto py-2"
+        className="mx-auto gap-4 py-4"
         data={data}
-        blockSize={11}
-        blockMargin={3}
+        blockSize={12}
+        blockMargin={2}
         blockRadius={0}
+        aria-label="GitHub Contributions Graph"
       >
         <ContributionGraphCalendar
-          className="no-scrollbar px-2"
+          className="px-4 **:data-[slot=month-labels]:text-muted-foreground"
           title="GitHub Contributions"
+          aria-hidden
         >
           {({ activity, dayIndex, weekIndex }) => (
-            <TooltipRoot>
-              <TooltipTrigger render={<g />}>
-                <ContributionGraphBlock
-                  activity={activity}
-                  dayIndex={dayIndex}
-                  weekIndex={weekIndex}
-                />
-              </TooltipTrigger>
-
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <g>
+                    <ContributionGraphBlock
+                      activity={activity}
+                      dayIndex={dayIndex}
+                      weekIndex={weekIndex}
+                    />
+                  </g>
+                }
+              />
               <TooltipContent className="font-sans">
                 <p>
                   {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
-                  on {format(new Date(activity.date), "dd.MM.yyyy")}
+                  on {format(parseISO(activity.date), "d MMM yyyy")}
                 </p>
               </TooltipContent>
-            </TooltipRoot>
+            </Tooltip>
           )}
         </ContributionGraphCalendar>
 
-        <ContributionGraphFooter className="px-2">
+        <ContributionGraphFooter className="px-4 text-sm">
           <ContributionGraphTotalCount>
-            {({ totalCount, year }) => (
-              <div className="text-muted-foreground">
-                {totalCount.toLocaleString("en")} contributions in {year} on{" "}
+            {({ totalCount }) => (
+              <figcaption className="text-pretty tabular-nums">
+                <span className="mr-2 tracking-wide text-muted-foreground/80">
+                  Fig. 2.
+                </span>
+                {formatNumber(totalCount)} contributions,{" "}
+                {format(parseISO(data[0].date), "d MMM yyyy")} –{" "}
+                {format(parseISO(data[data.length - 1].date), "d MMM yyyy")}.
+                Source:{" "}
                 <a
-                  className="font-medium underline underline-offset-4"
-                  href={addQueryParams(
-                    `https://github.com/${GITHUB_USERNAME}`,
-                    UTM_PARAMS
-                  )}
+                  href={SOCIAL.github.href}
+                  className="link-underline"
                   target="_blank"
                   rel="noopener"
                 >
                   GitHub
                 </a>
                 .
-              </div>
+              </figcaption>
             )}
           </ContributionGraphTotalCount>
 
-          <ContributionGraphLegend />
+          <ContributionGraphLegend aria-hidden />
         </ContributionGraphFooter>
       </ContributionGraph>
-    </TooltipProvider>
-  );
+    </figure>
+  )
 }
 
 export function GitHubContributionFallback() {
   return (
-    <div className="flex h-40.5 w-full items-center justify-center">
+    <div className="flex h-45 w-full items-center justify-center">
       <LoaderIcon className="animate-spin text-muted-foreground" />
     </div>
-  );
+  )
 }

@@ -1,134 +1,70 @@
-import Image from "next/image";
+import { USER } from "@/features/portfolio/data/user"
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/base/ui/tooltip";
-import { UTM_PARAMS } from "@/config/site";
-import { USER } from "@/features/portfolio/data/user";
-import { FlipSentences } from "@/registry/flip-sentences";
-import { addQueryParams } from "@/utils/url";
-
-import { PronounceMyName } from "./pronounce-my-name";
-import { VerifiedIcon } from "./verified-icon";
+import { ChanhDaiMarkIsometric } from "./chanhdai-mark-isometric"
+import { FlipSentences } from "./flip-sentences"
+import { HandwrittenArrow, HandwrittenNote } from "./handwritten-note"
+import { PronounceMyName } from "./pronounce-my-name"
+import { VerifiedIcon } from "./verified-icon"
 
 export function ProfileHeader() {
   return (
-    <div className="screen-line-after flex border-x border-edge">
-      <div className="absolute top-[-3.5px] left-[-4.5px] size-2 rounded-xs border bg-popover" />
-      <div className="absolute top-[-3.5px] right-[-4.5px] size-2 rounded-xs border bg-popover" />
+    <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x screen-line-bottom-border after:z-1">
+      <figure className="relative col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
+        <ChanhDaiMarkIsometric />
 
-      <div className="shrink-0 border-r border-edge">
-        <div className="mx-0.5 my-0.75">
-          <img
-            className="size-30 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
-            alt={`${USER.displayName}'s avatar`}
-            src={USER.avatar}
-            fetchPriority="high"
-          />
-        </div>
-
-        <a
-          href="https://en.wikipedia.org/wiki/Flag_of_India"
-          target="_blank"
-          rel="noreferrer"
-          className="absolute top-0 -left-px"
+        {/* w-36 needs ~1088px before the gutter can hold it without clipping,
+            and the mark ignores coarse pointers, so nothing to annotate there. */}
+        <HandwrittenNote
+          className="bottom-20 left-full hidden w-36 flex-col items-start pointer-fine:xl:flex"
+          aria-hidden
         >
-          {/* Flag of India */}
-          <svg
-            className="h-8 sm:h-9"
-            viewBox="0 0 30 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Flag of India</title>
-            <rect width="30" height="6.67" y="0" fill="#FF9933" />
-            <rect width="30" height="6.67" y="6.67" fill="#FFFFFF" />
-            <rect width="30" height="6.66" y="13.34" fill="#138808" />
-            <circle
-              cx="15"
-              cy="10"
-              r="2.8"
-              fill="none"
-              stroke="#000080"
-              strokeWidth="0.4"
+          <HandwrittenArrow className="-scale-y-100 -rotate-6" />
+          <span className="ml-3 -rotate-6">
+            follows your cursor
+            <span className="block" />
+            click for a sound
+          </span>
+        </HandwrittenNote>
+
+        <figcaption className="pointer-events-none absolute right-2 bottom-2 text-sm/none tracking-wide text-[color-mix(in_oklab,var(--muted-foreground)_60%,var(--background))] tabular-nums select-none sm:right-4 sm:bottom-4">
+          Fig. 1.
+        </figcaption>
+      </figure>
+
+      <div className="flex flex-col sm:row-span-2 sm:row-start-1">
+        <div className="screen-line-top mt-auto shrink-0 border-r border-line">
+          <div className="mx-0.5 my-0.75 flex outline-none">
+            <div className="relative size-30 rounded-full min-[24rem]:size-32 sm:size-40">
+              <img
+                className="block size-full rounded-[inherit] object-cover select-none dark:hidden"
+                src={USER.avatarSketch}
+                alt="Avatar with sketch style in light mode"
+              />
+              <img
+                className="hidden size-full rounded-[inherit] object-cover select-none dark:block"
+                src={USER.avatar}
+                alt="Avatar in dark mode"
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-[inherit] inset-ring-1 inset-ring-foreground/30 dark:inset-ring-foreground/10" />
+            </div>
+          </div>
+          {/* <AvatarLightsToggle className="group/avatar-lights-toggle mx-0.5 my-0.75 flex outline-none">
+            <AvatarLights
+              className="ring-border ring-offset-background group-focus-visible/avatar-lights-toggle:ring-1 group-focus-visible/avatar-lights-toggle:ring-offset-2"
+              variants={USER.avatarVariants}
             />
-            {Array.from({ length: 24 }, (_, i) => {
-              const a = (i * 15 * Math.PI) / 180;
-              return (
-                <line
-                  key={i}
-                  x1="15"
-                  y1="10"
-                  x2={15 + 2.8 * Math.cos(a)}
-                  y2={10 - 2.8 * Math.sin(a)}
-                  stroke="#000080"
-                  strokeWidth="0.4"
-                />
-              );
-            })}
-          </svg>
-        </a>
+          </AvatarLightsToggle> */}
+        </div>
       </div>
 
-      <div className="flex flex-1 flex-col">
-        <div className="flex grow items-end pb-1 pl-4">
-          <div className="line-clamp-1 font-mono text-xs text-zinc-300 select-none max-sm:hidden dark:text-zinc-800">
-            {"text-3xl "}
-            <span className="inline dark:hidden">text-zinc-950</span>
-            <span className="hidden dark:inline">text-zinc-50</span>
-            {" font-medium"}
-          </div>
-        </div>
-
-        <div className="border-t border-edge">
-          <div className="flex items-center gap-2 pl-4">
-            <h1 className="-translate-y-px text-3xl font-semibold">
+      <div className="flex flex-col">
+        <div className="z-1 mt-auto border-t border-line">
+          <div className="flex -translate-x-px items-center gap-2 pl-4">
+            <h1 className="-translate-y-px text-[2rem]/none font-medium tracking-tight">
               {USER.displayName}
             </h1>
 
-            <VerifiedIcon
-              className="size-4.5 text-info select-none"
-              aria-label="Verified"
-            />
-
-            {USER.affiliateBadge && (
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <a
-                      className="relative flex after:absolute after:inset-0 after:ring after:ring-black/10 after:ring-inset dark:after:ring-white/15"
-                      href={addQueryParams(USER.affiliateBadge.url, UTM_PARAMS)}
-                      target="_blank"
-                      rel="noopener"
-                    />
-                  }
-                >
-                  <Image
-                    src={USER.affiliateBadge.logo}
-                    alt={USER.affiliateBadge.name}
-                    width={20}
-                    height={20}
-                    quality={100}
-                    unoptimized
-                  />
-                </TooltipTrigger>
-
-                <TooltipContent>
-                  <p>
-                    An affiliate of{" "}
-                    <a
-                      className="font-medium underline-offset-4 hover:underline"
-                      href={addQueryParams(USER.affiliateBadge.url, UTM_PARAMS)}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      {USER.affiliateBadge.name}
-                    </a>
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            )}
+            <VerifiedIcon className="size-4.5 select-none" aria-hidden />
 
             {USER.namePronunciationUrl && (
               <PronounceMyName
@@ -137,20 +73,11 @@ export function ProfileHeader() {
             )}
           </div>
 
-          <div className="h-12.5 border-t border-edge py-1 pl-4 sm:h-9">
-            <FlipSentences
-              className="font-mono text-sm text-balance text-muted-foreground"
-              variants={{
-                initial: { y: -10, opacity: 0 },
-                animate: { y: -1, opacity: 1 },
-                exit: { y: 10, opacity: 0 },
-              }}
-            >
-              {USER.flipSentences}
-            </FlipSentences>
-          </div>
+          <FlipSentences className="h-12.5 border-t border-line py-1 pl-4 sm:h-9">
+            {USER.flipSentences}
+          </FlipSentences>
         </div>
       </div>
     </div>
-  );
+  )
 }

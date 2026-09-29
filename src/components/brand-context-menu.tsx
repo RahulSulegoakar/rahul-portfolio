@@ -1,67 +1,77 @@
-"use client";
+"use client"
 
-import { DownloadIcon, TriangleDashedIcon, TypeIcon } from "lucide-react";
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { toast } from "sonner";
+import Link from "next/link"
+import { copyText } from "@/utils/copy"
+import { useTiks } from "@rexa-developer/tiks/react"
+import { ArrowUpRight, Download, SquareDashed, Type } from "lucide-react"
 
-import { copyText } from "@/utils/copy";
-
-import { getWordmarkSVG } from "./chanhdai-wordmark";
-import { getMarkSVG, RahulMark } from "./rahul-mark";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
+  ContextMenuSeparator,
   ContextMenuTrigger,
-} from "./ui/context-menu";
+} from "@/components/ui/context-menu"
+import { toast } from "@/components/ui/toast"
+
+import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
+import { getWordmarkSVG } from "./chanhdai-wordmark"
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
-  const { resolvedTheme } = useTheme();
+  const { success } = useTiks()
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
+      <ContextMenuTrigger>{children}</ContextMenuTrigger>
 
-      <ContextMenuContent className="w-64">
+      <ContextMenuContent className="w-fit">
+        <ContextMenuItem render={<a href="/" target="_blank" />}>
+          <ArrowUpRight />
+          Open Link in New Tab
+        </ContextMenuItem>
+
+        <ContextMenuSeparator />
+
         <ContextMenuItem
           onClick={() => {
-            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff");
-            copyText(svg);
-            toast.success("Copied Mark as SVG");
+            copyText(getMarkSVG())
+            toast.add({ type: "success", title: "Mark as SVG copied" })
+            success()
           }}
         >
-          <RahulMark />
+          <ChanhDaiMark />
           Copy Mark as SVG
         </ContextMenuItem>
 
         <ContextMenuItem
           onClick={() => {
-            const svg = getWordmarkSVG(
-              resolvedTheme === "light" ? "#000" : "#fff"
-            );
-            copyText(svg);
-            toast.success("Copied Logotype as SVG");
+            copyText(getWordmarkSVG())
+            toast.add({ type: "success", title: "Logotype as SVG copied" })
+            success()
           }}
         >
-          <TypeIcon />
+          <Type />
           Copy Logotype as SVG
         </ContextMenuItem>
 
-        <ContextMenuItem asChild>
-          <Link href="/blog/chanhdai-brand">
-            <TriangleDashedIcon />
-            Brand Guidelines
-          </Link>
+        <ContextMenuSeparator />
+
+        <ContextMenuItem render={<Link href="/blog/chanhdai-brand" />}>
+          <SquareDashed />
+          Brand Guidelines
         </ContextMenuItem>
 
-        <ContextMenuItem asChild>
-          <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
-            <DownloadIcon />
-            Download Brand Assets
-          </a>
+        <ContextMenuItem
+          render={
+            <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download />
+          }
+        >
+          <Download />
+          Download Brand Assets
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
-  );
+  )
 }
+
+export default BrandContextMenu
