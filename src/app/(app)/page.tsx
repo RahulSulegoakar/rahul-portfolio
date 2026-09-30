@@ -17,6 +17,7 @@ import {
   InsightsSkeleton,
 } from "@/features/portfolio/components/insights"
 import { Overview } from "@/features/portfolio/components/overview"
+import { PixelGridEffect } from "@/features/portfolio/components/pixel-grid-effect"
 import { ProfileHeader } from "@/features/portfolio/components/profile-header"
 import { Projects } from "@/features/portfolio/components/projects"
 import { SocialLinks } from "@/features/portfolio/components/social-links"
@@ -35,15 +36,18 @@ export default function HomePage() {
     <>
       <JsonLdScript data={getProfilePageJsonLd()} />
       {CARBON_ADS && <FloatingCarbonAds />}
+      <PixelGridEffect />
 
       <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
-        <div className="relative mx-auto md:max-w-3xl lg:*:not-[[aria-hidden]]:border-x-0">
+        <div className="relative mx-auto md:max-w-3xl">
           <div
             className="pointer-events-none absolute inset-y-0 right-full w-(--separator-height) border-l pixel-grid max-lg:hidden"
+            data-pixel-grid="column"
             aria-hidden
           />
           <div
             className="pointer-events-none absolute inset-y-0 left-full w-(--separator-height) border-r pixel-grid max-lg:hidden"
+            data-pixel-grid="column"
             aria-hidden
           />
 
@@ -103,6 +107,7 @@ function Separator({ className }: { className?: string }) {
         "pixel-divider h-(--separator-height) w-full border-x",
         className
       )}
+      data-pixel-grid="row"
     >
       {/* <div
         className="absolute -top-1.25 -left-1.25 z-2 flex size-2.25 border bg-background"
