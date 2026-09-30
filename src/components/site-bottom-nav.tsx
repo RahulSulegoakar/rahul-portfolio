@@ -3,7 +3,6 @@ import dynamic from "next/dynamic"
 import { MOBILE_NAV } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
-import blocks from "@/registry/__blocks__.json"
 import { BOOKMARKS } from "@/features/bookmark/data"
 import { sortBookmarksNewestFirst } from "@/features/bookmark/lib/sort"
 import type { BookmarkPreview } from "@/features/bookmark/types"
@@ -39,7 +38,6 @@ export function SiteBottomNav() {
     >
       <CommandMenu
         docs={docPreviews}
-        blocks={blocks}
         bookmarks={bookmarkPreviews}
       />
       <Separator

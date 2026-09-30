@@ -5,7 +5,6 @@ import path from "node:path"
 import { rimraf } from "rimraf"
 import { registrySchema, type Registry } from "shadcn/schema"
 
-import { getAllBlocks } from "@/lib/blocks"
 
 /**
  * build-registry.mts is the single registry pipeline.
@@ -138,21 +137,6 @@ export const Index: Record<string, any> = {`
   await fs.writeFile(path.join(REGISTRY_PATH, "__index__.tsx"), index, "utf8")
 }
 
-async function buildBlocksIndex() {
-  const blocks = await getAllBlocks(["registry:block"])
-
-  const payload = blocks.map((block) => ({
-    name: block.name,
-    description: block.description,
-    categories: block.categories,
-  }))
-
-  // Build src/registry/__blocks__.json
-  await rimraf(path.join(REGISTRY_PATH, "__blocks__.json"))
-  const blocksJsonPath = path.join(REGISTRY_PATH, "__blocks__.json")
-  await fs.writeFile(blocksJsonPath, JSON.stringify(payload, null, 2))
-}
-
 try {
   const totalStart = performance.now()
 
@@ -166,9 +150,6 @@ try {
   }
 
   await buildRegistry(result.data)
-
-  console.log("\n🗂️ Building src/registry/__blocks__.json...")
-  await buildBlocksIndex()
 
   const elapsed = ((performance.now() - totalStart) / 1000).toFixed(2)
   console.log(`\n✅ Build complete in ${elapsed}s!`)

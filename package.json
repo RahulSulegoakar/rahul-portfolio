@@ -36,7 +36,6 @@
     "registry:validate": "shadcn registry validate ./public/r/registry.json",
     "capture": "bun run ./src/scripts/capture.mts",
     "capture:sync": "bun run ./src/scripts/capture-sync.mts",
-    "capture:cover": "bun run ./src/scripts/capture-cover.mts",
     "avatars:sync": "bun run ./src/scripts/sync-x-avatars.mts",
     "craft:upload": "bun run ./src/scripts/craft-upload.mts",
     "generate-libphonenumber-metadata": "libphonenumber-metadata-generator ./src/assets/libphonenumber.metadata.json --countries IN --extended",

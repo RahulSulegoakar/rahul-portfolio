@@ -1,11 +1,9 @@
-import type { Route } from "next"
 import type { ImageProps } from "next/image"
 import Image from "next/image"
-import Link from "next/link"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import { format } from "date-fns"
-import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react"
+import { ArrowUpRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -80,13 +78,6 @@ export function CraftItem({
           )}
         </CaptionCell>
         <div className="col-span-2 flex border-t border-line max-sm:empty:hidden sm:col-span-1">
-          {craft.registryHref && (
-            <CaptionLink render={<Link href={craft.registryHref as Route} />}>
-              Get the code
-              <ArrowRightIcon />
-            </CaptionLink>
-          )}
-
           {craft.xPostUrl && (
             <CaptionLink
               render={

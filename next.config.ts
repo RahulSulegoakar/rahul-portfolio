@@ -1,55 +1,5 @@
 import type { NextConfig } from "next"
 
-/**
- * Component slugs that used to also render under /blog/<slug> (a shared MDX
- * pool) and were indexed there. After splitting content into category folders
- * they live only at /components/<slug>, so the legacy /blog URLs are permanently
- * redirected below to avoid 404s.
- *
- * This is a fixed snapshot of the previously-indexed slugs — components added
- * after the split were never on /blog and don't need an entry.
- */
-const LEGACY_BLOG_COMPONENT_SLUGS = [
-  "apple-hello-effect",
-  "brand-assets-menu",
-  "chevrons-up-down-icon",
-  "code-block-command",
-  "consent-manager",
-  "copy-button",
-  "dot-grid-spotlight",
-  "elastic-slider",
-  "fluid-gradient-text",
-  "github-contributions",
-  "github-stars",
-  "glow-card-grid",
-  "haptic",
-  "icon-swap",
-  "middle-truncation",
-  "mobius-loop-icon",
-  "react-wheel-picker",
-  "scroll-fade-effect",
-  "shimmering-text",
-  "slide-to-unlock",
-  "spinning-circular-text",
-  "testimonial-spotlight",
-  "testimonial",
-  "testimonials-marquee",
-  "text-flip",
-  "theme-switcher",
-  "theme-toggle-effect",
-  "toc-minimap",
-  "twemoji",
-  "work-experience-component",
-] as const
-
-const legacyBlogComponentRedirects = LEGACY_BLOG_COMPONENT_SLUGS.map(
-  (slug) => ({
-    source: `/blog/${slug}`,
-    destination: `/components/${slug}`,
-    permanent: true,
-  })
-)
-
 const nextConfig: NextConfig = {
   /**
    * Stamped once per build and inlined. Reading the clock at render time would
@@ -102,21 +52,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/:section(blog|components)/writing-effect-inspired-by-apple",
-        destination: "/:section/apple-hello-effect",
-        permanent: true,
-      },
-      {
-        source: "/:section(blog|components)/work-experience",
-        destination: "/:section/work-experience-component",
-        permanent: true,
-      },
-      {
-        source: "/:section(blog|components)/theme-switcher-component",
-        destination: "/:section/theme-switcher",
-        permanent: true,
-      },
-      {
         source: "/wall-of-love",
         destination: "/testimonials",
         permanent: true,
@@ -131,43 +66,19 @@ const nextConfig: NextConfig = {
         destination: "/llms.txt",
         permanent: true,
       },
-      // Merged into one document, like the Recognition section on the home page.
       {
-        source: "/:doc(awards|certifications|intellectual-property).md",
-        destination: "/recognition.md",
+        source: "/blog/:slug.mdx",
+        destination: "/blog/:slug.md",
         permanent: true,
       },
+    ]
+  },
+  async headers() {
+    return [
       {
-        source: "/blocks/content",
-        destination: "/blocks/marketing",
-        permanent: true,
+        source: "/r/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
-      {
-        source: "/blocks/content/blog-01",
-        destination: "/blocks/marketing/blog-01",
-        permanent: true,
-      },
-      {
-        source: "/blocks/content/blog-02",
-        destination: "/blocks/marketing/blog-02",
-        permanent: true,
-      },
-      {
-        source: "/blocks/content/experience-01",
-        destination: "/blocks/marketing/experience-01",
-        permanent: true,
-      },
-      {
-        source: "/blocks/content/team-01",
-        destination: "/blocks/marketing/team-01",
-        permanent: true,
-      },
-      {
-        source: "/:section(blog|components)/:slug.mdx",
-        destination: "/:section/:slug.md",
-        permanent: true,
-      },
-      ...legacyBlogComponentRedirects,
     ]
   },
   async rewrites() {
@@ -177,11 +88,11 @@ const nextConfig: NextConfig = {
       // silently breaks Accept-based markdown negotiation in production
       beforeFiles: [
         {
-          source: "/:section(blog|components)/:slug.md",
+          source: "/blog/:slug.md",
           destination: "/doc.md/:slug",
         },
         {
-          source: "/:section(blog|components)/:slug",
+          source: "/blog/:slug",
           destination: "/doc.md/:slug",
           has: [
             {
@@ -211,10 +122,6 @@ const nextConfig: NextConfig = {
         {
           source: "/rss",
           destination: "/blog/rss",
-        },
-        {
-          source: "/registry/rss",
-          destination: "/components/rss",
         },
       ],
     }

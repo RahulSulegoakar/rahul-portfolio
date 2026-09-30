@@ -7,7 +7,6 @@ import { ChanhDaiMark } from "@/components/chanhdai-mark"
 import { NavDesktop } from "@/components/nav-desktop"
 import { NavItemGitHub } from "@/components/nav-item-github"
 import { ThemeToggle } from "@/components/theme-toggle"
-import blocks from "@/registry/__blocks__.json"
 import { BOOKMARKS } from "@/features/bookmark/data"
 import { sortBookmarksNewestFirst } from "@/features/bookmark/lib/sort"
 import type { BookmarkPreview } from "@/features/bookmark/types"
@@ -57,7 +56,6 @@ export function SiteHeader() {
           />
           <CommandMenu
             docs={docPreviews}
-            blocks={blocks}
             bookmarks={bookmarkPreviews}
             enabledHotkeys
           />

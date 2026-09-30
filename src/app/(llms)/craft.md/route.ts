@@ -23,7 +23,6 @@ ${CRAFTS.map((item) =>
   [
     `- ${item.description} (${item.createdAt})`,
     `  ${formatMedia(item.media)}`,
-    item.registryHref && `  Code: ${SITE_INFO.url}${item.registryHref}`,
     item.xPostUrl && `  Post on X: ${item.xPostUrl}`,
   ]
     .filter(Boolean)

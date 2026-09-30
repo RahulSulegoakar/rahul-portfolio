@@ -28,7 +28,6 @@ export const CRAFTS: Craft[] = [
       height: 1004,
     },
     createdAt: "2026-09-19",
-    registryHref: "/components/jpg-card-holder",
     xPostUrl: "https://x.com/iamncdai/status/2101154119641878870",
   },
   {
@@ -43,7 +42,6 @@ export const CRAFTS: Craft[] = [
       height: 1004,
     },
     createdAt: "2026-09-16",
-    registryHref: "/components/apple-carousel",
     xPostUrl: "https://x.com/iamncdai/status/2099952343982932285",
   },
   {
@@ -100,7 +98,6 @@ export const CRAFTS: Craft[] = [
       height: 1004,
     },
     createdAt: "2026-09-08",
-    registryHref: "/components/swipe-actions",
     xPostUrl: "https://x.com/iamncdai/status/2097315369434358238",
   },
   {
@@ -115,7 +112,6 @@ export const CRAFTS: Craft[] = [
       height: 1004,
     },
     createdAt: "2026-06-29",
-    registryHref: "/components/spotlight-logo",
     xPostUrl: "https://x.com/iamncdai/status/2071332019850846394",
   },
   {
