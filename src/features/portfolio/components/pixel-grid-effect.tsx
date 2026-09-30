@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react"
 /** Must match `background-size` of the `pixel-grid` utility. */
 const CELL = 8
 const MAX_ALPHA = 0.22
-const TWINKLE_PER_10K_CELLS = 1.5
+const TWINKLE_PER_10K_CELLS = 0.15
 const TWINKLE_RISE = 0.008
 const TWINKLE_DECAY = 0.004
 const TRAIL_DECAY = 0.035
