@@ -39,6 +39,7 @@ export default function HomePage() {
       <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
         <div className="mx-auto md:max-w-3xl">
           <ProfileHeader />
+          <Separator />
 
           <SocialLinks />
           <Overview />
