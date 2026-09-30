@@ -37,7 +37,16 @@ export default function HomePage() {
       {CARBON_ADS && <FloatingCarbonAds />}
 
       <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
-        <div className="mx-auto md:max-w-3xl">
+        <div className="relative mx-auto md:max-w-3xl">
+          <div
+            className="pointer-events-none absolute inset-y-0 right-full w-(--separator-height) border-l diagonal-stripes max-lg:hidden"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 left-full w-(--separator-height) border-r diagonal-stripes max-lg:hidden"
+            aria-hidden
+          />
+
           <ProfileHeader />
           <Separator />
 
