@@ -185,6 +185,24 @@
   @apply bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[8px_8px];
 }
 
+/* Fixed attachment shares one grid origin across elements, so separators and side rails meet without seams. */
+@utility pixel-grid {
+  @apply [--pattern-foreground:var(--color-line)]/56;
+  background-image:
+    linear-gradient(to right, var(--pattern-foreground) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pattern-foreground) 1px, transparent 1px);
+  background-size: 4px 4px;
+  background-attachment: fixed;
+}
+
+@utility pixel-divider {
+  @apply relative;
+  &:before {
+    content: "";
+    @apply absolute left-[-100vw] -z-1 h-full w-[200vw] pixel-grid;
+  }
+}
+
 @utility stripe-divider {
   @apply relative h-8;
   &:before {
