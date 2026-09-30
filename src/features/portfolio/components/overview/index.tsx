@@ -16,7 +16,7 @@ import { PhoneItem } from "./phone-item"
 
 export function Overview() {
   return (
-    <Panel className="screen-line-bottom-none screen-line-top-none">
+    <Panel className="screen-line-bottom-none screen-line-top-none border-x-0">
       <h2 className="sr-only">Overview</h2>
 
       <PanelContent className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2">
@@ -73,8 +73,6 @@ export function Overview() {
           </IntroItemContent>
         </IntroItem> */}
       </PanelContent>
-
-      <div className="pointer-events-none absolute inset-y-0 left-1/2 -z-1 w-px -translate-x-2.25 border-r border-dashed border-line max-sm:hidden" />
     </Panel>
   )
 }
