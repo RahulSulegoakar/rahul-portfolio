@@ -191,7 +191,7 @@
   background-image:
     linear-gradient(to right, var(--pattern-foreground) 1px, transparent 1px),
     linear-gradient(to bottom, var(--pattern-foreground) 1px, transparent 1px);
-  background-size: 4px 4px;
+  background-size: 8px 8px;
   background-attachment: fixed;
 }
 
