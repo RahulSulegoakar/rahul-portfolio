@@ -36,7 +36,7 @@ export default function HomePage() {
       <JsonLdScript data={getProfilePageJsonLd()} />
       {CARBON_ADS && <FloatingCarbonAds />}
 
-      <div className="[--separator-height:--spacing(4)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
+      <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
         <div className="relative mx-auto md:max-w-3xl">
           <div
             className="pointer-events-none absolute inset-y-0 right-full w-(--separator-height) border-l pixel-grid max-lg:hidden"
