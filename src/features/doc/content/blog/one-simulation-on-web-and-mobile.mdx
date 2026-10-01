@@ -1,0 +1,14 @@
+---
+title: One simulation on web and mobile
+description: How the AGI app replicas were built twice — Next.js on the web, React Native and Expo on mobile — with the same tasks on both.
+createdAt: 2026-02-18
+updatedAt: 2026-02-18
+---
+
+The web replicas at AGI, Inc. were only half of the work. The same consumer apps also had to exist as mobile simulations.
+
+Web used Next.js, Redux, and Tailwind CSS. Mobile used React Native and Expo. The point was the same product behavior on both, not a separate mobile design. If an agent could search, book, or send a message in the web replica, the mobile replica had to allow the same task with the same outcome.
+
+Expo was what made a second native codebase unnecessary. Each app still had to be built carefully, screen by screen, but we were not maintaining a separate iOS and Android project for every simulation.
+
+That split is the one I would keep if I did this again: one definition of the task, two clients that both have to pass it.

@@ -1,19 +1,19 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import { X_HANDLE } from "@/config/site"
-import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld"
+import { X_HANDLE } from "@/config/site";
+import { jsonLdBreadcrumbList, JsonLdScript } from "@/lib/json-ld";
 import {
   PageHeading,
   PageHeadingTagline,
   PageHeadingTitle,
-} from "@/components/page-heading"
-import { CraftItem } from "@/features/craft/components/craft-item"
-import { CRAFTS } from "@/features/craft/data"
+} from "@/components/page-heading";
+import { CraftItem } from "@/features/craft/components/craft-item";
+import { CRAFTS } from "@/features/craft/data";
 
-const title = "Craft"
-const description = "Building interfaces and interactions."
+const title = "Craft";
+const description = "Selected work.";
 
-const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`
+const ogImage = `/og/simple?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}`;
 
 export const metadata: Metadata = {
   title,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     creator: X_HANDLE,
     images: [ogImage],
   },
-}
+};
 
 export default function CraftPage() {
   return (
@@ -58,9 +58,7 @@ export default function CraftPage() {
       <div className="min-h-svh">
         <PageHeading>
           <PageHeadingTagline>Craft</PageHeadingTagline>
-          <PageHeadingTitle>
-            Building interfaces and interactions.
-          </PageHeadingTitle>
+          <PageHeadingTitle>Selected work.</PageHeadingTitle>
         </PageHeading>
 
         <div className="h-4" />
@@ -84,5 +82,5 @@ export default function CraftPage() {
         <div className="h-4" />
       </div>
     </>
-  )
+  );
 }

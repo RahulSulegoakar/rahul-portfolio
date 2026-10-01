@@ -1,35 +1,29 @@
-import { Suspense } from "react"
-import type { Metadata } from "next"
-import type { ProfilePage, WithContext } from "schema-dts"
+import type { Metadata } from "next";
+import type { ProfilePage, WithContext } from "schema-dts";
 
-import { CARBON_ADS } from "@/config/ads"
-import { JSON_LD_ID } from "@/config/json-ld"
-import { JsonLdScript } from "@/lib/json-ld"
-import { absoluteUrl, cn } from "@/lib/utils"
-import { FloatingCarbonAds } from "@/components/floating-carbon-ads"
-import { Blog } from "@/features/portfolio/components/blog"
-import { Education } from "@/features/portfolio/components/education"
-import { Experiences } from "@/features/portfolio/components/experiences"
-import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
-import { Hello } from "@/features/portfolio/components/hello"
-import {
-  Insights,
-  InsightsSkeleton,
-} from "@/features/portfolio/components/insights"
-import { Overview } from "@/features/portfolio/components/overview"
-import { PixelGridEffect } from "@/features/portfolio/components/pixel-grid-effect"
-import { ProfileHeader } from "@/features/portfolio/components/profile-header"
-import { Projects } from "@/features/portfolio/components/projects"
-import { SocialLinks } from "@/features/portfolio/components/social-links"
-import { TechStack } from "@/features/portfolio/components/tech-stack"
-import { Testimonials } from "@/features/portfolio/components/testimonials"
-import { USER } from "@/features/portfolio/data/user"
+import { CARBON_ADS } from "@/config/ads";
+import { JSON_LD_ID } from "@/config/json-ld";
+import { JsonLdScript } from "@/lib/json-ld";
+import { absoluteUrl, cn } from "@/lib/utils";
+import { FloatingCarbonAds } from "@/components/floating-carbon-ads";
+import { Blog } from "@/features/portfolio/components/blog";
+import { Experiences } from "@/features/portfolio/components/experiences";
+import { GitHubContributions } from "@/features/portfolio/components/github-contributions";
+import { Hello } from "@/features/portfolio/components/hello";
+import { Overview } from "@/features/portfolio/components/overview";
+import { PixelGridEffect } from "@/features/portfolio/components/pixel-grid-effect";
+import { ProfileHeader } from "@/features/portfolio/components/profile-header";
+import { Projects } from "@/features/portfolio/components/projects";
+import { SocialLinks } from "@/features/portfolio/components/social-links";
+import { TechStack } from "@/features/portfolio/components/tech-stack";
+import { Testimonials } from "@/features/portfolio/components/testimonials";
+import { USER } from "@/features/portfolio/data/user";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-}
+};
 
 export default function HomePage() {
   return (
@@ -72,19 +66,11 @@ export default function HomePage() {
           <Experiences />
           <Separator />
 
-          <Education />
-          <Separator />
-
           <Projects />
-          <Separator />
-
-          <Suspense fallback={<InsightsSkeleton />}>
-            <Insights />
-          </Suspense>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 function getProfilePageJsonLd(): WithContext<ProfilePage> {
@@ -97,7 +83,7 @@ function getProfilePageJsonLd(): WithContext<ProfilePage> {
     // Reference the Person defined in the WebSite node (rendered globally in
     // the root layout) so both blocks resolve to the same entity.
     mainEntity: { "@id": JSON_LD_ID.person },
-  }
+  };
 }
 
 function Separator({ className }: { className?: string }) {
@@ -118,5 +104,5 @@ function Separator({ className }: { className?: string }) {
         aria-hidden
       /> */}
     </div>
-  )
+  );
 }

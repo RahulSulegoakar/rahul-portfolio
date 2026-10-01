@@ -1,6 +1,6 @@
-import Image from "next/image"
+import Image from "next/image";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   AppleCarouselContent,
   AppleCarouselControls,
@@ -9,14 +9,14 @@ import {
   AppleCarouselRoot,
   AppleCarouselTab,
   AppleCarouselTabList,
-} from "@/registry/components/apple-carousel"
+} from "@/registry/components/apple-carousel";
 
-import type { CraftImage } from "../types"
+import type { CraftImage } from "../types";
 
 export function CraftGallery({ images }: { images: CraftImage[] }) {
   // Cards share the first photo's ratio so the height holds between slides.
-  const [{ width, height }] = images
-  const isPortrait = height > width
+  const [{ width, height }] = images;
+  const isPortrait = height > width;
 
   return (
     <AppleCarouselRoot>
@@ -58,5 +58,5 @@ export function CraftGallery({ images }: { images: CraftImage[] }) {
         <AppleCarouselPlayButton />
       </AppleCarouselControls>
     </AppleCarouselRoot>
-  )
+  );
 }

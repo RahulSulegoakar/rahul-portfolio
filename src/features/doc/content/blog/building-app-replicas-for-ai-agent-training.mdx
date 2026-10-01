@@ -1,0 +1,14 @@
+---
+title: Building app replicas for AI agent training
+description: What I built at AGI, Inc. — pixel-accurate clones of consumer apps used as training and evaluation environments for AI agents.
+createdAt: 2026-04-21
+updatedAt: 2026-04-21
+---
+
+From July 2025 to May 2026 I was a full-stack engineer at AGI, Inc. The job was to build functional, pixel-accurate clones of consumer apps and hand them to AI agents as places to train and be evaluated.
+
+The set included Airbnb, Amazon, Gmail, Uber, LinkedIn, and more than a dozen others. These were not marketing mockups. An agent had to click, type, and move through the product the way a person would.
+
+A screenshot is not enough for that. The result also has to be the same every time you run the task, or a score does not mean anything. Each replica shipped as a deterministic sandbox: behaviors you could configure, data that looked like the real product, and a scoring framework that said whether the agent actually finished the job.
+
+The web stack was Next.js, Redux, and Tailwind CSS. The hard part was not one screen. It was keeping a whole flow consistent, from search to a completed action, so the evaluation was measuring the agent and not a broken replica.

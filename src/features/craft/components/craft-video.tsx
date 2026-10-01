@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import type { Transition } from "motion/react"
-import { motion, useInView } from "motion/react"
+import { useEffect, useRef, useState } from "react";
+import type { Transition } from "motion/react";
+import { motion, useInView } from "motion/react";
 
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
+import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 // `auto` holds back under reduced motion. Pressing play is an explicit opt-in,
 // so `playing` ignores that preference.
-type Playback = "auto" | "playing" | "paused"
+type Playback = "auto" | "playing" | "paused";
 
 export function CraftVideo({
   src,
@@ -18,61 +18,63 @@ export function CraftVideo({
   height,
   className,
 }: {
-  src: string
-  poster?: string
-  width: number
-  height: number
-  className?: string
+  src: string;
+  poster?: string;
+  width: number;
+  height: number;
+  className?: string;
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const isInView = useInView(videoRef, { amount: 0.5 })
-  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)")
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(videoRef, { amount: 0.5 });
+  const prefersReducedMotion = useMediaQuery(
+    "(prefers-reduced-motion: reduce)"
+  );
 
-  const [playback, setPlayback] = useState<Playback>("auto")
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isBlocked, setIsBlocked] = useState(false)
+  const [playback, setPlayback] = useState<Playback>("auto");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isBlocked, setIsBlocked] = useState(false);
 
   const shouldPlay =
     isInView &&
-    (playback === "playing" || (playback === "auto" && !prefersReducedMotion))
+    (playback === "playing" || (playback === "auto" && !prefersReducedMotion));
 
   // Whenever the video won't play on its own, the button stays visible so
   // there is always a way to start it.
   const isHeldBack =
     playback === "paused" ||
     (playback === "auto" && prefersReducedMotion) ||
-    isBlocked
+    isBlocked;
 
   const play = (video: HTMLVideoElement) => {
     video.play().catch((error: DOMException) => {
       // Autoplay was refused (e.g. iOS Low Power Mode). An AbortError only
       // means a pause() landed before playback started.
-      if (error.name === "NotAllowedError") setIsBlocked(true)
-    })
-  }
+      if (error.name === "NotAllowedError") setIsBlocked(true);
+    });
+  };
 
   const togglePlayback = () => {
-    const video = videoRef.current
-    if (!video) return
+    const video = videoRef.current;
+    if (!video) return;
 
     if (isPlaying) {
-      setPlayback("paused")
-      video.pause()
+      setPlayback("paused");
+      video.pause();
     } else {
-      setPlayback("playing")
+      setPlayback("playing");
       // Inside the click, so browsers that refused autoplay count it as a
       // user gesture.
-      play(video)
+      play(video);
     }
-  }
+  };
 
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const video = videoRef.current;
+    if (!video) return;
 
-    if (shouldPlay) play(video)
-    else video.pause()
-  }, [shouldPlay])
+    if (shouldPlay) play(video);
+    else video.pause();
+  }, [shouldPlay]);
 
   return (
     <div
@@ -99,8 +101,8 @@ export function CraftVideo({
         loop
         playsInline
         onPlay={() => {
-          setIsPlaying(true)
-          setIsBlocked(false)
+          setIsPlaying(true);
+          setIsBlocked(false);
         }}
         onPause={() => setIsPlaying(false)}
         // A pointer shortcut. The button is the keyboard and screen reader
@@ -127,43 +129,45 @@ export function CraftVideo({
         />
       </button>
     </div>
-  )
+  );
 }
 
 // Points sit half a stroke inside the outline, so the round joins soften the
 // corners without growing the icon. Changing the width means re-insetting them.
-const ICON_STROKE_WIDTH = 2.5
+const ICON_STROKE_WIDTH = 2.5;
 
 // Matching M L L L Z commands let motion morph `d`: the play triangle is split
 // at x = 13, one half per pause bar.
 const PAUSE_ICON = {
   left: "M5.5 5.5L8.5 5.5L8.5 18.5L5.5 18.5Z",
   right: "M15.5 5.5L18.5 5.5L18.5 18.5L15.5 18.5Z",
-} as const
+} as const;
 
 const PLAY_ICON = {
   left: "M7.5 5.87L13 9.08L13 14.92L7.5 18.13Z",
   right: "M13 9.08L18.01 12L18.01 12L13 14.92Z",
-} as const
+} as const;
 
 const ICON_TRANSITION: Transition = {
   type: "spring",
   visualDuration: 0.3,
   bounce: 0,
-}
+};
 
-const INSTANT_TRANSITION: Transition = { duration: 0 }
+const INSTANT_TRANSITION: Transition = { duration: 0 };
 
 function PlayPauseIcon({
   isPlaying,
   prefersReducedMotion,
 }: {
-  isPlaying: boolean
-  prefersReducedMotion: boolean
+  isPlaying: boolean;
+  prefersReducedMotion: boolean;
 }) {
   // The icon names the action, so a playing video shows pause.
-  const icon = isPlaying ? PAUSE_ICON : PLAY_ICON
-  const transition = prefersReducedMotion ? INSTANT_TRANSITION : ICON_TRANSITION
+  const icon = isPlaying ? PAUSE_ICON : PLAY_ICON;
+  const transition = prefersReducedMotion
+    ? INSTANT_TRANSITION
+    : ICON_TRANSITION;
 
   return (
     <svg
@@ -186,5 +190,5 @@ function PlayPauseIcon({
         transition={transition}
       />
     </svg>
-  )
+  );
 }

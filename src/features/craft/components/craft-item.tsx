@@ -1,15 +1,15 @@
-import type { ImageProps } from "next/image"
-import Image from "next/image"
-import { mergeProps } from "@base-ui/react/merge-props"
-import { useRender } from "@base-ui/react/use-render"
-import { format } from "date-fns"
-import { ArrowUpRightIcon } from "lucide-react"
+import type { ImageProps } from "next/image";
+import Image from "next/image";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { format } from "date-fns";
+import { ArrowUpRightIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import type { Craft } from "../types"
-import { CraftGallery } from "./craft-gallery"
-import { CraftVideo } from "./craft-video"
+import type { Craft } from "../types";
+import { CraftGallery } from "./craft-gallery";
+import { CraftVideo } from "./craft-video";
 
 export function CraftItem({
   craft,
@@ -17,47 +17,49 @@ export function CraftItem({
   imageLoading = "lazy",
   className,
 }: {
-  craft: Craft
-  figureNumber: number
-  imageLoading?: ImageProps["loading"]
-  className?: string
+  craft: Craft;
+  figureNumber: number;
+  imageLoading?: ImageProps["loading"];
+  className?: string;
 }) {
-  const { media } = craft
+  const { media } = craft;
 
   return (
     <figure
-      data-media-type={media.type}
+      data-media-type={media?.type ?? "link"}
       className={cn("flex flex-col", className)}
     >
-      <div className="p-2 in-data-[media-type=gallery]:px-0 in-data-[media-type=gallery]:pb-4">
-        {media.type === "gallery" ? (
-          <CraftGallery images={media.images} />
-        ) : (
-          <div className="relative rounded-xl">
-            {media.type === "video" ? (
-              <CraftVideo
-                className="rounded-[inherit]"
-                src={media.src}
-                poster={media.poster}
-                width={media.width}
-                height={media.height}
-              />
-            ) : (
-              <Image
-                className="h-auto w-full rounded-[inherit] bg-muted"
-                src={media.src}
-                alt={media.alt}
-                width={media.width}
-                height={media.height}
-                loading={imageLoading}
-                unoptimized
-              />
-            )}
+      {media && (
+        <div className="p-2 in-data-[media-type=gallery]:px-0 in-data-[media-type=gallery]:pb-4">
+          {media.type === "gallery" ? (
+            <CraftGallery images={media.images} />
+          ) : (
+            <div className="relative rounded-xl">
+              {media.type === "video" ? (
+                <CraftVideo
+                  className="rounded-[inherit]"
+                  src={media.src}
+                  poster={media.poster}
+                  width={media.width}
+                  height={media.height}
+                />
+              ) : (
+                <Image
+                  className="h-auto w-full rounded-[inherit] bg-muted"
+                  src={media.src}
+                  alt={media.alt}
+                  width={media.width}
+                  height={media.height}
+                  loading={imageLoading}
+                  unoptimized
+                />
+              )}
 
-            <div className="pointer-events-none absolute inset-0 rounded-[inherit] inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
-          </div>
-        )}
-      </div>
+              <div className="pointer-events-none absolute inset-0 rounded-[inherit] inset-ring-1 inset-ring-black/10 dark:inset-ring-white/10" />
+            </div>
+          )}
+        </div>
+      )}
 
       {/* On phones the links get their own row so they never wrap. */}
       <figcaption className="screen-line-top grid grid-cols-[--spacing(31)_1fr]">
@@ -78,6 +80,15 @@ export function CraftItem({
           )}
         </CaptionCell>
         <div className="col-span-2 flex border-t border-line max-sm:empty:hidden sm:col-span-1">
+          {craft.href && (
+            <CaptionLink
+              render={<a href={craft.href} target="_blank" rel="noopener" />}
+            >
+              Visit
+              <ArrowUpRightIcon />
+            </CaptionLink>
+          )}
+
           {craft.xPostUrl && (
             <CaptionLink
               render={
@@ -91,10 +102,10 @@ export function CraftItem({
         </div>
       </figcaption>
     </figure>
-  )
+  );
 }
 
-const isMonthOnly = (date: string) => /^\d{4}-\d{2}$/.test(date)
+const isMonthOnly = (date: string) => /^\d{4}-\d{2}$/.test(date);
 
 function CaptionCell({
   className,
@@ -113,7 +124,7 @@ function CaptionCell({
       props
     ),
     render,
-  })
+  });
 }
 
 function CaptionLink({
@@ -128,5 +139,5 @@ function CaptionLink({
       )}
       {...props}
     />
-  )
+  );
 }
