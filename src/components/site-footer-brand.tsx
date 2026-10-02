@@ -9,20 +9,98 @@ import {
   useTransform,
 } from "motion/react";
 
-import {
-  MARK_CELL_SIZE,
-  MARK_COLS,
-  MARK_PATH,
-  MARK_ROWS,
-  MARK_VIEWBOX,
-} from "@/components/site-mark";
+type Rect = [x: number, y: number, w: number, h: number];
 
-const VIEWBOX_WIDTH = MARK_COLS * MARK_CELL_SIZE;
-const VIEWBOX_HEIGHT = MARK_ROWS * MARK_CELL_SIZE;
+const CELL = 32;
+const ROWS = 8;
+
+// Pixel glyphs as bars in cell units, on the 8-row grid of the original
+// logotype. Each bar is filled and outlined on its own.
+const GLYPHS: { width: number; bars: Rect[] }[] = [
+  // R
+  {
+    width: 5,
+    bars: [
+      [0, 0, 1, 8],
+      [1, 0, 3, 1],
+      [4, 1, 1, 2],
+      [1, 3, 3, 1],
+      [3, 4, 1, 1],
+      [4, 5, 1, 3],
+    ],
+  },
+  // a
+  {
+    width: 5,
+    bars: [
+      [1, 2, 3, 1],
+      [4, 2, 1, 6],
+      [0, 3, 1, 4],
+      [1, 7, 2, 1],
+      [3, 6, 1, 1],
+    ],
+  },
+  // h
+  {
+    width: 5,
+    bars: [
+      [0, 0, 1, 8],
+      [1, 2, 3, 1],
+      [4, 3, 1, 5],
+    ],
+  },
+  // u
+  {
+    width: 5,
+    bars: [
+      [0, 2, 1, 5],
+      [1, 7, 3, 1],
+      [4, 2, 1, 6],
+    ],
+  },
+  // l
+  {
+    width: 2,
+    bars: [
+      [0, 0, 1, 1],
+      [1, 0, 1, 8],
+    ],
+  },
+];
+
+const GAP = 1;
+
+// Same canvas width as the original logotype, so letters keep its scale.
+const CANVAS_COLS = 44;
+
+const WORD_COLS =
+  GLYPHS.reduce((sum, glyph) => sum + glyph.width, 0) +
+  GAP * (GLYPHS.length - 1);
+
+const BARS: Rect[] = (() => {
+  const bars: Rect[] = [];
+  let offset = Math.floor((CANVAS_COLS - WORD_COLS) / 2);
+  for (const glyph of GLYPHS) {
+    for (const [x, y, w, h] of glyph.bars) {
+      bars.push([x + offset, y, w, h]);
+    }
+    offset += glyph.width + GAP;
+  }
+  return bars;
+})();
+
+// 1px inset so the 2px outline isn't clipped at the edges.
+const VIEWBOX_WIDTH = CANVAS_COLS * CELL + 2;
+const VIEWBOX_HEIGHT = ROWS * CELL + 2;
+
+const BARS_PATH = BARS.map(
+  ([x, y, w, h]) =>
+    `M${x * CELL + 1} ${y * CELL + 1}H${(x + w) * CELL + 1}V${(y + h) * CELL + 1}H${x * CELL + 1}Z`
+).join("");
 
 export function SiteFooterInteractiveLogotype() {
   const shouldReduceMotion = useReducedMotion();
-  const gradientId = `footer-mark-gradient-${useId()}`;
+  const gradientId = `footer-logotype-gradient-${useId()}`;
 
   const gradientX1Raw = useMotionValue(0.5);
   const gradientX1 = useSpring(
@@ -56,24 +134,24 @@ export function SiteFooterInteractiveLogotype() {
       >
         <div className="flex w-full translate-y-[37.5%] items-center justify-center">
           <svg
-            className="h-auto w-full max-w-xl px-4"
-            viewBox={MARK_VIEWBOX}
+            className="container size-full"
+            viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d={MARK_PATH} fill={`url(#${gradientId})`} />
+            <path d={BARS_PATH} fill={`url(#${gradientId})`} />
             <path
               className="stroke-foreground/10"
-              d={MARK_PATH}
+              d={BARS_PATH}
               strokeWidth="2"
             />
             <defs>
               <motion.linearGradient
                 id={gradientId}
                 x1={gradientX1}
-                y1="0"
+                y1="1"
                 x2={VIEWBOX_WIDTH / 2}
-                y2={VIEWBOX_HEIGHT}
+                y2={VIEWBOX_HEIGHT - 1}
                 gradientUnits="userSpaceOnUse"
               >
                 <stop
