@@ -19,7 +19,6 @@ export function KeyboardShortcuts() {
   useHotkeys("g>h", () => navigate("/", "g>h"));
   useHotkeys("g>r", () => navigate("/craft", "g>r"));
   useHotkeys("g>l", () => navigate("/blog", "g>l"));
-  useHotkeys("g>t", () => navigate("/testimonials", "g>t"));
 
   return null;
 }

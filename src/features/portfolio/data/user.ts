@@ -40,8 +40,7 @@ export const USER: User = {
     darkOff: "https://assets.chanhdai.com/images/avatar-dark-off.webp",
     darkOn: "https://assets.chanhdai.com/images/avatar-dark-on.webp",
   },
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?t=1778602757",
+  ogImage: `/og/simple?title=${encodeURIComponent("Rahul Sulegaokar")}&description=${encodeURIComponent("Full-stack engineer and agency founder. Design through deployment.")}`,
   namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
   timeZone: "Asia/Kolkata",
   keywords: [

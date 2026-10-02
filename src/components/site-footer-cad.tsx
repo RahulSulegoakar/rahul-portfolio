@@ -12,7 +12,7 @@ import { SOCIAL } from "@/features/portfolio/data/social-links"
 // Imported here rather than through `@/config/site`, which client components
 // pull in, to keep the manifest out of client bundles.
 import packageJson from "../../package.json"
-import { ChanhDaiMark } from "./chanhdai-mark"
+import { SiteMark } from "./site-mark"
 
 const INSPIRED_BY = [
   "Tailwind CSS",
@@ -26,10 +26,10 @@ const INSPIRED_BY = [
 ]
 
 const OPENPANEL_URL =
-  "https://openpanel.dev?utm_source=chanhdai.com&utm_medium=referral&utm_campaign=footer"
+  "https://openpanel.dev?utm_source=rahulsulegaokar.com&utm_medium=referral&utm_campaign=footer"
 
 // Not derived from `SITE_INFO.url`: that follows `NEXT_PUBLIC_APP_URL` and
-// would read `ncdai.localhost` in dev.
+// would read `rahul.localhost` in dev.
 const SITE_TITLE = "rahulsulegaokar.com"
 
 const SITE_SUBTITLE = packageJson.description
@@ -190,7 +190,7 @@ export function SiteFooterCad() {
             className="mr-auto text-muted-foreground transition-[color] hover:text-foreground"
             aria-label="Home"
           >
-            <ChanhDaiMark className="h-4" />
+            <SiteMark className="h-4" />
           </Link>
 
           <a

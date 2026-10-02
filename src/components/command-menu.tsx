@@ -15,11 +15,9 @@ import {
   LayersIcon,
   MonitorIcon,
   MoonStarIcon,
-  QuoteIcon,
   RssIcon,
   SunMediumIcon,
   TextInitialIcon,
-  TypeIcon,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useHotkeys } from "react-hotkeys-hook";
@@ -41,8 +39,7 @@ import type { DocPreview } from "@/features/doc/types/document";
 import { SOCIAL_ICONS } from "@/features/portfolio/components/social-link-icons";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark";
-import { getWordmarkSVG } from "./chanhdai-wordmark";
+import { getMarkSVG, SiteMark } from "./site-mark";
 import { NewsIcon, SearchIcon } from "./icons";
 import { Button } from "./ui/button";
 import { Kbd, KbdGroup } from "./ui/kbd";
@@ -65,7 +62,7 @@ const MENU_LINKS: CommandLinkItem[] = [
     title: "Home",
     href: "/",
     kind: "page",
-    icon: <ChanhDaiMark />,
+    icon: <SiteMark />,
     shortcut: "GH",
   },
   {
@@ -81,13 +78,6 @@ const MENU_LINKS: CommandLinkItem[] = [
     kind: "page",
     icon: <NewsIcon />,
     shortcut: "GL",
-  },
-  {
-    title: "Testimonials",
-    href: "/testimonials",
-    kind: "page",
-    icon: <QuoteIcon strokeWidth={1.5} />,
-    shortcut: "GT",
   },
 ];
 
@@ -324,18 +314,8 @@ export function CommandMenu({
                   handleCopyText(getMarkSVG(), "Mark as SVG copied");
                 }}
               >
-                <ChanhDaiMark />
+                <SiteMark />
                 Copy Mark as SVG
-              </CommandMenuItem>
-
-              <CommandMenuItem
-                onHighlight={handleCommandHighlight}
-                onSelect={() => {
-                  handleCopyText(getWordmarkSVG(), "Logotype as SVG copied");
-                }}
-              >
-                <TypeIcon />
-                Copy Logotype as SVG
               </CommandMenuItem>
             </CommandGroup>
 
@@ -536,7 +516,7 @@ function CommandMenuFooter({
       <div className="flex h-10" />
 
       <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 rounded-b-2xl px-4 text-xs font-medium">
-        <ChanhDaiMark className="size-6 text-muted-foreground" />
+        <SiteMark className="size-6 text-muted-foreground" />
 
         <div className="flex items-center gap-2 max-sm:hidden">
           <span>{ENTER_ACTION_LABELS[selectedCommandKind ?? "page"]}</span>

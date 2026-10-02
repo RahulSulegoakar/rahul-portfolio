@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "ncdai",
-  "homepage": "https://chanhdai.com/components",
+  "name": "rahulsulegaokar",
+  "homepage": "https://rahulsulegaokar.com",
   "items": [
     {
       "name": "haptic",
@@ -296,8 +296,8 @@
       "registryDependencies": [
         "collapsible",
         "separator",
-        "https://chanhdai.com/r/chevrons-up-down-icon.json",
-        "https://chanhdai.com/r/typography.json"
+        "https://rahulsulegaokar.com/r/chevrons-up-down-icon.json",
+        "https://rahulsulegaokar.com/r/typography.json"
       ],
       "files": [
         {
@@ -342,7 +342,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/shimmering-text.json"
+        "https://rahulsulegaokar.com/r/shimmering-text.json"
       ],
       "files": [
         {
@@ -364,7 +364,7 @@
       "description": "Scrolling marquee to showcase user testimonials.",
       "registryDependencies": [
         "@kibo-ui/marquee",
-        "https://chanhdai.com/r/testimonial.json"
+        "https://rahulsulegaokar.com/r/testimonial.json"
       ],
       "docs": "https://chanhdai.com/components/testimonials-marquee",
       "categories": [
@@ -542,7 +542,7 @@
       ],
       "registryDependencies": [
         "button",
-        "https://chanhdai.com/r/icon-swap.json"
+        "https://rahulsulegaokar.com/r/icon-swap.json"
       ],
       "files": [
         {
@@ -574,8 +574,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/icon-swap.json",
-        "https://chanhdai.com/r/copy-button.json"
+        "https://rahulsulegaokar.com/r/icon-swap.json",
+        "https://rahulsulegaokar.com/r/copy-button.json"
       ],
       "files": [
         {
@@ -615,7 +615,7 @@
       "title": "Testimonial Spotlight",
       "description": "Testimonial card with spotlight effect on hover.",
       "registryDependencies": [
-        "https://chanhdai.com/r/testimonial.json"
+        "https://rahulsulegaokar.com/r/testimonial.json"
       ],
       "files": [
         {
@@ -709,7 +709,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/use-controllable-state.json"
+        "https://rahulsulegaokar.com/r/use-controllable-state.json"
       ],
       "files": [
         {
@@ -756,7 +756,7 @@
       "registryDependencies": [
         "tooltip",
         "spinner",
-        "https://chanhdai.com/r/contribution-graph.json"
+        "https://rahulsulegaokar.com/r/contribution-graph.json"
       ],
       "files": [
         {
@@ -1100,7 +1100,7 @@
       ],
       "registryDependencies": [
         "button",
-        "https://chanhdai.com/r/use-controllable-state.json"
+        "https://rahulsulegaokar.com/r/use-controllable-state.json"
       ],
       "files": [
         {
@@ -1244,7 +1244,7 @@
       ],
       "registryDependencies": [
         "button",
-        "https://chanhdai.com/r/style.json"
+        "https://rahulsulegaokar.com/r/style.json"
       ],
       "files": [
         {
@@ -1309,7 +1309,7 @@
       ],
       "registryDependencies": [
         "button",
-        "https://chanhdai.com/r/style.json"
+        "https://rahulsulegaokar.com/r/style.json"
       ],
       "files": [
         {
@@ -1338,7 +1338,7 @@
       "description": "A testimonials section with dual marquees.",
       "registryDependencies": [
         "https://www.kibo-ui.com/r/marquee.json",
-        "https://chanhdai.com/r/testimonial-spotlight.json"
+        "https://rahulsulegaokar.com/r/testimonial-spotlight.json"
       ],
       "files": [
         {
@@ -1368,8 +1368,8 @@
       "description": "A testimonials section with a lined layout.",
       "registryDependencies": [
         "https://www.kibo-ui.com/r/marquee.json",
-        "https://chanhdai.com/r/style.json",
-        "https://chanhdai.com/r/testimonial.json"
+        "https://rahulsulegaokar.com/r/style.json",
+        "https://rahulsulegaokar.com/r/testimonial.json"
       ],
       "files": [
         {
@@ -1401,8 +1401,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/style.json",
-        "https://chanhdai.com/r/work-experience.json"
+        "https://rahulsulegaokar.com/r/style.json",
+        "https://rahulsulegaokar.com/r/work-experience.json"
       ],
       "files": [
         {
@@ -1425,7 +1425,7 @@
       "title": "Team 01",
       "description": "A team section with glowing cards.",
       "registryDependencies": [
-        "https://chanhdai.com/r/glow-card-grid.json"
+        "https://rahulsulegaokar.com/r/glow-card-grid.json"
       ],
       "files": [
         {
@@ -1454,7 +1454,7 @@
       ],
       "registryDependencies": [
         "@bklit/line-chart",
-        "https://chanhdai.com/r/style.json"
+        "https://rahulsulegaokar.com/r/style.json"
       ],
       "files": [
         {
@@ -1486,7 +1486,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "https://chanhdai.com/r/style.json"
+        "https://rahulsulegaokar.com/r/style.json"
       ],
       "files": [
         {
@@ -1510,7 +1510,7 @@
       "title": "Social Proof 01",
       "description": "A social proof section with a logos carousel.",
       "registryDependencies": [
-        "https://chanhdai.com/r/logos-carousel.json"
+        "https://rahulsulegaokar.com/r/logos-carousel.json"
       ],
       "files": [
         {

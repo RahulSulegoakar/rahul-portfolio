@@ -15,7 +15,7 @@ Ensure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ncdai/chanhdai.com.git minimal-dev-portfolio
+git clone https://github.com/RahulSulegoakar/rahul-portfolio.git
 cd minimal-dev-portfolio
 ```
 
@@ -49,7 +49,7 @@ Then, update the necessary environment variables inside `.env.local`.
 pnpm dev
 ```
 
-The application should now be available at https://ncdai.localhost
+The application should now be available at https://rahul.localhost
 
 ## Building for Production
 
@@ -106,7 +106,7 @@ When running the `npx shadcn add <registry-url>` command, the selected component
 The site screenshots are captured locally, then published to Cloudflare R2.
 
 ```bash
-pnpm capture       # Capture screenshots into .ncdai/screenshots
+pnpm capture       # Capture screenshots into .rahul/screenshots
 pnpm capture:sync  # Upload the folder to Cloudflare R2
 ```
 

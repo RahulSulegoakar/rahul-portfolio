@@ -1,22 +1,24 @@
-import { readFileSync } from "node:fs"
-import { join } from "node:path"
-import { ImageResponse } from "next/og"
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { ImageResponse } from "next/og";
 
-import { clampParam } from "../params"
+import { MARK_PATH, MARK_VIEWBOX } from "@/components/site-mark";
+
+import { clampParam } from "../params";
 
 const geistMedium = readFileSync(
   join(process.cwd(), "src/assets/fonts/Geist-Medium.ttf")
-)
+);
 
 const geistSemiBold = readFileSync(
   join(process.cwd(), "src/assets/fonts/Geist-SemiBold.ttf")
-)
+);
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
+  const { searchParams } = new URL(request.url);
 
-  const domain = clampParam(searchParams.get("domain"), 120)
-  const isForSale = searchParams.get("sale") === "true"
+  const domain = clampParam(searchParams.get("domain"), 120);
+  const isForSale = searchParams.get("sale") === "true";
 
   return new ImageResponse(
     <div tw="flex text-black bg-white w-full h-full p-16">
@@ -60,14 +62,11 @@ export async function GET(request: Request) {
       <div tw="absolute flex bottom-16 right-16">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 256"
-          width={128}
+          viewBox={MARK_VIEWBOX}
+          width={102}
           height={64}
         >
-          <path
-            fill="currentColor"
-            d="M192 256H64v-64h128v64ZM448 64H320v128h128v64H256V0h192v64ZM64 192H0V64h64v128ZM512 192h-64V64h64v128ZM192 64H64V0h128v64Z"
-          />
+          <path fill="currentColor" d={MARK_PATH} />
         </svg>
       </div>
     </div>,
@@ -90,5 +89,5 @@ export async function GET(request: Request) {
         "Cache-Control": "public, max-age=3600, s-maxage=31536000, immutable",
       },
     }
-  )
+  );
 }

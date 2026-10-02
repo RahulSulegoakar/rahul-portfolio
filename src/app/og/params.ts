@@ -4,10 +4,10 @@ export function clampParam(
   fallback = ""
 ) {
   if (!value) {
-    return fallback
+    return fallback;
   }
-  const trimmed = value.trim()
+  const trimmed = value.trim();
   return trimmed.length > maxLength
     ? `${trimmed.slice(0, maxLength - 1)}…`
-    : trimmed
+    : trimmed;
 }

@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   typedRoutes: true,
   transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["ncdai.localhost", "ncdai.local"],
+  allowedDevOrigins: ["rahul.localhost", "rahul.local"],
   devIndicators: false,
   experimental: {
     // Rewrite barrel imports to deep imports so a single icon doesn't pull the
@@ -51,11 +51,6 @@ const nextConfig: NextConfig = {
       : undefined,
   async redirects() {
     return [
-      {
-        source: "/wall-of-love",
-        destination: "/testimonials",
-        permanent: true,
-      },
       /**
        * /llms-full.txt used to serve the whole site as one document. It is now
        * covered by /llms.txt plus the per-section .md routes, so agents probing

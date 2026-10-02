@@ -1,20 +1,17 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import Link from "next/link"
-import { ArrowRightIcon } from "lucide-react"
-import { useInView, usePageInView } from "motion/react"
+import { useRef } from "react";
+import { useInView, usePageInView } from "motion/react";
 
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/components/ui/button"
-import type { MarqueeContentProps } from "@/components/kibo-ui/marquee"
+import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import type { MarqueeContentProps } from "@/components/kibo-ui/marquee";
 import {
   Marquee,
   MarqueeContent,
   MarqueeFade,
   MarqueeItem,
-} from "@/components/kibo-ui/marquee"
+} from "@/components/kibo-ui/marquee";
 import {
   Testimonial,
   TestimonialAuthor,
@@ -24,42 +21,41 @@ import {
   TestimonialAvatarImg,
   TestimonialAvatarRing,
   TestimonialQuote,
-} from "@/registry/components/testimonial"
-import { TestimonialSpotlight } from "@/registry/components/testimonial-spotlight"
-import { Twemoji } from "@/registry/components/twemoji/twemoji"
-import { SOCIAL } from "@/features/portfolio/data/social-links"
+} from "@/registry/components/testimonial";
+import { TestimonialSpotlight } from "@/registry/components/testimonial-spotlight";
+import { Twemoji } from "@/registry/components/twemoji/twemoji";
 import {
   TESTIMONIALS_1,
   TESTIMONIALS_2,
-} from "@/features/portfolio/data/testimonials"
-import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials"
+} from "@/features/portfolio/data/testimonials";
+import type { Testimonial as TestimonialType } from "@/features/portfolio/types/testimonials";
 
-import { Panel, PanelContent } from "./panel"
+import { Panel, PanelContent } from "./panel";
 
-const ID = "testimonials"
+const ID = "testimonials";
 
 const TESTIMONIALS = [...TESTIMONIALS_1, ...TESTIMONIALS_2].sort(
   (a, b) => Number(a.order ?? 999) - Number(b.order ?? 999)
-)
+);
 
-const TESTIMONIALS_MOBILE = TESTIMONIALS.slice(0, 9)
+const TESTIMONIALS_MOBILE = TESTIMONIALS.slice(0, 9);
 
-const TESTIMONIALS_FEATURED = TESTIMONIALS.filter((item) => item.isFeatured)
+const TESTIMONIALS_FEATURED = TESTIMONIALS.filter((item) => item.isFeatured);
 
 const TESTIMONIALS_1_FILTERED = TESTIMONIALS_1.filter(
   (item) => !item.isFeatured
-)
+);
 
 const TESTIMONIALS_2_FILTERED = TESTIMONIALS_2.filter(
   (item) => !item.isFeatured
-)
+);
 
 export function Testimonials() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isPageInView = usePageInView()
-  const isInView = useInView(ref)
-  const isDesktop = useMediaQuery("(min-width: 40rem)") // sm breakpoint
-  const play = isPageInView && isInView && isDesktop
+  const ref = useRef<HTMLDivElement>(null);
+  const isPageInView = usePageInView();
+  const isInView = useInView(ref);
+  const isDesktop = useMediaQuery("(min-width: 40rem)"); // sm breakpoint
+  const play = isPageInView && isInView && isDesktop;
 
   return (
     <Panel ref={ref} id={ID}>
@@ -69,10 +65,7 @@ export function Testimonials() {
 
       <div className="flex items-center justify-center py-4">
         <h2 className="text-center text-sm/none font-medium text-muted-foreground">
-          Trusted by top builders on{" "}
-          <a href={SOCIAL.x.href} target="_blank" rel="noopener" aria-label="X">
-            𝕏
-          </a>
+          What people say
         </h2>
       </div>
 
@@ -111,21 +104,8 @@ export function Testimonials() {
           play={play}
         />
       </PanelContent>
-
-      <div className="screen-line-top flex justify-center py-4">
-        <Button
-          className="gap-2 pr-2.5 pl-3 shadow-[inset_0_0_1px] shadow-foreground/20"
-          variant="secondary"
-          size="sm"
-          nativeButton={false}
-          render={<Link href="/testimonials" />}
-        >
-          All builders
-          <ArrowRightIcon />
-        </Button>
-      </div>
     </Panel>
-  )
+  );
 }
 
 function TestimonialsMarquee({
@@ -134,10 +114,10 @@ function TestimonialsMarquee({
   play,
   className,
 }: {
-  data: TestimonialType[]
-  direction?: MarqueeContentProps["direction"]
-  play?: boolean
-  className?: string
+  data: TestimonialType[];
+  direction?: MarqueeContentProps["direction"];
+  play?: boolean;
+  className?: string;
 }) {
   return (
     <Marquee className={className}>
@@ -161,7 +141,7 @@ function TestimonialsMarquee({
         ))}
       </MarqueeContent>
     </Marquee>
-  )
+  );
 }
 
 function TestimonialItem({
@@ -217,5 +197,5 @@ function TestimonialItem({
         </div>
       )}
     </Testimonial>
-  )
+  );
 }
