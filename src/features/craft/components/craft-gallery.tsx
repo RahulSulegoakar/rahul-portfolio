@@ -9,7 +9,7 @@ import {
   AppleCarouselRoot,
   AppleCarouselTab,
   AppleCarouselTabList,
-} from "@/registry/components/apple-carousel";
+} from "@/components/apple-carousel";
 
 import type { CraftImage } from "../types";
 

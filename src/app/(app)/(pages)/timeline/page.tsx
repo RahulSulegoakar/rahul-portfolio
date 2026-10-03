@@ -7,7 +7,7 @@ import {
   PageHeadingTagline,
   PageHeadingTitle,
 } from "@/components/page-heading"
-import { TimescaleIntroScroll } from "@/registry/components/timescale"
+import { TimescaleIntroScroll } from "@/components/timescale"
 import { Timeline } from "@/features/portfolio/components/timeline"
 
 const title = "Timeline"

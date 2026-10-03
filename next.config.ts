@@ -68,14 +68,6 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-  async headers() {
-    return [
-      {
-        source: "/r/:path*",
-        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
-      },
-    ]
-  },
   async rewrites() {
     return {
       // beforeFiles so these run before prerendered pages are served;

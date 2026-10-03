@@ -1,6 +1,4 @@
-// Media is re-hosted on R2 with `pnpm craft:upload`. Third-party CDNs such as
-// video.twimg.com refuse to serve other sites.
-type AssetUrl = `https://assets.chanhdai.com/${string}`;
+type AssetUrl = `https://${string}`;
 
 export type CraftImage = {
   src: AssetUrl;

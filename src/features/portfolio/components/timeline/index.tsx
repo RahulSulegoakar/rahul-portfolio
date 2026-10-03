@@ -11,7 +11,7 @@ import {
   TimescaleTrack,
   TimescaleViewport,
   TimescaleYear,
-} from "@/registry/components/timescale"
+} from "@/components/timescale"
 import {
   TIMELINE_BIRTH_YEAR,
   TIMELINE_MILESTONES,

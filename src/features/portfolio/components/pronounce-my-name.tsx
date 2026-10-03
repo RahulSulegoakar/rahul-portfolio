@@ -7,7 +7,7 @@ import { trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import type { VolumeIconHandle } from "@/components/animated-icons/volume-icon"
 import { VolumeIcon } from "@/components/animated-icons/volume-icon"
-import { useSound } from "@/registry/hooks/sound/use-sound"
+import { useSound } from "@/hooks/url-sound/use-sound"
 
 export function PronounceMyName({
   className,

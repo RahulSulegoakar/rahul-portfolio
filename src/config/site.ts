@@ -14,7 +14,7 @@ export const SITE_INFO = {
 
 export const LICENSE = {
   name: "MIT License",
-  url: "https://github.com/ncdai/chanhdai.com/blob/main/LICENSE",
+  url: "https://github.com/RahulSulegoakar/rahul-portfolio/blob/main/LICENSE",
 }
 
 export const META_THEME_COLORS = {

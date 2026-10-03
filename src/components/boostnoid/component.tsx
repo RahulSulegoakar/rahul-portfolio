@@ -1,5 +1,5 @@
-// Built on the Daikanoid 404 game from chanhdai.com, with lives,
-// angled paddle bounce, and synthesized SFX instead of CDN assets.
+// Brick-breaker shown on the 404 page. Lives, angled paddle bounce,
+// and synthesized SFX.
 
 "use client";
 

@@ -26,7 +26,7 @@ import {
   SciraIcon,
   V0Icon,
 } from "@/components/icons"
-import { CopyStateIcon } from "@/registry/components/copy-button"
+import { CopyStateIcon } from "@/components/copy-button-core"
 
 const cache = new Map<string, string>()
 

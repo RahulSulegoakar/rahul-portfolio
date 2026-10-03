@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import type { ProfilePage, WithContext } from "schema-dts";
 
-import { CARBON_ADS } from "@/config/ads";
 import { JSON_LD_ID } from "@/config/json-ld";
 import { JsonLdScript } from "@/lib/json-ld";
 import { absoluteUrl, cn } from "@/lib/utils";
-import { FloatingCarbonAds } from "@/components/floating-carbon-ads";
 import { Blog } from "@/features/portfolio/components/blog";
 import { Experiences } from "@/features/portfolio/components/experiences";
 import { Hello } from "@/features/portfolio/components/hello";
@@ -27,7 +25,6 @@ export default function HomePage() {
   return (
     <>
       <JsonLdScript data={getProfilePageJsonLd()} />
-      {CARBON_ADS && <FloatingCarbonAds />}
       <PixelGridEffect />
 
       <div className="[--separator-height:--spacing(8)] **:data-[slot=panel]:scroll-mt-[calc(var(--header-height)+var(--separator-height))]">
