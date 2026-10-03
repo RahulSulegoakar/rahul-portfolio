@@ -6,7 +6,6 @@ import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 
 import { UTM_PARAMS } from "@/config/site"
-import { generator } from "@/lib/auto-type-table"
 import { rehypeAddQueryParams } from "@/lib/rehype-add-query-params"
 import {
   rehypeCodeRawString,
@@ -15,7 +14,6 @@ import {
 } from "@/lib/rehype-code-block"
 import { rehypeNpmCommand } from "@/lib/rehype-npm-command"
 import { remarkCodeImport } from "@/lib/remark-code-import"
-import { cn } from "@/lib/utils"
 import {
   Table,
   TableBody,
@@ -33,15 +31,8 @@ import {
 } from "@/components/ui/tabs"
 import { Code } from "@/components/ui/typography"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
-import { ComponentSource } from "@/components/component-source"
-import { AutoTypeTable } from "@/features/doc/components/auto-type-table"
-import { DocTestimonial } from "@/features/doc/components/doc-testimonial"
-import { DocTestimonial2 } from "@/features/doc/components/doc-testimonial-2"
 
-import { Callout } from "./callout"
 import { CodeTabs } from "./code-tabs"
-import { ComponentPreview } from "./component-preview"
-import { FramedImage, IframeEmbed, YouTubeEmbed } from "./embed"
 import { Heading } from "./heading"
 import { mdxCodeBlockComponents } from "./mdx-code-block"
 
@@ -60,42 +51,13 @@ const components: MDXRemoteProps["components"] = {
   td: TableCell,
   ...mdxCodeBlockComponents,
   code: Code,
-  ComponentPreview,
-  ComponentSource,
   CodeCollapsibleWrapper,
   CodeTabs,
-  Callout,
-  Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
-    <div
-      className={cn(
-        "relative md:ml-3 md:pl-7 prose-h3:text-base",
-        "before:pointer-events-none before:absolute before:top-0 before:left-0 before:hidden before:h-full before:w-px before:-translate-x-1/2 before:bg-line before:md:flex",
-        className
-      )}
-      {...props}
-    />
-  ),
-  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3 className={cn("step font-medium", className)} {...props} />
-  ),
   Tabs,
   TabsList,
   TabsIndicator,
   TabsTrigger,
   TabsContent,
-  TabsListInstallType: () => (
-    <TabsList>
-      <TabsTrigger value="cli">Command</TabsTrigger>
-      <TabsTrigger value="manual">Manual</TabsTrigger>
-      <TabsIndicator />
-    </TabsList>
-  ),
-  YouTubeEmbed,
-  IframeEmbed,
-  FramedImage,
-  DocTestimonial,
-  DocTestimonial2,
-  AutoTypeTable: (props) => <AutoTypeTable {...props} generator={generator} />,
 }
 
 const options: MDXRemoteProps["options"] = {

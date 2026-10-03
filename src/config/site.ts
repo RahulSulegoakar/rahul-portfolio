@@ -47,8 +47,6 @@ export const SOURCE_CODE_GITHUB_REPO = "RahulSulegoakar/rahul-portfolio"
 export const SOURCE_CODE_GITHUB_URL =
   "https://github.com/RahulSulegoakar/rahul-portfolio"
 
-export const SPONSORSHIP_URL = "https://github.com/sponsors/RahulSulegoakar"
-
 export const UTM_PARAMS = {
   utm_source: "rahulsulegaokar.com",
 }
